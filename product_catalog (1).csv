@@ -1,0 +1,72 @@
+Product,Description,Price,Barcode,Photo file
+HONEY BUN,Duchess - yellow wrapper,$1.50,070953704508,honeybun.png
+HONEY BUN FROSTED,"Duchess - iced, blue wrapper",$1.50,070953703051,honeybun_frosted.png
+KIT KAT,Milk chocolate - 1.5 oz,$1.50,034000002467,kitkat2.png
+TWIX,Caramel cookie - 1.79 oz,$1.50,040000004356,twix.png
+SKITTLES ORIGINAL,Chewy candy - 2.17 oz,$1.50,040000001607,skittles2.png
+STARBURST,Original fruit chews - 2.07 oz,$1.50,040000011514,starburst2.png
+AIRHEADS XTREMES,Rainbow berry sour belts - 2 oz,$1.50,073390008383,airheads2.png
+JIMMY DEAN CROISSANT,"Sausage, egg & cheese - 12 ct",$2.00,077900002663,jd_croissant2.png
+JIMMY DEAN PANCAKE,Pancake & sausage on a stick - 20 ct,$2.00,077900002700,jd_pancake.png
+JIMMY DEAN GRIDDLE,Sweet maple griddle cake - 12 ct,$2.00,077900002670,jd_maple2.png
+QUAKER OATMEAL,Instant oatmeal - flavor variety,$1.00,030000561959,QUAKER_OATMEAL.jpg
+COCA-COLA,Original taste - 12 oz can,$1.00,049000006346,coke2.png
+PEPSI,Cola - 12 oz can,$1.00,012000000133,pepsi2.png
+CANADA DRY,Ginger ale - 12 oz can,$1.00,078000001143,gingerale2.png
+DR PEPPER,Soda - 12 oz can,$1.00,078000003154,drpepper.png
+SPRITE,Lemon-lime - 12 oz can,$1.00,049000001327,sprite.png
+7UP,Lemon-lime - 12 oz can,$1.00,,sevenup.png
+FAYGO TWIST,Lemon-lime soda - 12 oz can,$1.00,073800000846,FAYGO_TWIST.jpg
+FAYGO ORANGE,Orange soda - 12 oz can,$1.00,073800000761,FAYGO_ORANGE.jpg
+FAYGO GRAPE,Grape soda - 12 oz can,$1.00,073800000778,FAYGO_GRAPE.jpg
+FAYGO RED POP,Strawberry soda - 12 oz can,$1.00,073800000785,FAYGO_RED_POP.jpg
+GATORADE COOL BLUE,Thirst quencher - 20 fl oz,$1.00,052000102871,GATORADE_COOL_BLUE.jpg
+GATORADE FRUIT PUNCH,Fierce fruit punch + berry - 12 fl oz,$1.00,052000104783,GATORADE_FRUIT_PUNCH.jpg
+GATORADE BLUE CHERRY,Fierce blue cherry - 12 fl oz,$1.00,052000104776,GATORADE_BLUE_CHERRY.jpg
+LIPTON GREEN TEA,Citrus - 20 fl oz,$1.00,012000019258,LIPTON_GREEN_TEA.jpg
+SI BLACK RASPBERRY,"Sparkling Ice - zero sugar, 17 fl oz",$1.00,016571910303,SI_BLACK_RASPBERRY.jpg
+SI ORANGE MANGO,"Sparkling Ice - zero sugar, 17 fl oz",$1.00,016571910310,SI_ORANGE_MANGO.jpg
+SI COCONUT PINEAPPLE,"Sparkling Ice - zero sugar, 17 fl oz",$1.00,016571940331,SI_COCONUT_PINEAPPLE.jpg
+SI KIWI STRAWBERRY,"Sparkling Ice - zero sugar, 17 fl oz",$1.00,016571910327,SI_KIWI_STRAWBERRY.jpg
+MM BLACK RASPBERRY,Member's Mark sparkling water - 17 fl oz,$1.00,,MM_BLACK_RASPBERRY.jpg
+MM STRAWBERRY LEMONADE,Member's Mark sparkling water - 17 fl oz,$1.00,193968284664,MM_STRAWBERRY_LEMONADE.jpg
+MM WATERMELON LIME,Member's Mark sparkling water - 17 fl oz,$1.00,193968296681,MM_WATERMELON_LIME.jpg
+PURE LIFE WATER,Purified water - bottle,$1.00,068274000065,purelife2.png
+SWISS MISS,Hot cocoa mix - 8 envelopes,$1.00,070920476537,swissmiss.png
+DUNKIN ORIGINAL,Medium roast K-Cup - 72 ct box,$2.00,881334009613,dunkin_reg.png
+DUNKIN DECAF,Medium roast K-Cup pod,$2.00,881334010534,dunkin_decaf.png
+TWININGS TEA,Tea bags,$1.00,070177075101,tea.png
+CHIPS AHOY,Chocolate chip - single serve,$1.00,044000043148,chipsahoy.png
+OREO,Chocolate sandwich - 2.4 oz,$1.00,044000047009,oreo2.png
+FAMOUS AMOS,Chocolate chip - 2 oz pouch,$1.00,076677100145,famousamos3.png
+LORNA DOONE,"Shortbread - 6 cookies, 1.5 oz",$1.00,044000013141,lornadoone3.png
+RICE KRISPIES TREATS,Original marshmallow bar,$1.00,,ricekrispies.png
+BELVITA CINNAMON,Crunchy brown sugar - 1.76 oz,$1.00,044000031930,belvita_cin3.png
+BELVITA BLUEBERRY,Crunchy blueberry - 1.76 oz,$1.00,044000028282,belvita_blu3.png
+POP-TARTS,"Frosted - strawberry, cherry, blueberry",$1.00,038000286063,poptarts2.png
+CHEETOS FLAMIN HOT,Crunchy cheese snacks - 2 oz,$1.00,028400047913,ch_cheetos3.png
+CHEETOS LIMON,Crunchy Flamin' Hot Limon - 1.75 oz,$1.00,028400047920,ch_limon3.png
+CHESTER'S FRIES,Flamin' Hot corn snacks - 2 oz,$1.00,028400043014,ch_chesters3.png
+DORITOS FLAMIN HOT,Nacho tortilla chips - 1.75 oz,$1.00,028400217019,ch_doritos3.png
+FUNYUNS FLAMIN HOT,Onion flavored rings - 1.25 oz,$1.00,028400089326,ch_funyuns3.png
+MV JALAPENO,Kettle chips - 1.375 oz,$1.00,028400012553,mv_jalapeno3.png
+MV SEA SALT,Kettle chips - 1.375 oz,$1.00,028400009973,mv_seasalt3.png
+MV SPICY DILL PICKLE,Kettle chips - 1.375 oz,$1.00,028400725743,mv_dill3.png
+MV SALT & VINEGAR,Kettle chips - 1.375 oz,$1.00,028400012546,mv_saltvin3.png
+MV SMOKEHOUSE BBQ,Kettle chips - 1.375 oz,$1.00,028400010436,mv_bbq3.png
+SUN CHIPS CHEDDAR,Harvest cheddar - 1.5 oz,$1.00,028400073264,sc_cheddar3.png
+SUN CHIPS SALSA,Garden salsa - 1.5 oz,$1.00,028400048026,sc_salsa3.png
+SUN CHIPS ORIGINAL,Whole grain - 1.5 oz,$1.00,028400073257,sc_original3.png
+SUN CHIPS FRENCH ONION,French onion - 1.5 oz,$1.00,028400043489,sc_onion3.png
+LAY'S CLASSIC,Potato chips,$1.00,028400091565,laysclassic2.png
+LAY'S BARBECUE,Potato chips,$1.00,028400003001,laysbbq2.png
+RUFFLES CHEDDAR,Cheddar & sour cream,$1.00,028400002912,ruffles2.png
+DORITOS COOL RANCH,Tortilla chips,$1.00,028400070546,coolranch2.png
+DORITOS NACHO CHEESE,Tortilla chips,$1.00,028400070560,nacho2.png
+CHEETOS CRUNCHY,Cheese flavored snacks,$1.00,028400047906,cheetos2.png
+FRITOS ORIGINAL,Corn chips,$1.00,028400047937,fritos2.png
+MUNCHIES CHEESE FIX,Snack mix - 1.375 oz,$1.00,028400025287,munchies2.png
+PRINGLES ORIGINAL,Potato crisps - grab & go can,$1.00,038000845512,PRINGLES_ORIGINAL.jpg
+PRINGLES CHEDDAR CHEESE,Cheddar cheese - 1.4 oz can,$1.00,038000845536,PRINGLES_CHEDDAR_CHEESE.jpg
+PRINGLES SOUR CREAM,Sour cream & onion - 1.4 oz can,$1.00,038000845529,PRINGLES_SOUR_CREAM.jpg
+ACT II POPCORN,Butter lovers - microwave,$1.00,076150011265,actii2.png

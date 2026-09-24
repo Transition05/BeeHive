@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Counter Tools</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@500;700&display=swap">
+<style>
+:root{
+  --ground:#EEF3F5; --panel:#FFFFFF; --sunk:#E3EAEE; --ink:#15212B; --mut:#526270; --line:#CBD6DD;
+  --accent:#12606B; --accent-soft:#D7EBEE; --warn:#8A5A12; --warn-soft:#F6E9D2;
+  --focus:#E8A317;
+  --shadow:0 1px 2px rgba(21,33,43,.06), 0 6px 20px rgba(21,33,43,.07);
+  --display:"Lexend","Atkinson Hyperlegible",system-ui,sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#101A21; --panel:#18252E; --sunk:#1F2F39; --ink:#EAF1F4; --mut:#9DB0BC; --line:#2E4250;
+    --accent:#5FC0CC; --accent-soft:#193840; --warn:#E4B45F; --warn-soft:#32271A;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 6px 20px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101A21; --panel:#18252E; --sunk:#1F2F39; --ink:#EAF1F4; --mut:#9DB0BC; --line:#2E4250;
+  --accent:#5FC0CC; --accent-soft:#193840; --warn:#E4B45F; --warn-soft:#32271A;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0; background:var(--ground); color:var(--ink); font-family:var(--body); font-size:18px; line-height:1.45}
+.wrap{max-width:820px; margin:0 auto; padding:26px 16px 48px}
+h1{font-family:var(--display); font-weight:700; font-size:30px; margin:0 0 4px; letter-spacing:-.01em}
+.lede{color:var(--mut); font-size:17px; margin:0 0 26px}
+a.card{
+  display:flex; gap:16px; align-items:center; text-decoration:none; color:inherit;
+  background:var(--panel); border:2px solid var(--line); border-radius:22px;
+  padding:18px 20px; margin-bottom:14px; box-shadow:var(--shadow);
+}
+a.card:hover, a.card:focus-visible{border-color:var(--accent)}
+a.card:focus-visible{outline:3px solid var(--focus); outline-offset:3px}
+.ico{width:58px; height:58px; border-radius:16px; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+  background:var(--accent-soft); color:var(--accent)}
+.ico.warm{background:var(--warn-soft); color:var(--warn)}
+.ico svg{width:30px; height:30px}
+.txt{min-width:0}
+.nm{font-family:var(--display); font-weight:700; font-size:21px; line-height:1.2}
+.sb{color:var(--mut); font-size:15px; margin-top:3px}
+.go{margin-left:auto; color:var(--mut); flex-shrink:0}
+.go svg{width:26px; height:26px}
+.note{background:var(--sunk); border-radius:16px; padding:16px 18px; font-size:15px; color:var(--mut); margin-top:24px}
+.note b{color:var(--ink)}
+</style></head><body>
+<div class="wrap">
+  <h1>Counter Tools</h1>
+  <p class="lede">Everything for the snack counter, in one place. Tap the one you need.</p>
+
+  <a class="card" href="practice.html">
+    <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M6 7V4h12v3M7 12h4M7 16h2"/><circle cx="17" cy="14" r="2.5"/></svg></span>
+    <span class="txt">
+      <span class="nm">Scan Log Practice</span>
+      <span class="sb">The pretend till. Ring up a customer, make change, then print the results.</span>
+    </span>
+    <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+  </a>
+
+  <a class="card" href="stock-the-shelf.html">
+    <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 13h18M3 19h18"/><rect x="5" y="3" width="5" height="4" rx="1"/><rect x="13" y="9" width="5" height="4" rx="1"/><rect x="6" y="15" width="5" height="4" rx="1"/></svg></span>
+    <span class="txt">
+      <span class="nm">Stock the Shelf</span>
+      <span class="sb">The stocking game. Match tags, sort by aisle, check the UPC, restock the shelf.</span>
+    </span>
+    <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+  </a>
+
+  <a class="card" href="shelf-check.html">
+    <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/><path d="M8.5 5l1.2 1.2L12 4"/><path d="M8.5 11l1.2 1.2L12 10"/></svg></span>
+    <span class="txt">
+      <span class="nm">Shelf Check</span>
+      <span class="sb">The yes-and-no inventory list, with pictures and a PDF at the end.</span>
+    </span>
+    <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+  </a>
+
+  <a class="card" href="scan-log.html">
+    <span class="ico warm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5v14M7 5v14M11 5v14M15 5v14M19 5v14"/></svg></span>
+    <span class="txt">
+      <span class="nm">Scan Log</span>
+      <span class="sb">The real till for the counter. Scans, cash and change, and the day's totals.</span>
+    </span>
+    <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+  </a>
+
+  <div class="note">
+    <p style="margin:0 0 8px"><b>On the iPad:</b> open the page you want, then tap the share button and choose
+      <b>Add to Home Screen</b>. Each one gets its own icon.</p>
+    <p style="margin:0">Nothing typed into these pages leaves the device it is used on. Student names and
+      results stay on that iPad until a PDF or spreadsheet is saved.</p>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,2961 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Name tracing practice with Zaner-Bloser letter formation, for finger, stylus or mouse.">
+<title>Trace My Name</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Atkinson+Hyperlegible:wght@400;700&family=Playwrite+US+Trad:wght@100..400&display=swap">
+<style>
+html{color-scheme:light}body{margin:0}[hidden]{display:none!important}img{max-width:100%}
+:root{
+  --ground:#F3F5F9; --surface:#FFFFFF; --surface-2:#F5F7FB; --border:#DCE2EB; --border-strong:#C5CEDB;
+  --text:#152033; --muted:#5A6475;
+  --primary:#1F3F8F; --primary-hover:#193474; --on-primary:#FFFFFF; --primary-soft:#E8EEFB;
+  --paper:#FFFFFF; --rule-blue:#8AA8DC; --rule-red:#E06A63; --guide:#7F8898; --lane:#E3EBFA; --model:#2B3445;
+  --pencil:#F2B632; --pencil-hover:#E5A81E; --pencil-ink:#2A1F00; --focus:#2457D6;
+  --good:#11804F; --good-bg:#E3F4EB; --warn:#A96400; --warn-bg:#FCF1DC; --bad:#C8352D; --bad-bg:#FBE5E3;
+  --missed:#F0A11A; --start:#12925A; --start-ring:#FFFFFF; --num:#43506A; --demo:#12925A;
+  --pen-1:#1F47C8; --pen-2:#C62F6B; --pen-3:#0F8A55; --pen-4:#7440C9; --pen-5:#1B1B1B;
+  --series-1:#2a78d6; --series-2:#eb6834; --grid:#E3E8EF;
+  --shadow:0 1px 2px rgba(21,32,51,.05),0 4px 14px rgba(21,32,51,.05);
+  --ui:"Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif;
+  --kid:"Andika","Trebuchet MS","Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-look="light"]){
+    color-scheme:dark;
+    --ground:#0E131B; --surface:#161E2C; --surface-2:#1C2636; --border:#2A3547; --border-strong:#3A475C;
+    --text:#E6ECF5; --muted:#9DA9BB;
+    --primary:#8FB0FF; --primary-hover:#A8C1FF; --on-primary:#0E1830; --primary-soft:#1F2C48;
+    --paper:#1A2436; --rule-blue:#4E6D9E; --rule-red:#B85651; --guide:#8C98AC; --lane:#243453; --model:#DCE3EE;
+    --focus:#8FB0FF;
+    --good:#4CC98C; --good-bg:#16382A; --warn:#F0B24A; --warn-bg:#3A2E14; --bad:#FF7A70; --bad-bg:#3E1C1C;
+    --missed:#F5B03A; --start:#3ED08A; --start-ring:#0E131B; --num:#B8C4D8; --demo:#3ED08A;
+    --pen-1:#7FA6FF; --pen-2:#FF7BAA; --pen-3:#56D69A; --pen-4:#B894FF; --pen-5:#F2F2F2;
+    --series-1:#3987e5; --series-2:#d95926; --grid:#26324A;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]:not([data-look="light"]){
+    color-scheme:dark;
+    --ground:#0E131B; --surface:#161E2C; --surface-2:#1C2636; --border:#2A3547; --border-strong:#3A475C;
+    --text:#E6ECF5; --muted:#9DA9BB;
+    --primary:#8FB0FF; --primary-hover:#A8C1FF; --on-primary:#0E1830; --primary-soft:#1F2C48;
+    --paper:#1A2436; --rule-blue:#4E6D9E; --rule-red:#B85651; --guide:#8C98AC; --lane:#243453; --model:#DCE3EE;
+    --focus:#8FB0FF;
+    --good:#4CC98C; --good-bg:#16382A; --warn:#F0B24A; --warn-bg:#3A2E14; --bad:#FF7A70; --bad-bg:#3E1C1C;
+    --missed:#F5B03A; --start:#3ED08A; --start-ring:#0E131B; --num:#B8C4D8; --demo:#3ED08A;
+    --pen-1:#7FA6FF; --pen-2:#FF7BAA; --pen-3:#56D69A; --pen-4:#B894FF; --pen-5:#F2F2F2;
+    --series-1:#3987e5; --series-2:#d95926; --grid:#26324A;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+}
+:root[data-look="dark"]{
+    color-scheme:dark;
+    --ground:#0E131B; --surface:#161E2C; --surface-2:#1C2636; --border:#2A3547; --border-strong:#3A475C;
+    --text:#E6ECF5; --muted:#9DA9BB;
+    --primary:#8FB0FF; --primary-hover:#A8C1FF; --on-primary:#0E1830; --primary-soft:#1F2C48;
+    --paper:#1A2436; --rule-blue:#4E6D9E; --rule-red:#B85651; --guide:#8C98AC; --lane:#243453; --model:#DCE3EE;
+    --focus:#8FB0FF;
+    --good:#4CC98C; --good-bg:#16382A; --warn:#F0B24A; --warn-bg:#3A2E14; --bad:#FF7A70; --bad-bg:#3E1C1C;
+    --missed:#F5B03A; --start:#3ED08A; --start-ring:#0E131B; --num:#B8C4D8; --demo:#3ED08A;
+    --pen-1:#7FA6FF; --pen-2:#FF7BAA; --pen-3:#56D69A; --pen-4:#B894FF; --pen-5:#F2F2F2;
+    --series-1:#3987e5; --series-2:#d95926; --grid:#26324A;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+}
+.sheet-card.hc{
+  --paper:#000000; --rule-blue:#BFBFBF; --rule-red:#FFFFFF; --guide:#FFE500; --lane:#2E2A00; --model:#FFE500;
+  --start:#00FF85; --start-ring:#000000; --missed:#FF9A1F; --bad:#FF4040; --num:#FFFFFF; --demo:#00FF85;
+  --pen-1:#00E5FF; --pen-2:#FF4FD8; --pen-3:#7CFF4F; --pen-4:#FFFFFF; --pen-5:#FF9A1F;
+}
+
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--text);font-family:var(--ui);font-size:16px;line-height:1.45}
+.app{max-width:1120px;margin:0 auto;padding-inline:16px;padding-block:14px 48px;display:grid;gap:14px}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand svg{flex:none}
+.brand h1{font-family:var(--kid);font-weight:700;font-size:26px;letter-spacing:.2px;margin:0;line-height:1.1}
+.brand p{margin:0;color:var(--muted);font-size:14px}
+.top-actions{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);font-weight:700;font-size:15px}
+.btn:hover{background:var(--surface-2)}
+.btn svg{flex:none}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn-primary{background:var(--pencil);border-color:var(--pencil);color:var(--pencil-ink)}
+.btn-primary:hover{background:var(--pencil-hover)}
+.btn-big{min-height:54px;font-size:18px;padding:0 22px;border-radius:12px}
+.btn-danger{border-color:var(--bad);color:var(--bad)}
+.linkish{background:none;border:0;padding:0;color:var(--focus);font-weight:700;text-decoration:underline;text-underline-offset:2px;min-height:0}
+
+.namebar{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:14px;display:grid;gap:12px}
+.name-form{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.field{display:grid;gap:4px;flex:1 1 240px}
+.field label,.quick-label{font-size:13px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted)}
+#nameInput{font-family:var(--kid);font-size:24px;min-height:52px;padding:0 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface-2);width:100%}
+.quick{display:grid;gap:10px}
+.quick-group{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.quick-hint{font-size:13px;color:var(--muted);margin:0}
+
+.seg{display:inline-flex;flex-wrap:wrap;background:var(--surface-2);border:1px solid var(--border);border-radius:11px;padding:3px;gap:3px}
+.seg button{border:0;background:transparent;border-radius:8px;min-height:40px;padding:0 12px;font-weight:700;font-size:14px;color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.seg .aa{font-family:var(--kid);line-height:1}
+.seg.sizes button{align-items:flex-end;padding-bottom:7px}
+.seg.sizes small{font-weight:400;font-size:12px}
+
+.sheet-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:12px;display:grid;gap:12px}
+.stepper{display:grid;gap:8px}
+.step-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.step-cap{font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);min-width:118px}
+.chip{min-width:44px;min-height:44px;padding:0 10px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface-2);font-size:22px;line-height:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;color:var(--text)}
+.chip small{font-family:var(--ui);font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+.chip.current{border-color:var(--focus);box-shadow:0 0 0 2px var(--focus) inset}
+.chip.t-good{background:var(--good-bg);border-color:transparent;color:var(--good)}
+.chip.t-warn{background:var(--warn-bg);border-color:transparent;color:var(--warn)}
+.chip.t-bad{background:var(--bad-bg);border-color:transparent;color:var(--bad)}
+.chip.current.t-good,.chip.current.t-warn,.chip.current.t-bad{border-color:var(--focus)}
+.instruct{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
+.instruct p{margin:0;font-family:var(--kid);font-size:20px;font-weight:700}
+.model{display:flex;align-items:center;gap:10px;background:var(--surface-2);border:1px dashed var(--border);border-radius:10px;padding:6px 12px;width:fit-content;max-width:100%;overflow-x:auto}
+.model span{font-size:13px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted)}
+.model canvas{display:block}
+.lefty .model{margin-left:auto}
+
+.sheet{position:relative;width:100%;border-radius:10px;overflow:hidden;background:var(--paper);border:1px solid var(--border)}
+.sheet canvas{position:absolute;left:0;top:0;display:block}
+#fxCanvas{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;cursor:crosshair}
+.sheet-note{margin:0;font-size:14px;color:var(--muted)}
+.sheet-note strong{color:var(--text)}
+
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.lefty .toolbar{flex-direction:row-reverse}
+.pens{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.pen{width:40px;height:40px;border-radius:50%;border:3px solid var(--surface);box-shadow:0 0 0 1.5px var(--border);padding:0}
+.pen[aria-pressed="true"]{box-shadow:0 0 0 3px var(--text)}
+.spacer{flex:1 1 auto}
+.tools{display:flex;flex-wrap:wrap;gap:8px}
+.lefty .tools{flex-direction:row-reverse}
+
+.result{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:18px;display:grid;gap:14px}
+.result-head{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.stars{display:flex;gap:4px}
+.stars svg{width:48px;height:48px}
+.stars.popin svg{animation:pop .45s cubic-bezier(.3,1.6,.5,1) both}
+.stars.popin svg:nth-child(2){animation-delay:.12s}
+.stars.popin svg:nth-child(3){animation-delay:.24s}
+@keyframes pop{from{transform:scale(.3);opacity:0}to{transform:none;opacity:1}}
+.star-on{fill:var(--pencil);stroke:#C58D00;stroke-width:1.2}
+.star-off{fill:var(--surface-2);stroke:var(--border);stroke-width:1.5}
+.message{font-family:var(--kid);font-size:24px;font-weight:700;margin:0;line-height:1.2;text-wrap:balance}
+.tip{margin:4px 0 0;color:var(--muted);font-size:16px}
+.bigscore{display:grid;justify-items:start}
+.bigscore b{font-family:var(--kid);font-size:52px;line-height:1;font-variant-numeric:tabular-nums}
+.bigscore span,.section-label{font-size:13px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted)}
+.section-label{margin:0}
+.meters{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.meter{display:grid;gap:6px}
+.meter-top{display:flex;justify-content:space-between;font-weight:700;font-size:15px;gap:8px}
+.meter-top span:last-child{font-variant-numeric:tabular-nums}
+.bar{height:12px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:6px}
+.letters-row{display:flex;flex-wrap:wrap;gap:6px}
+.form-list{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.form-list li{display:flex;gap:10px;align-items:baseline;font-size:15px}
+.form-list b{font-size:22px;min-width:28px;text-align:center}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:14px;height:14px;border-radius:50%;display:inline-block}
+.details{font-size:14px;color:var(--muted);margin:0;font-variant-numeric:tabular-nums}
+.result-actions{display:flex;flex-wrap:wrap;gap:10px}
+.sum-table{width:100%;border-collapse:collapse;font-size:15px}
+.sum-table th,.sum-table td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+.sum-table th{font-size:12px;letter-spacing:.4px;text-transform:uppercase;color:var(--muted)}
+.sum-table td.num{font-variant-numeric:tabular-nums}
+
+.backdrop{position:fixed;inset:0;background:rgba(10,14,20,.45);opacity:0;pointer-events:none;transition:opacity .2s;z-index:20}
+.backdrop.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(460px,100%);background:var(--surface);border-left:1px solid var(--border);z-index:21;transform:translateX(102%);transition:transform .25s ease;display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:calc(14px + env(safe-area-inset-top,0px)) 18px 12px;border-bottom:1px solid var(--border)}
+.drawer-head h2{margin:0;font-size:20px}
+.drawer-body{overflow:auto;padding:6px 18px calc(28px + env(safe-area-inset-bottom,0px));display:grid;gap:4px}
+.group{padding-block:14px;border-bottom:1px solid var(--border);display:grid;gap:12px}
+.group:last-child{border-bottom:0}
+.group h3{margin:0;font-size:13px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+.setting{display:grid;gap:6px}
+.setting > .lbl{font-weight:700;font-size:15px}
+.hint{font-size:13px;color:var(--muted);margin:0}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:40px;font-weight:700;font-size:15px;cursor:pointer}
+.switch small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.switch input{appearance:none;-webkit-appearance:none;flex:none;width:48px;height:28px;border-radius:14px;background:var(--border);position:relative;cursor:pointer;transition:background .15s;margin:0}
+.switch input::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:transform .15s}
+.switch input:checked{background:var(--good)}
+.switch input:checked::after{transform:translateX(20px)}
+.range-row{display:flex;align-items:center;gap:10px}
+.range-row input[type=range]{flex:1;accent-color:var(--good);min-width:0}
+.range-row output{font-weight:700;font-variant-numeric:tabular-nums;min-width:56px;text-align:right}
+.sq{width:44px;min-width:44px;padding:0}
+.ruler-wrap{overflow:hidden;border:1px solid var(--border);border-radius:8px;background:var(--paper);padding:10px 0 4px}
+.ruler{height:30px;border-left:2px solid var(--text);border-right:2px solid var(--text);background:
+  linear-gradient(var(--text),var(--text)) left bottom/100% 2px no-repeat;position:relative}
+.ruler i{position:absolute;bottom:0;width:2px;background:var(--text)}
+.pin-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pin-row input{width:120px;min-height:44px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface-2);padding:0 12px;font-size:20px;letter-spacing:6px;font-variant-numeric:tabular-nums}
+.about{font-size:14px;color:var(--muted);margin:0}
+
+.modal{position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:16px;background:rgba(10,14,20,.5)}
+.modal[hidden]{display:none!important}
+.modal-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);width:min(980px,100%);max-height:calc(100% - 8px);overflow:auto;display:grid;gap:14px;padding:18px}
+.modal-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+.modal-head h2{margin:0;font-size:22px}
+.pin-card{width:min(340px,100%);justify-items:center;text-align:center}
+.pin-dots{display:flex;gap:12px;min-height:22px}
+.pin-dots i{width:16px;height:16px;border-radius:50%;border:2px solid var(--text)}
+.pin-dots i.on{background:var(--text)}
+.keypad{display:grid;grid-template-columns:repeat(3,72px);gap:10px}
+.keypad button{height:60px;border-radius:12px;border:1.5px solid var(--border);background:var(--surface-2);font-size:24px;font-weight:700}
+.pin-msg{min-height:20px;color:var(--bad);font-weight:700;margin:0}
+
+.prog-top{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.prog-top select{min-height:44px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface-2);padding:0 12px;font-size:16px;min-width:200px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{border:1px solid var(--border);border-radius:10px;padding:10px 12px;display:grid;gap:2px}
+.stat span{font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted)}
+.stat b{font-size:26px;font-variant-numeric:tabular-nums}
+.chart-box{position:relative}
+.chart-legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--muted);margin-bottom:6px}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}
+.chart-legend svg{flex:none}
+.chart-tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow);border-radius:8px;padding:8px 10px;font-size:13px;min-width:140px;z-index:2}
+.chart-tip b{display:block;margin-bottom:2px}
+.chart-tip div{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
+.log-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px}
+table.log{width:100%;border-collapse:collapse;font-size:14px}
+table.log th,table.log td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);white-space:nowrap}
+table.log th{font-size:12px;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);background:var(--surface-2);position:sticky;top:0}
+table.log td.num{font-variant-numeric:tabular-nums;text-align:right}
+table.log tr:last-child td{border-bottom:0}
+.empty{color:var(--muted);font-size:15px;margin:0;padding:12px}
+.confirm{display:flex;flex-wrap:wrap;gap:10px;align-items:center;border:1.5px solid var(--bad);background:var(--bad-bg);border-radius:10px;padding:10px 12px}
+.confirm p{margin:0;font-weight:700;flex:1 1 220px}
+.status{font-size:14px;color:var(--muted);margin:0}
+
+.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--text);color:var(--surface);padding:10px 16px;border-radius:10px;font-weight:700;z-index:40;max-width:calc(100% - 32px)}
+
+.exit-student{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:12px;z-index:15;min-height:40px;font-size:14px;opacity:.75;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:0 14px;font-weight:700;overflow:hidden}
+.exit-student .fill{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--pencil);opacity:.5}
+.exit-student span{position:relative}
+body.student .top, body.student .namebar, body.student #result, body.student .sheet-note{display:none!important}
+body.student .sheet-card{padding:18px 20px;gap:16px}
+body.student .instruct p{font-family:var(--kid);font-size:26px;line-height:1.25}
+body.student .tools .btn{min-height:64px;font-size:20px;padding:0 24px;border-radius:12px}
+body.student .tools .btn svg{width:24px;height:24px}
+body.student .toolbar{justify-content:center}
+body.student .spacer{display:none}
+.dots{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.dots i{width:18px;height:18px;border-radius:50%;border:2px solid var(--border-strong);background:var(--surface)}
+.dots i.done{background:var(--good);border-color:var(--good)}
+.dots i.cur{border-color:var(--primary);border-width:3px;box-shadow:0 0 0 3px var(--primary-soft)}
+body.student .app{padding-top:58px}
+
+
+.strip{display:flex;flex-wrap:wrap;gap:8px;padding:8px;border:1.5px dashed var(--demo);border-radius:12px;background:var(--surface-2)}
+.strip-title{width:100%;font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted)}
+.tile{display:grid;justify-items:center;gap:4px;width:96px;padding:6px 4px 8px;border-radius:10px;border:2px solid transparent;background:var(--surface);color:var(--text);font-size:12px;font-weight:700;line-height:1.2;text-align:center}
+.tile.on{border-color:var(--demo)}
+.tile canvas{display:block}
+.btn-next{background:var(--good);border-color:var(--good);color:var(--surface)}
+.btn-next:hover{background:var(--good);filter:brightness(1.08)}
+.pop{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:min(580px,calc(100% - 32px));background:var(--surface);border:2px solid var(--border);border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.28);padding:16px 18px;z-index:25;display:grid;gap:12px;animation:rise .3s ease both}
+@keyframes rise{from{transform:translate(-50%,24px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+.pop-x{position:absolute;top:8px;right:8px;width:40px;height:40px;border-radius:10px;border:0;background:transparent;font-size:26px;line-height:1;color:var(--muted)}
+.pop-top{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;padding-right:40px}
+.pop .stars svg{width:40px;height:40px}
+.pop-score{font-family:var(--kid);font-size:42px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.pop-msg{font-family:var(--kid);font-size:21px;font-weight:700;margin:0;line-height:1.2}
+.pop-tip{margin:2px 0 0;color:var(--muted);font-size:15px}
+.pop-actions{display:flex;gap:10px;flex-wrap:wrap}
+.pop-actions .btn{flex:1 1 150px}
+.pop-count{font-size:14px;color:var(--muted);margin:0;font-weight:700;font-variant-numeric:tabular-nums}
+.lefty .pop-actions{flex-direction:row-reverse}
+.pdf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.pdf-card{border:1px solid var(--border);border-radius:12px;padding:14px;display:grid;gap:10px;align-content:start}
+.pdf-card h3{margin:0;font-size:17px}
+.pdf-card .btn{justify-self:start}
+.modal-card select{min-height:44px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface-2);padding:0 12px;font-size:16px;min-width:200px;max-width:100%}
+@media (prefers-reduced-motion: reduce){ .pop{animation:none} }
+
+
+/* ---------- Professional polish ---------- */
+.app{gap:16px;padding-block:0 56px}
+.top{position:relative;padding-block:14px;border-bottom:1px solid var(--border);margin-inline:-16px;padding-inline:16px;background:var(--surface)}
+.brand h1{font-family:var(--ui);font-size:21px;letter-spacing:-.1px}
+.brand p{font-size:13px}
+.brand svg{width:36px;height:36px}
+.top-actions{gap:4px}
+.btn-quiet{background:transparent;border-color:transparent;color:var(--text);font-weight:700;min-height:42px;padding:0 12px}
+.btn-quiet:hover{background:var(--surface-2);border-color:var(--border)}
+.btn-quiet svg{color:var(--muted)}
+.top-sep{width:1px;align-self:stretch;background:var(--border);margin:6px 4px}
+.btn{border-radius:9px;border-width:1px;font-size:15px}
+.btn-primary{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.btn-primary:hover{background:var(--primary-hover);border-color:var(--primary-hover)}
+.btn-big{border-radius:10px;font-size:17px;min-height:52px}
+.namebar,.sheet-card,.result{border-radius:12px;box-shadow:var(--shadow);border-color:var(--border)}
+.namebar{padding:16px 18px;grid-template-columns:minmax(0,1fr);gap:14px}
+.name-form .field label,.quick-label,.section-label,.step-cap,.bigscore span{font-size:12px;letter-spacing:.6px;color:var(--muted)}
+#nameInput{border-width:1px;border-color:var(--border-strong);background:var(--surface);font-size:22px;min-height:50px;border-radius:9px}
+#nameInput:focus{border-color:var(--primary);outline:3px solid var(--primary-soft);outline-offset:0}
+.quick{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;padding-top:12px;border-top:1px solid var(--border)}
+.quick-hint{flex-basis:100%;margin-top:-6px}
+.seg{border-radius:10px;border-color:var(--border);background:var(--surface-2)}
+.seg button{border-radius:7px;min-height:38px;font-size:14px}
+.seg button[aria-pressed="true"]{color:var(--primary);box-shadow:0 0 0 1px var(--border-strong),0 1px 2px rgba(0,0,0,.06)}
+.sheet-card{padding:16px 18px;gap:14px}
+.sheet{border-radius:8px;border-color:var(--border-strong)}
+.instruct p{font-family:var(--ui);font-size:19px}
+.toolbar{padding-top:4px}
+.tools .btn:not(.btn-big){min-height:48px}
+
+/* Row tracker */
+.track{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.track-step{display:flex;align-items:center;gap:8px;min-height:44px;padding:4px 12px 4px 6px;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--text);font-size:14px;font-weight:700}
+.track-step .num{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--surface-2);border:1px solid var(--border-strong);font-size:13px;font-variant-numeric:tabular-nums;color:var(--muted)}
+.track-step small{font-weight:400;color:var(--muted);font-size:13px}
+.track-step b{font-variant-numeric:tabular-nums;font-size:13px}
+.track-step.current{border-color:var(--primary);box-shadow:0 0 0 1px var(--primary) inset;background:var(--primary-soft)}
+.track-step.current .num{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.track-step.done .num{background:var(--good);border-color:var(--good);color:#fff}
+.track-step.done.t-warn .num{background:var(--warn);border-color:var(--warn)}
+.track-step.done.t-bad .num{background:var(--bad);border-color:var(--bad)}
+.track-group{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:4px 8px 4px 6px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
+.track-group.current{border-color:var(--primary);background:var(--primary-soft)}
+.track-group .glabel{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;padding-right:4px}
+.track-group .chip{min-width:40px;min-height:40px;font-size:19px;border-width:1px}
+.track-conn{align-self:center;width:14px;height:2px;background:var(--border-strong);border-radius:1px}
+.pop{border-radius:14px;border-width:1px}
+.drawer-head h2,.modal-head h2{font-size:19px}
+.group h3{font-size:12px;letter-spacing:.7px}
+
+@media (max-width:560px){
+  .brand h1{font-size:19px}
+  .top-sep{display:none}
+  .track-conn{display:none}
+  .message{font-size:21px}
+  .bigscore b{font-size:44px}
+  .stars svg{width:40px;height:40px}
+  .seg button{padding:0 9px}
+  .step-cap{min-width:0;width:100%}
+  .keypad{grid-template-columns:repeat(3,64px)}
+}
+@media (prefers-reduced-motion: reduce){
+  .drawer,.backdrop{transition:none}
+  .stars.popin svg{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="top">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="1" y="1" width="38" height="38" rx="10" fill="var(--pencil)"/>
+        <path d="M9 30 L11 23 L25 9 L31 15 L17 29 Z" fill="#fff" stroke="#2A1F00" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M9 30 L11 23 L17 29 Z" fill="#2A1F00"/>
+        <path d="M22 12 L28 18" stroke="#2A1F00" stroke-width="1.8"/>
+      </svg>
+      <div>
+        <h1>Trace My Name</h1>
+        <p>Zaner-Bloser handwriting practice for finger, stylus or mouse</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button class="btn btn-quiet" id="studentBtn" type="button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Student view
+      </button>
+      <span class="top-sep" aria-hidden="true"></span>
+      <button class="btn btn-quiet" id="pdfBtn" type="button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 11v6M9 14l3 3 3-3"/></svg>PDF
+      </button>
+      <button class="btn btn-quiet" id="progressBtn" type="button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M5 15l4-5 4 3 6-7"/></svg>Progress
+      </button>
+      <button class="btn btn-quiet" id="openSettings" type="button" aria-controls="drawer" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>Teacher settings
+      </button>
+    </div>
+  </header>
+
+  <section class="namebar" aria-label="Name and size">
+    <form class="name-form" id="nameForm" autocomplete="off">
+      <div class="field">
+        <label for="nameInput">Name to trace</label>
+        <input id="nameInput" name="nameInput" maxlength="24" value="Maya" spellcheck="false" autocapitalize="words">
+      </div>
+      <button class="btn btn-primary btn-big" type="submit">Start tracing</button>
+    </form>
+    <div class="quick">
+      <div class="quick-group">
+        <span class="quick-label" id="sizeLbl">Letter height</span>
+        <div class="seg sizes" data-setting="size" role="group" aria-labelledby="sizeLbl"></div>
+      </div>
+      <p class="quick-hint" id="sizeHint"></p>
+      <div class="quick-group">
+        <span class="quick-label" id="modeLbl">Show</span>
+        <div class="seg" data-setting="mode" role="group" aria-labelledby="modeLbl">
+          <button type="button" data-value="whole">Whole name</button>
+          <button type="button" data-value="letter">One letter at a time</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet-card" id="sheetCard" aria-label="Tracing sheet">
+    <div class="stepper" id="stepper"></div>
+    <div class="instruct">
+      <p id="instructText">Trace the dotted letters.</p>
+      <div class="model" id="modelBox" hidden><span>Copy this</span><canvas id="modelCanvas" aria-hidden="true"></canvas></div>
+    </div>
+    <div class="strip" id="strip" hidden></div>
+    <div class="sheet" id="sheet">
+      <canvas id="guideCanvas" aria-hidden="true"></canvas>
+      <canvas id="inkCanvas" aria-hidden="true"></canvas>
+      <canvas id="fxCanvas" role="img" aria-label="Tracing area. Trace the letters with your finger, stylus or mouse."></canvas>
+    </div>
+    <p class="sheet-note" id="sheetNote"></p>
+    <div class="toolbar">
+      <div class="pens" role="group" aria-label="Pen color" id="pens"></div>
+      <div class="spacer"></div>
+      <div class="tools">
+        <button class="btn" type="button" id="hearBtn" hidden>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/></svg>Hear it
+        </button>
+        <button class="btn" type="button" id="watchBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><span>Watch me</span>
+        </button>
+        <button class="btn" type="button" id="undoBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg>Undo
+        </button>
+        <button class="btn" type="button" id="clearBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 7h14M10 11v6M14 11v6M6 7l1 12h10l1-12M9 7V4h6v3"/></svg>Clear
+        </button>
+        <button class="btn btn-primary btn-big" type="button" id="checkBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 10 17 19 7"/></svg>I'm done!
+        </button>
+        <button class="btn btn-next btn-big" type="button" id="nextBtn" hidden>Next →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="result" id="result" hidden aria-live="polite"></section>
+</div>
+
+<div class="pop" id="pop" hidden role="dialog" aria-label="Your result">
+  <button class="pop-x" id="popX" type="button" aria-label="Close">×</button>
+  <div id="popBody" style="display:grid;gap:12px"></div>
+</div>
+
+<button class="exit-student" id="exitStudent" type="button" hidden><i class="fill" id="exitFill"></i><span>Hold to exit</span></button>
+
+<div class="backdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer" aria-label="Teacher settings" aria-hidden="true">
+  <div class="drawer-head">
+    <h2>Teacher settings</h2>
+    <button class="btn" type="button" id="closeSettings">Close</button>
+  </div>
+  <div class="drawer-body">
+    <div class="group">
+      <h3>Display</h3>
+      <div class="setting">
+        <span class="lbl" id="lookLbl">Page appearance</span>
+        <div class="seg" data-setting="look" role="group" aria-labelledby="lookLbl">
+          <button type="button" data-value="light">Light</button>
+          <button type="button" data-value="dark">Dark</button>
+          <button type="button" data-value="auto">Match device</button>
+        </div>
+        <p class="hint">Light keeps a white page and white writing paper on every device.</p>
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Student view</h3>
+      <p class="hint">Student view shows the tracing, progress dots and three big buttons: Watch me, Undo and I'm done. Scores show in a short pop-up. Full details stay in Progress.</p>
+      <label class="switch" for="set-stuPens"><span>Show pen colors</span><input type="checkbox" id="set-stuPens" data-setting="stuPens"></label>
+      <label class="switch" for="set-stuClear"><span>Show the Clear button</span><input type="checkbox" id="set-stuClear" data-setting="stuClear"></label>
+    </div>
+
+    <div class="group">
+      <h3>Letters</h3>
+      <div class="setting">
+        <span class="lbl" id="styleLbl">Letter style</span>
+        <div class="seg" data-setting="style" role="group" aria-labelledby="styleLbl">
+          <button type="button" data-value="print">Print</button>
+          <button type="button" data-value="slant">Slanted print</button>
+          <button type="button" data-value="cursive">Cursive</button>
+        </div>
+        <p class="hint">Print follows Zaner-Bloser manuscript strokes. Slanted uses the same strokes with a slant. Cursive is traced by shape only: no start dots, Watch me or formation checks.</p>
+      </div>
+      <div class="setting">
+        <span class="lbl" id="caseLbl">Capital letters</span>
+        <div class="seg" data-setting="caseMode" role="group" aria-labelledby="caseLbl">
+          <button type="button" data-value="typed">As typed</button>
+          <button type="button" data-value="caps">ALL CAPS</button>
+        </div>
+      </div>
+      <div class="setting">
+        <span class="lbl" id="guideLbl">How letters look on row 1</span>
+        <div class="seg" data-setting="guide" role="group" aria-labelledby="guideLbl">
+          <button type="button" data-value="dotted">Dotted</button>
+          <button type="button" data-value="solid">Solid gray</button>
+          <button type="button" data-value="outline">Outline</button>
+          <button type="button" data-value="faint">Faint</button>
+        </div>
+      </div>
+      <label class="switch" for="set-lines"><span>Writing lines<small>Top line, dashed middle line, baseline</small></span><input type="checkbox" id="set-lines" data-setting="lines"></label>
+      <label class="switch" for="set-lane"><span>Show the tracing path<small>Shaded lane that counts as "on the line" (row 1 only when fading)</small></span><input type="checkbox" id="set-lane" data-setting="lane"></label>
+      <label class="switch" for="set-contrast"><span>High contrast<small>Yellow letters on black for low vision</small></span><input type="checkbox" id="set-contrast" data-setting="contrast"></label>
+    </div>
+
+    <div class="group">
+      <h3>Practice rows</h3>
+      <div class="setting">
+        <span class="lbl" id="rowsLbl">How many times to trace the name</span>
+        <div class="seg" data-setting="rows" role="group" aria-labelledby="rowsLbl">
+          <button type="button" data-value="1">1</button>
+          <button type="button" data-value="2">2</button>
+          <button type="button" data-value="3">3</button>
+          <button type="button" data-value="4">4</button>
+        </div>
+      </div>
+      <label class="switch" for="set-fade"><span>Fade support each row<small>Row 1 as set above with start dots, row 2 faint letters with start dots, rows 3 and 4 lines only (no letters or dots, with a model to copy)</small></span><input type="checkbox" id="set-fade" data-setting="fade"></label>
+      <label class="switch" for="set-dotsRow"><span>Row 2 as "Start dots only"<small>Off unless you turn it on. Row 2 shows only the green start dots instead of faint letters.</small></span><input type="checkbox" id="set-dotsRow" data-setting="dotsRow"></label>
+      <label class="switch" for="set-autoNext"><span>Move on automatically<small>After 3 stars, go to the next part after a 3-second countdown</small></span><input type="checkbox" id="set-autoNext" data-setting="autoNext"></label>
+    </div>
+
+    <div class="group">
+      <h3>Showing curves and lines</h3>
+      <p class="hint">Choose any of these. They work together.</p>
+      <label class="switch" for="set-strip"><span>Name stroke strip<small>Off unless you turn it on. Shows each letter of the student's name along the top edge of the tracing area, drawing itself stroke by stroke. Tap a letter to replay it.</small></span><input type="checkbox" id="set-strip" data-setting="strip"></label>
+      <div class="setting">
+        <span class="lbl" id="watchLbl">Watch me shows</span>
+        <div class="seg" data-setting="watchStyle" role="group" aria-labelledby="watchLbl">
+          <button type="button" data-value="pen">Pen path</button>
+          <button type="button" data-value="outline">Outline edges</button>
+          <button type="button" data-value="both">Both</button>
+        </div>
+        <p class="hint">Outline edges draws the outside border of each stroke as it forms, so students see the shape of every curve and line.</p>
+      </div>
+      <label class="switch" for="set-autoWatch"><span>Play Watch me when each row starts</span><input type="checkbox" id="set-autoWatch" data-setting="autoWatch"></label>
+      <label class="switch" for="set-warmup"><span>Warm-up page first<small>Trace the basic lines and curves before the name</small></span><input type="checkbox" id="set-warmup" data-setting="warmup"></label>
+    </div>
+
+    <div class="group">
+      <h3>Letter height</h3>
+      <div class="setting" id="calibrate">
+        <span class="lbl">Screen check</span>
+        <p class="hint">Hold a ruler against the screen. Move the slider until the bar is exactly <b id="rulerIn">3</b> inches long. After that, the letter heights are true to life on this device.</p>
+        <div class="ruler-wrap"><div class="ruler" id="ruler"></div></div>
+        <div class="range-row">
+          <button class="btn sq" type="button" id="ppiMinus" aria-label="Make the bar shorter">−</button>
+          <input type="range" id="set-ppi" min="20" max="260" step="1" aria-label="Screen dots per inch">
+          <button class="btn sq" type="button" id="ppiPlus" aria-label="Make the bar longer">+</button>
+          <output id="ppiOut" for="set-ppi">96</output>
+        </div>
+        <div><button class="linkish" type="button" id="ppiReset">Reset to standard (96)</button></div>
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Tracing</h3>
+      <div class="setting">
+        <span class="lbl" id="tolLbl">How close to the line counts</span>
+        <div class="seg" data-setting="tol" role="group" aria-labelledby="tolLbl">
+          <button type="button" data-value="tight">Tight</button>
+          <button type="button" data-value="standard">Standard</button>
+          <button type="button" data-value="wide">Wide</button>
+        </div>
+        <p class="hint">Wide is more forgiving for students with motor-planning or tremor needs.</p>
+      </div>
+      <div class="setting">
+        <span class="lbl" id="penLbl">Pen thickness</span>
+        <div class="seg" data-setting="pen" role="group" aria-labelledby="penLbl">
+          <button type="button" data-value="thin">Thin</button>
+          <button type="button" data-value="medium">Medium</button>
+          <button type="button" data-value="thick">Thick</button>
+        </div>
+      </div>
+      <label class="switch" for="set-palm"><span>Ignore palm touches<small>After a stylus is used, finger touches are ignored</small></span><input type="checkbox" id="set-palm" data-setting="palm"></label>
+      <label class="switch" for="set-live"><span>Live color feedback<small>Ink turns red while it is off the path</small></span><input type="checkbox" id="set-live" data-setting="live"></label>
+      <label class="switch" for="set-lefty"><span>Left-handed<small>Buttons and the model move to the left and right so the hand doesn't cover them</small></span><input type="checkbox" id="set-lefty" data-setting="lefty"></label>
+    </div>
+
+    <div class="group">
+      <h3>Feedback</h3>
+      <label class="switch" for="set-fbStart"><span>Start dots and arrows<small>Green dot and arrow show where each letter begins</small></span><input type="checkbox" id="set-fbStart" data-setting="fbStart"></label>
+      <label class="switch" for="set-fbOrder"><span>Stroke numbers<small>1, 2, 3 at the start of each stroke</small></span><input type="checkbox" id="set-fbOrder" data-setting="fbOrder"></label>
+      <label class="switch" for="set-fbFormation"><span>Check letter formation<small>Starting point and stroke direction</small></span><input type="checkbox" id="set-fbFormation" data-setting="fbFormation"></label>
+      <label class="switch" for="set-fbPercent"><span>Accuracy percentage</span><input type="checkbox" id="set-fbPercent" data-setting="fbPercent"></label>
+      <label class="switch" for="set-fbStars"><span>Stars and encouragement</span><input type="checkbox" id="set-fbStars" data-setting="fbStars"></label>
+      <label class="switch" for="set-fbBreakdown"><span>Score breakdown<small>"Stayed on the path" and "Finished the letters"</small></span><input type="checkbox" id="set-fbBreakdown" data-setting="fbBreakdown"></label>
+      <label class="switch" for="set-fbLetters"><span>Score for each letter</span><input type="checkbox" id="set-fbLetters" data-setting="fbLetters"></label>
+      <label class="switch" for="set-fbOff"><span>Mark off-line spots<small>Red where the ink left the path</small></span><input type="checkbox" id="set-fbOff" data-setting="fbOff"></label>
+      <label class="switch" for="set-fbMissed"><span>Mark missed parts<small>Light orange on parts of letters not traced</small></span><input type="checkbox" id="set-fbMissed" data-setting="fbMissed"></label>
+      <div class="setting">
+        <label class="lbl" for="set-goal">Goal for 3 stars</label>
+        <div class="range-row"><input type="range" id="set-goal" data-setting="goal" min="50" max="100" step="5"><output id="goalOut" for="set-goal">80%</output></div>
+        <p class="hint">2 stars within 20 points of the goal. Every try earns at least 1 star.</p>
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Sound</h3>
+      <label class="switch" for="set-readAloud"><span>Read directions aloud<small>Says each step and the letter cues during Watch me</small></span><input type="checkbox" id="set-readAloud" data-setting="readAloud"></label>
+      <label class="switch" for="set-sound"><span>Reward sound<small>A short chime when a row is finished</small></span><input type="checkbox" id="set-sound" data-setting="sound"></label>
+    </div>
+
+    <div class="group">
+      <h3>Saving and lock</h3>
+      <label class="switch" for="set-save"><span>Save tries to Progress<small>Each finished row is saved under the student's name</small></span><input type="checkbox" id="set-save" data-setting="save"></label>
+      <div class="setting">
+        <span class="lbl">Lock with a code</span>
+        <p class="hint" id="pinState">No code set. Anyone can open these settings and Progress.</p>
+        <div class="pin-row">
+          <input id="pinInput" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="4 digits" aria-label="New 4-digit code">
+          <button class="btn" type="button" id="pinSave">Set code</button>
+          <button class="btn" type="button" id="pinClear" hidden>Remove code</button>
+        </div>
+        <p class="hint">The code is saved on this device only. It keeps students out of settings and exits Student view. It is not a security feature.</p>
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>How scoring works</h3>
+      <p class="about"><b>Stayed on the path</b> is the share of ink inside the tracing path. <b>Finished the letters</b> is how much of each letter the ink covered. The accuracy score balances the two, so scribbling or tracing only half both score lower. <b>Formation</b> checks that each letter starts at the green dot and that each stroke goes the Zaner-Bloser direction. It does not check stroke order. When formation checks are on, stars use 70% accuracy and 30% formation.</p>
+    </div>
+  </div>
+</aside>
+
+<div class="modal" id="progressModal" hidden role="dialog" aria-modal="true" aria-labelledby="progTitle">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h2 id="progTitle">Student progress</h2>
+      <button class="btn" type="button" id="progClose">Close</button>
+    </div>
+    <div class="prog-top">
+      <div class="field" style="flex:0 1 auto">
+        <label for="progStudent">Student</label>
+        <select id="progStudent"></select>
+      </div>
+      <button class="btn" type="button" id="progPdf">Download PDF report</button>
+      <button class="btn" type="button" id="progCsv">Download CSV</button>
+      <button class="btn btn-danger" type="button" id="progDelete">Delete this student's tries</button>
+    </div>
+    <p class="status" id="progStatus"></p>
+    <div id="progBody"></div>
+  </div>
+</div>
+
+<div class="modal" id="pdfModal" hidden role="dialog" aria-modal="true" aria-labelledby="pdfTitle">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h2 id="pdfTitle">Download a PDF</h2>
+      <button class="btn" type="button" id="pdfClose">Close</button>
+    </div>
+    <div class="pdf-grid">
+      <section class="pdf-card">
+        <h3>Practice worksheet</h3>
+        <p class="hint">A printable page of <b id="pdfWsName">Maya</b> on Zaner-Bloser lines. Rows fade from the letter style you chose to faint letters (both with start dots), then lines only to write on.</p>
+        <div class="setting">
+          <span class="lbl" id="wsSizeLbl">Letter height on paper</span>
+          <div class="seg" id="wsSize" role="group" aria-labelledby="wsSizeLbl">
+            <button type="button" data-value="0.5">½ in</button><button type="button" data-value="0.75">¾ in</button><button type="button" data-value="1">1 in</button><button type="button" data-value="1.5">1½ in</button><button type="button" data-value="2">2 in</button>
+          </div>
+        </div>
+        <label class="switch" for="wsWarm"><span>Warm-up row first<small>Lines and curves before the name</small></span><input type="checkbox" id="wsWarm"></label>
+        <button class="btn btn-primary" type="button" id="pdfWs">Download worksheet</button>
+      </section>
+      <section class="pdf-card">
+        <h3>Progress report</h3>
+        <p class="hint">Chart and table of one student's saved tries, for IEP meetings or families.</p>
+        <div class="field" style="flex:none"><label for="pdfStudent">Student</label><select id="pdfStudent"></select></div>
+        <button class="btn btn-primary" type="button" id="pdfReport">Download report</button>
+      </section>
+      <section class="pdf-card">
+        <h3>Today's results</h3>
+        <p class="hint" id="pdfTodayHint">A picture of each part traced during this visit, with scores and letters to practice.</p>
+        <button class="btn btn-primary" type="button" id="pdfToday">Download results</button>
+      </section>
+    </div>
+    <p class="status" id="pdfStatus"></p>
+  </div>
+</div>
+
+<div class="modal" id="pinModal" hidden role="dialog" aria-modal="true" aria-labelledby="pinTitle">
+  <div class="modal-card pin-card">
+    <h2 id="pinTitle" style="margin:0;font-size:20px">Enter the teacher code</h2>
+    <div class="pin-dots" id="pinDots"><i></i><i></i><i></i><i></i></div>
+    <p class="pin-msg" id="pinMsg"></p>
+    <div class="keypad" id="keypad"></div>
+    <button class="btn" type="button" id="pinCancel">Cancel</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script>
+(() => {
+  'use strict';
+
+  // =====================================================================
+  // Config
+  // =====================================================================
+  const SIZES = [
+    {id:'0.5',  label:'½ in',  inch:0.5, aa:13},
+    {id:'0.75', label:'¾ in',  inch:0.75, aa:15},
+    {id:'1',    label:'1 in',  inch:1, aa:17},
+    {id:'1.5',  label:'1½ in', inch:1.5, aa:20},
+    {id:'2',    label:'2 in',  inch:2, aa:23, note:'large print'},
+    {id:'3',    label:'3 in',  inch:3, aa:27, note:'giant'},
+    {id:'fill', label:'Fill screen', inch:null, aa:30},
+  ];
+  const STYLES = {
+    print:   {label:'Print', stroke:true, slant:0},
+    slant:   {label:'Slanted print', stroke:true, slant:0.2},
+    cursive: {label:'Cursive', stroke:false, family:'"Playwrite US Trad", "Segoe Script", cursive', weight:400, boost:0.03},
+  };
+  const TOL = {tight:0.045, standard:0.08, wide:0.13};
+  const PEN = {thin:0.04, medium:0.065, thick:0.1};
+  const SUPPORT_LABEL = {dotted:'Dotted', solid:'Solid gray', outline:'Outline', faint:'Faint', none:'Start dots only', blank:'Lines only'};
+  const DEFAULTS = {style:'print', size:'1.5', mode:'whole', caseMode:'typed', guide:'dotted', rows:'3', fade:true,
+    lines:true, lane:true, contrast:false, tol:'standard', pen:'medium', palm:true, live:false, lefty:false,
+    fbStart:true, fbOrder:false, fbFormation:true, fbPercent:true, fbStars:true, fbBreakdown:true, fbLetters:true,
+    fbOff:true, fbMissed:false, goal:80, readAloud:false, sound:true, save:true,
+    autoNext:false, look:'light', stuPens:false, stuClear:false, dotsRow:false, strip:false, watchStyle:'pen', autoWatch:false, warmup:false, wsSize:'1', wsWarm:false};
+  const STORE_KEY = 'trace-my-name-settings-v2';
+  const DEVICE_KEY = 'trace-my-name-device-v1';
+
+  // ---------------------------------------------------------------------
+  // Zaner-Bloser manuscript strokes. Units: baseline y=0, midline y=-1,
+  // top line y=-2, descender line y=1. Angles in degrees, y points down,
+  // so decreasing angle = "circle back" (counterclockwise on screen).
+  // ---------------------------------------------------------------------
+  const L = (a,b,c,d) => ['L',a,b,c,d];
+  const A = (cx,cy,rx,ry,a0,a1) => ['A',cx,cy,rx,ry,a0,a1];
+  const D = (x,y) => ['D',x,y];
+  const OB = () => A(.5,-.5,.5,.5,-30,-390);
+  const GLYPH_DEFS = {
+    a:{s:[[OB(),L(.933,-.75,1,-1),L(1,-1,1,0)]], c:'Circle back all the way around. Push up straight. Pull down straight.'},
+    b:{s:[[L(0,-2,0,0),L(0,0,0,-.5),A(.5,-.5,.5,.5,180,540)]], c:'Pull down straight. Push up. Circle forward all the way around.'},
+    c:{s:[[A(.5,-.5,.5,.5,-40,-320)]], c:'Circle back and stop.'},
+    d:{s:[[OB(),L(.933,-.75,1,-1),L(1,-1,1,-2),L(1,-2,1,0)]], c:'Circle back all the way around. Push up straight to the top line. Pull down straight.'},
+    e:{s:[[L(0,-.5,1,-.5),A(.5,-.5,.5,.5,0,-320)]], c:'Slide right. Circle back and stop.'},
+    f:{s:[[A(.65,-1.65,.35,.35,-20,-180),L(.3,-1.65,.3,0)],[L(0,-1,.65,-1)]], c:'Curve back. Pull down straight. Lift. Slide right.'},
+    g:{s:[[OB(),L(.933,-.75,1,-1),L(1,-1,1,.6),A(.6,.6,.4,.4,0,160)]], c:'Circle back all the way around. Push up straight. Pull down straight. Curve back.'},
+    h:{s:[[L(0,-2,0,0),L(0,0,0,-.5),A(.5,-.5,.5,.5,180,360),L(1,-.5,1,0)]], c:'Pull down straight. Push up. Curve forward. Pull down straight.'},
+    i:{s:[[L(0,-1,0,0)],[D(0,-1.5)]], c:'Pull down straight. Lift. Dot.'},
+    j:{s:[[L(.8,-1,.8,.6),A(.4,.6,.4,.4,0,160)],[D(.8,-1.5)]], c:'Pull down straight. Curve back. Lift. Dot.'},
+    k:{s:[[L(0,-2,0,0)],[L(.85,-1,0,-.4),L(0,-.4,.85,0)]], c:'Pull down straight. Lift. Slant left. Slant right.'},
+    l:{s:[[L(0,-2,0,0)]], c:'Pull down straight.'},
+    m:{s:[[L(0,-1,0,0),L(0,0,0,-.7),A(.3,-.7,.3,.3,180,360),L(.6,-.7,.6,0),L(.6,0,.6,-.7),A(.9,-.7,.3,.3,180,360),L(1.2,-.7,1.2,0)]], c:'Pull down straight. Push up. Curve forward, pull down straight. Push up. Curve forward, pull down straight.'},
+    n:{s:[[L(0,-1,0,0),L(0,0,0,-.55),A(.45,-.55,.45,.45,180,360),L(.9,-.55,.9,0)]], c:'Pull down straight. Push up. Curve forward. Pull down straight.'},
+    o:{s:[[A(.5,-.5,.5,.5,-70,-430)]], c:'Circle back all the way around.'},
+    p:{s:[[L(0,-1,0,1),L(0,1,0,-.5),A(.5,-.5,.5,.5,180,540)]], c:'Pull down straight. Push up. Circle forward all the way around.'},
+    q:{s:[[OB(),L(.933,-.75,1,-1),L(1,-1,1,1)]], c:'Circle back all the way around. Push up straight. Pull down straight.'},
+    r:{s:[[L(0,-1,0,0),L(0,0,0,-.55),A(.45,-.55,.45,.45,180,300)]], c:'Pull down straight. Push up. Curve forward.'},
+    s:{s:[[A(.45,-.75,.4,.25,-30,-270),A(.45,-.25,.42,.25,-90,150)]], c:'Curve back. Curve forward.'},
+    t:{s:[[L(.35,-1.5,.35,0)],[L(0,-1,.7,-1)]], c:'Pull down straight. Lift. Slide right.'},
+    u:{s:[[L(0,-1,0,-.45),A(.45,-.45,.45,.45,180,0),L(.9,-.45,.9,-1),L(.9,-1,.9,0)]], c:'Pull down straight. Curve forward. Push up. Pull down straight.'},
+    v:{s:[[L(0,-1,.45,0),L(.45,0,.9,-1)]], c:'Slant right. Slant up.'},
+    w:{s:[[L(0,-1,.3,0),L(.3,0,.6,-1),L(.6,-1,.9,0),L(.9,0,1.2,-1)]], c:'Slant right. Slant up. Slant right. Slant up.'},
+    x:{s:[[L(0,-1,.8,0)],[L(.8,-1,0,0)]], c:'Slant right. Lift. Slant left.'},
+    y:{s:[[L(0,-1,.45,0)],[L(.9,-1,.045,.9)]], c:'Slant right. Lift. Slant left.'},
+    z:{s:[[L(0,-1,.8,-1),L(.8,-1,0,0),L(0,0,.8,0)]], c:'Slide right. Slant left. Slide right.'},
+    A:{s:[[L(.7,-2,0,0)],[L(.7,-2,1.4,0)],[L(.3,-.8,1.1,-.8)]], c:'Slant left. Lift. Slant right. Lift. Slide right.'},
+    B:{s:[[L(0,-2,0,0)],[L(0,-2,.6,-2),A(.6,-1.5,.5,.5,-90,90),L(.6,-1,0,-1),L(0,-1,.7,-1),A(.7,-.5,.5,.5,-90,90),L(.7,0,0,0)]], c:'Pull down straight. Lift. Slide right. Curve forward. Slide left. Slide right. Curve forward. Slide left.'},
+    C:{s:[[A(1,-1,1,1,-45,-315)]], c:'Circle back and stop.'},
+    D:{s:[[L(0,-2,0,0)],[L(0,-2,.5,-2),A(.5,-1,.9,1,-90,90),L(.5,0,0,0)]], c:'Pull down straight. Lift. Slide right. Curve forward. Slide left.'},
+    E:{s:[[L(0,-2,0,0)],[L(0,-2,1.1,-2)],[L(0,-1,.9,-1)],[L(0,0,1.1,0)]], c:'Pull down straight. Lift. Slide right. Lift. Slide right. Lift. Slide right.'},
+    F:{s:[[L(0,-2,0,0)],[L(0,-2,1.1,-2)],[L(0,-1,.9,-1)]], c:'Pull down straight. Lift. Slide right. Lift. Slide right.'},
+    G:{s:[[A(1,-1,1,1,-45,-360),L(2,-1,1.2,-1)]], c:'Circle back. Slide left.'},
+    H:{s:[[L(0,-2,0,0)],[L(1.4,-2,1.4,0)],[L(0,-1,1.4,-1)]], c:'Pull down straight. Lift. Pull down straight. Lift. Slide right.'},
+    I:{s:[[L(.5,-2,.5,0)],[L(0,-2,1,-2)],[L(0,0,1,0)]], c:'Pull down straight. Lift. Slide right. Lift. Slide right.'},
+    J:{s:[[L(1,-2,1,-.5),A(.5,-.5,.5,.5,0,180)]], c:'Pull down straight. Curve back.'},
+    K:{s:[[L(0,-2,0,0)],[L(1.2,-2,0,-1),L(0,-1,1.25,0)]], c:'Pull down straight. Lift. Slant left. Slant right.'},
+    L:{s:[[L(0,-2,0,0),L(0,0,1.1,0)]], c:'Pull down straight. Slide right.'},
+    M:{s:[[L(0,-2,0,0)],[L(0,-2,.8,0),L(.8,0,1.6,-2),L(1.6,-2,1.6,0)]], c:'Pull down straight. Lift. Slant right. Slant up. Pull down straight.'},
+    N:{s:[[L(0,-2,0,0)],[L(0,-2,1.3,0),L(1.3,0,1.3,-2)]], c:'Pull down straight. Lift. Slant right. Push up straight.'},
+    O:{s:[[A(1,-1,1,1,-80,-440)]], c:'Circle back all the way around.'},
+    P:{s:[[L(0,-2,0,0)],[L(0,-2,.6,-2),A(.6,-1.5,.5,.5,-90,90),L(.6,-1,0,-1)]], c:'Pull down straight. Lift. Slide right. Curve forward. Slide left.'},
+    Q:{s:[[A(1,-1,1,1,-80,-440)],[L(1.2,-.5,1.9,.1)]], c:'Circle back all the way around. Lift. Slant right.'},
+    R:{s:[[L(0,-2,0,0)],[L(0,-2,.6,-2),A(.6,-1.5,.5,.5,-90,90),L(.6,-1,0,-1),L(0,-1,1.2,0)]], c:'Pull down straight. Lift. Slide right. Curve forward. Slide left. Slant right.'},
+    S:{s:[[A(.8,-1.5,.7,.5,-30,-270),A(.8,-.5,.75,.5,-90,150)]], c:'Curve back. Curve forward.'},
+    T:{s:[[L(.7,-2,.7,0)],[L(0,-2,1.4,-2)]], c:'Pull down straight. Lift. Slide right.'},
+    U:{s:[[L(0,-2,0,-.65),A(.65,-.65,.65,.65,180,0),L(1.3,-.65,1.3,-2)]], c:'Pull down straight. Curve forward. Push up.'},
+    V:{s:[[L(0,-2,.7,0),L(.7,0,1.4,-2)]], c:'Slant right. Slant up.'},
+    W:{s:[[L(0,-2,.45,0),L(.45,0,.9,-2),L(.9,-2,1.35,0),L(1.35,0,1.8,-2)]], c:'Slant right. Slant up. Slant right. Slant up.'},
+    X:{s:[[L(0,-2,1.3,0)],[L(1.3,-2,0,0)]], c:'Slant right. Lift. Slant left.'},
+    Y:{s:[[L(0,-2,.7,-1)],[L(1.4,-2,.7,-1),L(.7,-1,.7,0)]], c:'Slant right. Lift. Slant left. Pull down straight.'},
+    Z:{s:[[L(0,-2,1.3,-2),L(1.3,-2,0,0),L(0,0,1.3,0)]], c:'Slide right. Slant left. Slide right.'},
+    '-':{s:[[L(0,-.7,.6,-.7)]], c:'Slide right.'},
+    "'":{s:[[L(0,-2,0,-1.6)]], c:'Pull down.'},
+    '.':{s:[[D(0,-.06)]], c:'Dot.'},
+    '\uE001':{s:[[L(0,-2,0,0)]], c:'Pull down straight.'},
+    '\uE002':{s:[[L(0,-1,1.3,-1)]], c:'Slide right.'},
+    '\uE003':{s:[[L(0,-2,1.1,0)]], c:'Slant right.'},
+    '\uE004':{s:[[L(1.1,-2,0,0)]], c:'Slant left.'},
+    '\uE005':{s:[[A(1,-1,1,1,-80,-440)]], c:'Circle back all the way around.'},
+    '\uE006':{s:[[A(1,-1,1,1,180,540)]], c:'Circle forward all the way around.'},
+    '\uE007':{s:[[A(1,-1,1,1,-45,-315)]], c:'Curve back.'},
+    '\uE008':{s:[[A(0,-1,1,1,-135,135)]], c:'Curve forward.'},
+  };
+  const GAP_U = 0.45, SPACE_U = 1.1, SAMPLE_U = 0.03;
+
+  function compileGlyph(def){
+    const strokes = def.s.map(st => {
+      if (st[0][0] === 'D') return {dot:true, pts:[{x:st[0][1], y:st[0][2]}]};
+      const pts = [];
+      const push = (x, y) => { const l = pts[pts.length - 1]; if (!l || Math.hypot(l.x - x, l.y - y) > 1e-4) pts.push({x, y}); };
+      st.forEach(seg => {
+        if (seg[0] === 'L') {
+          const [, x1, y1, x2, y2] = seg;
+          const n = Math.max(1, Math.ceil(Math.hypot(x2 - x1, y2 - y1) / SAMPLE_U));
+          for (let i = 0; i <= n; i++) push(x1 + (x2 - x1) * i / n, y1 + (y2 - y1) * i / n);
+        } else {
+          const [, cx, cy, rx, ry, a0, a1] = seg;
+          const span = a1 - a0;
+          const n = Math.max(2, Math.ceil(Math.abs(span) * Math.PI / 180 * (rx + ry) / 2 / SAMPLE_U));
+          for (let i = 0; i <= n; i++) { const a = (a0 + span * i / n) * Math.PI / 180; push(cx + rx * Math.cos(a), cy + ry * Math.sin(a)); }
+        }
+      });
+      return {dot:false, pts};
+    });
+    let minX = Infinity, maxX = -Infinity;
+    strokes.forEach(s => s.pts.forEach(p => { if (p.x < minX) minX = p.x; if (p.x > maxX) maxX = p.x; }));
+    strokes.forEach(s => s.pts.forEach(p => { p.x -= minX; }));
+    return {strokes, width: Math.max(0.15, maxX - minX), cue: def.c};
+  }
+  const GLYPHS = {};
+  Object.keys(GLYPH_DEFS).forEach(k => { GLYPHS[k] = compileGlyph(GLYPH_DEFS[k]); });
+  const baseChar = ch => ch.normalize('NFD').replace(/\p{M}/gu, '');
+  const glyphFor = ch => GLYPHS[ch] || GLYPHS[baseChar(ch)] || null;
+  const WARM_CHARS = '\uE001\uE002\uE003\uE004\uE005\uE006\uE007\uE008';
+  const WARM_TEXT = '\uE001\uE002\uE003\uE004 \uE005\uE006\uE007\uE008';
+  const WARM_SHOW = {'\uE001':'|','\uE002':'—','\uE003':'\\','\uE004':'/','\uE005':'○','\uE006':'○','\uE007':'(','\uE008':')'};
+  const WARM_NAME = {'\uE001':'pull down','\uE002':'slide right','\uE003':'slant right','\uE004':'slant left','\uE005':'circle back','\uE006':'circle forward','\uE007':'curve back','\uE008':'curve forward'};
+  const isWarm = ch => WARM_CHARS.includes(ch);
+  const isForm = ch => /\p{L}/u.test(ch) || isWarm(ch);
+  const showText = t => [...t].map(ch => WARM_SHOW[ch] || ch).join('');
+  const pdfText = t => [...t].map(ch => WARM_NAME[ch] ? ` ${WARM_NAME[ch]} ` : ch).join('').replace(/\s+/g, ' ').trim();
+
+  // Basic Zaner-Bloser strokes for the stroke strip (0..1 box, y down)
+  const BASIC = {
+    pullDown:{label:'Pull down straight', segs:[L(.5,.12,.5,.88)]},
+    pushUp:{label:'Push up', segs:[L(.5,.88,.5,.12)]},
+    slideRight:{label:'Slide right', segs:[L(.12,.5,.88,.5)]},
+    slideLeft:{label:'Slide left', segs:[L(.88,.5,.12,.5)]},
+    slantRight:{label:'Slant right', segs:[L(.24,.12,.76,.88)]},
+    slantLeft:{label:'Slant left', segs:[L(.76,.12,.24,.88)]},
+    slantUp:{label:'Slant up', segs:[L(.24,.88,.76,.12)]},
+    circleBack:{label:'Circle back', segs:[A(.5,.5,.36,.36,-70,-430)]},
+    circleForward:{label:'Circle forward', segs:[A(.5,.5,.36,.36,180,540)]},
+    curveBack:{label:'Curve back', segs:[A(.58,.5,.36,.36,-45,-315)]},
+    curveForward:{label:'Curve forward', segs:[A(.42,.5,.36,.36,-135,135)]},
+    dot:{label:'Dot', segs:[D(.5,.5)]},
+  };
+  const CUE_MAP = [[/pull down/,'pullDown'],[/push up/,'pushUp'],[/slide right/,'slideRight'],[/slide left/,'slideLeft'],[/slant right/,'slantRight'],[/slant left/,'slantLeft'],[/slant up/,'slantUp'],[/circle back/,'circleBack'],[/circle forward/,'circleForward'],[/curve back/,'curveBack'],[/curve forward/,'curveForward'],[/^\s*dot/,'dot']];
+  function strokesInText(text){
+    const seen = [];
+    for (const ch of text) {
+      const g = glyphFor(ch); if (!g) continue;
+      g.cue.toLowerCase().split(/[.,;]/).forEach(part => {
+        for (const [re, k] of CUE_MAP) if (re.test(part)) { if (!seen.includes(k)) seen.push(k); break; }
+      });
+    }
+    return seen;
+  }
+  function sampleSegs(segs, sc, step){
+    if (segs[0][0] === 'D') return {dot:true, pts:[{x:segs[0][1] * sc, y:segs[0][2] * sc}], C:[0], len:0};
+    const pts = [];
+    const push = (x, y) => { const l = pts[pts.length - 1]; if (!l || Math.hypot(l.x - x, l.y - y) > 1e-3) pts.push({x, y}); };
+    segs.forEach(seg => {
+      if (seg[0] === 'L') {
+        const [, x1, y1, x2, y2] = seg;
+        const n = Math.max(1, Math.ceil(Math.hypot(x2 - x1, y2 - y1) / step));
+        for (let i = 0; i <= n; i++) push((x1 + (x2 - x1) * i / n) * sc, (y1 + (y2 - y1) * i / n) * sc);
+      } else {
+        const [, cx, cy, rx, ry, a0, a1] = seg;
+        const n = Math.max(2, Math.ceil(Math.abs(a1 - a0) * Math.PI / 180 * (rx + ry) / 2 / step));
+        for (let i = 0; i <= n; i++) { const a = (a0 + (a1 - a0) * i / n) * Math.PI / 180; push((cx + rx * Math.cos(a)) * sc, (cy + ry * Math.sin(a)) * sc); }
+      }
+    });
+    const C = [0];
+    for (let i = 1; i < pts.length; i++) C.push(C[i - 1] + Math.hypot(pts[i].x - pts[i-1].x, pts[i].y - pts[i-1].y));
+    return {dot:false, pts, C, len:C[C.length - 1]};
+  }
+
+  // =====================================================================
+  // Settings
+  // =====================================================================
+  let S = {...DEFAULTS};
+  try { const raw = localStorage.getItem(STORE_KEY); if (raw) S = {...DEFAULTS, ...JSON.parse(raw)}; } catch(e) {}
+  if (!S.stripNameV) { S.stripNameV = 1; S.strip = false; try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch(e) {} }
+  let DEV = {ppi:96, calibrated:false, pin:''};
+  try { const raw = localStorage.getItem(DEVICE_KEY); if (raw) DEV = {...DEV, ...JSON.parse(raw)}; } catch(e) {}
+  const saveS = () => { try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch(e) {} };
+  const saveDev = () => { try { localStorage.setItem(DEVICE_KEY, JSON.stringify(DEV)); } catch(e) {} };
+
+  // =====================================================================
+  // DOM + state
+  // =====================================================================
+  const $ = id => document.getElementById(id);
+  const sheetCard = $('sheetCard'), sheet = $('sheet');
+  const gC = $('guideCanvas'), iC = $('inkCanvas'), fC = $('fxCanvas');
+  const resultEl = $('result'), stepperEl = $('stepper'), noteEl = $('sheetNote');
+  const measCan = document.createElement('canvas');
+  const mctx = measCan.getContext('2d', {willReadFrequently:true});
+
+  const state = {
+    name:'Maya', steps:[], stepIdx:0, results:[], strokes:[], checked:false, lastEval:null,
+    pen:1, t0:null, sizeInfo:null, local:[], stepsSig:'', snaps:[]
+  };
+  let G = null, sawPen = false, active = null, anim = null;
+
+  const tok = n => getComputedStyle(sheetCard).getPropertyValue(n).trim();
+  const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
+  const dpr = () => Math.min(window.devicePixelRatio || 1, 2.5);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const sizeDef = () => SIZES.find(s => s.id === S.size) || SIZES[3];
+  const displayName = () => S.caseMode === 'caps' ? state.name.toUpperCase() : state.name;
+  const styleDef = () => STYLES[S.style] || STYLES.print;
+  const tierClass = sc => sc >= S.goal ? 't-good' : sc >= S.goal - 20 ? 't-warn' : 't-bad';
+  const tierColor = sc => sc >= S.goal ? 'var(--good)' : sc >= S.goal - 20 ? 'var(--warn)' : 'var(--bad)';
+  function toast(msg){
+    const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg; t.setAttribute('role','status');
+    document.body.appendChild(t); setTimeout(() => t.remove(), 2600);
+  }
+
+  // =====================================================================
+  // Build controls
+  // =====================================================================
+  const sizeSeg = document.querySelector('.seg.sizes');
+  SIZES.forEach(s => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.dataset.value = s.id;
+    b.innerHTML = `<span class="aa" style="font-size:${s.aa}px">A</span>${s.label}${s.note ? ` <small>${s.note}</small>` : ''}`;
+    sizeSeg.appendChild(b);
+  });
+  const pensEl = $('pens');
+  ['Blue','Pink','Green','Purple','Black'].forEach((n,i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'pen'; b.style.background = `var(--pen-${i+1})`;
+    b.setAttribute('aria-label', n + ' pen'); b.dataset.pen = i + 1;
+    b.addEventListener('click', () => { state.pen = i + 1; syncPens(); });
+    pensEl.appendChild(b);
+  });
+  function syncPens(){ pensEl.querySelectorAll('.pen').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.pen === state.pen))); }
+
+  function syncControls(){
+    document.querySelectorAll('.seg[data-setting]').forEach(seg => {
+      const key = seg.dataset.setting;
+      seg.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.value === String(S[key]))));
+    });
+    document.querySelectorAll('input[data-setting]').forEach(inp => {
+      const key = inp.dataset.setting;
+      if (inp.type === 'checkbox') inp.checked = !!S[key]; else inp.value = S[key];
+    });
+    $('goalOut').textContent = S.goal + '%';
+    if (S.look === 'light' || S.look === 'dark') document.documentElement.setAttribute('data-look', S.look);
+    else document.documentElement.removeAttribute('data-look');
+    sheetCard.classList.toggle('hc', !!S.contrast);
+    document.body.classList.toggle('lefty', !!S.lefty);
+    $('hearBtn').hidden = !S.readAloud;
+    $('watchBtn').hidden = !styleDef().stroke;
+    syncCalib(); syncPin(); syncSizeHint();
+  }
+  function syncSizeHint(){
+    const el = $('sizeHint');
+    if (S.size === 'fill') { el.textContent = 'Fill screen makes the letters as big as fits this screen.'; return; }
+    el.innerHTML = DEV.calibrated
+      ? `Measured from the top line to the baseline. Sizes are set to this screen.`
+      : `Measured from the top line to the baseline. <button type="button" class="linkish" id="calibLink">Check the screen with a ruler</button> so sizes match real inches on this device.`;
+    const link = $('calibLink');
+    if (link) link.addEventListener('click', () => guarded(() => { openDrawer(true); setTimeout(() => $('calibrate').scrollIntoView({block:'start'}), 260); }));
+  }
+
+  function setSetting(key, val){
+    if (String(S[key]) === String(val) && typeof S[key] === typeof val) return;
+    S[key] = val; saveS(); syncControls();
+    switch (key) {
+      case 'style': case 'size': case 'mode': case 'caseMode': case 'rows': case 'warmup':
+        rebuild(false); break;
+      case 'strip': renderStrip(); break;
+      case 'guide': case 'fade': case 'dotsRow':
+        renderStepper(); drawGuide(); renderModel(); updateInstruction(); break;
+      case 'tol':
+        showStep(true); break;
+      case 'lines': case 'lane': case 'fbStart': case 'fbOrder':
+        drawGuide(); break;
+      case 'contrast':
+        drawGuide(); redrawInk(); renderModel(); if (state.checked) drawOverlay(state.lastEval); break;
+      case 'live': redrawInk(); break;
+      case 'look': retheme(); break;
+      case 'stuPens': case 'stuClear': syncStudentBits(); break;
+      case 'goal': case 'fbPercent': case 'fbStars': case 'fbBreakdown': case 'fbLetters': case 'fbOff': case 'fbMissed': case 'fbFormation':
+        if (state.checked) showFeedback(state.lastEval, false); renderStepper(); break;
+    }
+  }
+  document.querySelectorAll('.seg[data-setting]').forEach(seg => {
+    seg.addEventListener('click', e => {
+      const b = e.target.closest('button[data-value]'); if (!b) return;
+      setSetting(seg.dataset.setting, b.dataset.value);
+    });
+  });
+  document.querySelectorAll('input[data-setting]').forEach(inp => {
+    inp.addEventListener(inp.type === 'range' ? 'input' : 'change', () => {
+      setSetting(inp.dataset.setting, inp.type === 'checkbox' ? inp.checked : +inp.value);
+    });
+  });
+
+  // Calibration
+  function syncCalib(){
+    const ppi = DEV.ppi;
+    $('set-ppi').value = ppi; $('ppiOut').textContent = ppi;
+    const wrapW = Math.max(200, ($('ruler').parentElement.clientWidth || 380) - 4);
+    const inches = ppi * 3 <= wrapW ? 3 : ppi * 2 <= wrapW ? 2 : 1;
+    $('rulerIn').textContent = inches;
+    const r = $('ruler');
+    r.style.width = (ppi * inches) + 'px';
+    r.innerHTML = '';
+    for (let q = 1; q < inches * 4; q++) {
+      const i = document.createElement('i');
+      i.style.left = (q * ppi / 4 - 1) + 'px';
+      i.style.height = q % 4 === 0 ? '100%' : q % 2 === 0 ? '60%' : '35%';
+      r.appendChild(i);
+    }
+  }
+  let calibT = 0;
+  function setPpi(v){
+    DEV.ppi = clamp(Math.round(v), 20, 260); DEV.calibrated = DEV.ppi !== 96 || DEV.calibrated;
+    saveDev(); syncCalib(); syncSizeHint();
+    clearTimeout(calibT); calibT = setTimeout(() => rebuild(false), 250);
+  }
+  $('set-ppi').addEventListener('input', e => setPpi(+e.target.value));
+  $('ppiMinus').addEventListener('click', () => setPpi(DEV.ppi - 1));
+  $('ppiPlus').addEventListener('click', () => setPpi(DEV.ppi + 1));
+  $('ppiReset').addEventListener('click', () => { DEV.calibrated = false; setPpi(96); DEV.calibrated = false; saveDev(); syncSizeHint(); });
+
+  // =====================================================================
+  // Drawer, lock, student view
+  // =====================================================================
+  const drawer = $('drawer'), backdrop = $('backdrop'), openBtn = $('openSettings');
+  let unlocked = false;
+  function openDrawer(open){
+    drawer.classList.toggle('open', open); backdrop.classList.toggle('open', open);
+    drawer.setAttribute('aria-hidden', String(!open)); openBtn.setAttribute('aria-expanded', String(open));
+    if (open) { syncCalib(); $('closeSettings').focus(); } else { unlocked = false; openBtn.focus(); }
+  }
+  openBtn.addEventListener('click', () => guarded(() => openDrawer(true)));
+  $('closeSettings').addEventListener('click', () => openDrawer(false));
+  backdrop.addEventListener('click', () => openDrawer(false));
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (!$('pinModal').hidden) closePin(false);
+    else if (!$('pdfModal').hidden) closePdf();
+    else if (!$('progressModal').hidden) closeProgress();
+    else if (drawer.classList.contains('open')) openDrawer(false);
+  });
+
+  function syncPin(){
+    $('pinState').textContent = DEV.pin ? 'A code is set on this device.' : 'No code set. Anyone can open these settings and Progress.';
+    $('pinClear').hidden = !DEV.pin;
+    $('pinSave').textContent = DEV.pin ? 'Change code' : 'Set code';
+  }
+  $('pinSave').addEventListener('click', () => {
+    const v = $('pinInput').value.replace(/\D/g, '');
+    if (v.length !== 4) { toast('Type 4 digits for the code.'); return; }
+    DEV.pin = v; saveDev(); $('pinInput').value = ''; syncPin(); toast('Code saved on this device.');
+  });
+  $('pinClear').addEventListener('click', () => { DEV.pin = ''; saveDev(); syncPin(); toast('Code removed.'); });
+
+  let pinResolve = null, pinBuf = '';
+  const keypad = $('keypad');
+  ['1','2','3','4','5','6','7','8','9','','0','⌫'].forEach(k => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.textContent = k;
+    if (!k) { b.style.visibility = 'hidden'; b.tabIndex = -1; }
+    b.setAttribute('aria-label', k === '⌫' ? 'Delete' : k);
+    b.addEventListener('click', () => pinKey(k));
+    keypad.appendChild(b);
+  });
+  function pinKey(k){
+    if (k === '⌫') pinBuf = pinBuf.slice(0, -1);
+    else if (/\d/.test(k) && pinBuf.length < 4) pinBuf += k;
+    $('pinDots').querySelectorAll('i').forEach((d, i) => d.classList.toggle('on', i < pinBuf.length));
+    $('pinMsg').textContent = '';
+    if (pinBuf.length === 4) {
+      if (pinBuf === DEV.pin) closePin(true);
+      else { $('pinMsg').textContent = 'That code is not right.'; pinBuf = ''; setTimeout(() => $('pinDots').querySelectorAll('i').forEach(d => d.classList.remove('on')), 300); }
+    }
+  }
+  function askPin(){
+    return new Promise(res => {
+      pinResolve = res; pinBuf = '';
+      $('pinDots').querySelectorAll('i').forEach(d => d.classList.remove('on'));
+      $('pinMsg').textContent = '';
+      $('pinModal').hidden = false;
+      keypad.querySelector('button').focus();
+    });
+  }
+  function closePin(ok){ $('pinModal').hidden = true; if (pinResolve) { pinResolve(ok); pinResolve = null; } }
+  $('pinCancel').addEventListener('click', () => closePin(false));
+  document.addEventListener('keydown', e => { if (!$('pinModal').hidden && /^[0-9]$/.test(e.key)) pinKey(e.key); if (!$('pinModal').hidden && e.key === 'Backspace') pinKey('⌫'); });
+  async function guarded(fn){
+    if (!DEV.pin || unlocked) { fn(); return; }
+    const ok = await askPin();
+    if (ok) { unlocked = true; fn(); }
+  }
+
+  // Student view
+  const exitBtn = $('exitStudent');
+  const isStudent = () => document.body.classList.contains('student');
+  function setStudent(on){
+    document.body.classList.toggle('student', on); exitBtn.hidden = !on;
+    syncStudentBits();
+    hidePop();
+    setTimeout(() => showStep(false), 60);
+  }
+  function syncStudentBits(){
+    const st = isStudent();
+    $('pens').hidden = st && !S.stuPens;
+    $('clearBtn').hidden = st && !S.stuClear;
+  }
+  $('studentBtn').addEventListener('click', () => {
+    setStudent(true);
+    try { const p = document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); if (p && p.catch) p.catch(() => {}); } catch(e) {}
+    toast('Student view. Hold "Hold to exit" to leave.');
+  });
+  let holdT = null, holdStart = 0, holdRaf = 0;
+  const holdMs = 1500;
+  function holdTick(){
+    const p = clamp((performance.now() - holdStart) / holdMs, 0, 1);
+    $('exitFill').style.width = (p * 100) + '%';
+    if (p < 1) holdRaf = requestAnimationFrame(holdTick);
+  }
+  function holdEnd(){ clearTimeout(holdT); cancelAnimationFrame(holdRaf); $('exitFill').style.width = '0'; }
+  exitBtn.addEventListener('pointerdown', e => {
+    e.preventDefault(); holdStart = performance.now(); holdRaf = requestAnimationFrame(holdTick);
+    holdT = setTimeout(() => { holdEnd(); guarded(() => {
+      setStudent(false); unlocked = false;
+      try { if (document.fullscreenElement) document.exitFullscreen().catch(() => {}); } catch(e) {}
+    }); }, holdMs);
+  });
+  ['pointerup','pointerleave','pointercancel'].forEach(ev => exitBtn.addEventListener(ev, holdEnd));
+  exitBtn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); guarded(() => { setStudent(false); unlocked = false; }); } });
+
+  // =====================================================================
+  // Sound and speech
+  // =====================================================================
+  let audioCtx = null;
+  function chime(level){
+    if (!S.sound) return;
+    try {
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      const notes = level >= 3 ? [659, 784, 1047] : level === 2 ? [587, 784] : [523];
+      notes.forEach((f, i) => {
+        const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+        o.type = 'sine'; o.frequency.value = f;
+        const t = audioCtx.currentTime + i * 0.14;
+        g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.18, t + 0.02); g.gain.exponentialRampToValueAtTime(0.001, t + 0.5);
+        o.connect(g).connect(audioCtx.destination); o.start(t); o.stop(t + 0.55);
+      });
+    } catch(e) {}
+  }
+  function say(text, queue){
+    if (!S.readAloud || !('speechSynthesis' in window)) return;
+    try {
+      if (!queue) speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text); u.rate = 0.88; u.pitch = 1.05;
+      speechSynthesis.speak(u);
+    } catch(e) {}
+  }
+  const letterSayName = ch => /\p{Lu}/u.test(ch) ? `Capital ${ch}.` : /\p{Ll}/u.test(ch) ? `Lowercase ${ch}.` : '';
+
+  // =====================================================================
+  // Sizing and steps
+  // =====================================================================
+  function sheetW(){ return Math.max(260, Math.floor(sheet.clientWidth)); }
+  const stemFor = size => clamp(size * 0.085, 3.5, 44);
+  const tolFor = size => Math.max(6, size * TOL[S.tol]);
+  const marginFor = size => 14 + stemFor(size) / 2 + tolFor(size);
+  let cursiveXRatio = 0.3;
+  function measureCursiveRatio(){
+    const st = STYLES.cursive;
+    mctx.font = `${st.weight} 100px ${st.family}`;
+    const r = mctx.measureText('x').actualBoundingBoxAscent / 100;
+    if (r > 0.15 && r < 0.8) cursiveXRatio = r;
+  }
+  const cursiveFontPx = size => (size / 2) / cursiveXRatio;
+
+  function unitsWidth(text){
+    let w = 0, first = true;
+    for (const ch of text) {
+      if (/\s/.test(ch)) { w += SPACE_U; first = true; continue; }
+      const g = glyphFor(ch); if (!g) continue;
+      if (!first) w += GAP_U;
+      w += g.width; first = false;
+    }
+    return w;
+  }
+  function textWidthPx(text, size){
+    const st = styleDef();
+    if (st.stroke) return (unitsWidth(text) + (st.slant ? st.slant * 3 : 0)) * size / 2;
+    mctx.font = `${st.weight} ${cursiveFontPx(size)}px ${st.family}`;
+    const m = mctx.measureText(text);
+    return m.actualBoundingBoxLeft + m.actualBoundingBoxRight;
+  }
+  function usableChars(text){
+    const st = styleDef();
+    return [...text].filter(ch => /\s/.test(ch) || !st.stroke || glyphFor(ch));
+  }
+
+  function resolveSize(text){
+    const W = sheetW();
+    const pieces = S.mode === 'letter' ? usableChars(text).filter(c => !/\s/.test(c)) : [text];
+    const widest = pieces.reduce((a, p) => Math.max(a, textWidthPx(p, 100) / 100), 0.01);
+    const fitW = size => size * widest + 2 * marginFor(size) <= W;
+    const maxByWidth = (() => { let lo = 10, hi = 2000; for (let i = 0; i < 30; i++) { const mid = (lo + hi) / 2; if (fitW(mid)) lo = mid; else hi = mid; } return lo; })();
+    const widestLetter = [...text].filter(c => !/\s/.test(c)).reduce((a, c) => Math.max(a, textWidthPx(c, 100) / 100), 0.01);
+    const maxLetter = (() => { let lo = 10, hi = 2000; for (let i = 0; i < 30; i++) { const mid = (lo + hi) / 2; if (mid * widestLetter + 2 * marginFor(mid) <= W) lo = mid; else hi = mid; } return lo; })();
+    if (S.size === 'fill') {
+      const maxH = Math.max(220, (window.innerHeight || 800) * 0.6) / 1.95;
+      return {size: Math.floor(Math.min(maxByWidth, maxH)), fill:true, reduced:false};
+    }
+    const want = sizeDef().inch * DEV.ppi;
+    if (want > maxLetter) return {size: Math.floor(maxLetter), fill:false, reduced:true, want};
+    return {size: want, fill:false, reduced:false};
+  }
+
+  function chunkText(text, size, byWords){
+    const W = sheetW();
+    const fits = t => textWidthPx(t, size) + 2 * marginFor(size) <= W;
+    if (S.mode === 'letter' && !byWords) return usableChars(text).filter(c => !/\s/.test(c));
+    if (fits(text)) return [text];
+    const chunks = [];
+    let cur = '';
+    const words = text.split(/\s+/).filter(Boolean);
+    for (const w of words) {
+      const trial = cur ? cur + ' ' + w : w;
+      if (fits(trial)) { cur = trial; continue; }
+      if (cur) chunks.push(cur);
+      cur = '';
+      if (fits(w)) { cur = w; continue; }
+      let part = '';
+      for (const ch of [...w]) {
+        if (fits(part + ch)) part += ch; else { if (part) chunks.push(part); part = ch; }
+      }
+      cur = part;
+    }
+    if (cur) chunks.push(cur);
+    return chunks.length ? chunks : [text];
+  }
+
+  function supportFor(row){
+    if (row < 0 || !S.fade) return S.guide;
+    if (row === 0) return S.guide;
+    if (row === 1) return S.dotsRow ? 'none' : 'faint';
+    return 'blank';
+  }
+
+  function rebuild(keepProgress){
+    const text = displayName();
+    const info = resolveSize(text);
+    const chunks = chunkText(text, info.size);
+    const rows = +S.rows || 1;
+    const warm = S.warmup && styleDef().stroke ? chunkText(WARM_TEXT, info.size, true) : [];
+    const sig = [text, S.style, S.mode, rows, info.size, chunks.join('|'), warm.length].join('#');
+    state.sizeInfo = info;
+    if (keepProgress && sig === state.stepsSig) { showStep(false); return; }
+    state.stepsSig = sig;
+    state.steps = [];
+    state.snaps = [];
+    warm.forEach((c, ci) => state.steps.push({row:-1, chunk:ci, chunks:warm.length, text:c, warm:true}));
+    for (let r = 0; r < rows; r++) chunks.forEach((c, ci) => state.steps.push({row:r, chunk:ci, chunks:chunks.length, text:c}));
+    state.stepIdx = 0;
+    state.results = state.steps.map(() => null);
+    showStep(false);
+  }
+
+  // =====================================================================
+  // Geometry
+  // =====================================================================
+  function buildGeometry(text, size){
+    const st = styleDef();
+    const W = sheetW();
+    const u = size / 2;
+    const stem = stemFor(size), tol = tolFor(size);
+    const pad = stem / 2 + tol + 6;
+    let vTop = Math.max(pad, u * 0.35);
+    let H = Math.ceil(vTop + 3 * u + Math.max(pad, u * 0.3));
+    if (isStudent()) {
+      const top = sheet.getBoundingClientRect().top + window.scrollY;
+      const avail = Math.floor((window.innerHeight || 800) - top - 110);
+      if (avail > H) { vTop += Math.floor((avail - H) / 2); H = avail; }
+    }
+    const baseline = vTop + 2 * u;
+    const letters = layoutLetters(text, size, W, baseline, stem, null);
+    const g = {text, size, u, W, H, baseline, stem, tol, st, letters, stroke: st.stroke, px: 1};
+    buildMasks(g);
+    return g;
+  }
+
+  // Place letters for `text`. x0 = left edge (null centers in W).
+  function layoutLetters(text, size, W, baseline, stem, x0){
+    const st = styleDef();
+    const u = size / 2;
+    const letters = [];
+    const wPx = textWidthPx(text, size);
+    if (st.stroke) {
+      const slant = st.slant;
+      const ox = (x0 == null ? (W - wPx) / 2 : x0) + slant * u;
+      let xU = 0, first = true;
+      for (const ch of text) {
+        if (/\s/.test(ch)) { xU += SPACE_U; first = true; continue; }
+        const g = glyphFor(ch); if (!g) continue;
+        if (!first) xU += GAP_U;
+        const model = g.strokes.map(s => {
+          const pts = s.pts.map(p => ({x: ox + (xU + p.x + slant * (-p.y)) * u, y: baseline + p.y * u}));
+          const C = [0];
+          for (let i = 1; i < pts.length; i++) C.push(C[i - 1] + Math.hypot(pts[i].x - pts[i-1].x, pts[i].y - pts[i-1].y));
+          const len = C[C.length - 1];
+          const closed = !s.dot && pts.length > 4 && Math.hypot(pts[0].x - pts[pts.length-1].x, pts[0].y - pts[pts.length-1].y) < 0.12 * u;
+          return {dot: s.dot, pts, C, len, closed};
+        });
+        let l = Infinity, t = Infinity, r = -Infinity, b = -Infinity;
+        model.forEach(m => m.pts.forEach(p => { l = Math.min(l, p.x); r = Math.max(r, p.x); t = Math.min(t, p.y); b = Math.max(b, p.y); }));
+        const e = stem / 2;
+        letters.push({ch, k: letters.length, model, cue: g.cue, bbox:{l:l - e, t:t - e, r:r + e, b:b + e}});
+        xU += g.width; first = false;
+      }
+    } else {
+      const fpx = cursiveFontPx(size);
+      mctx.font = `${st.weight} ${fpx}px ${st.family}`;
+      const mm = mctx.measureText(text);
+      const lx = (x0 == null ? (W - (mm.actualBoundingBoxLeft + mm.actualBoundingBoxRight)) / 2 : x0) + mm.actualBoundingBoxLeft;
+      [...text].forEach((ch, j, arr) => {
+        if (/\s/.test(ch)) return;
+        const pre = arr.slice(0, j).join('');
+        const x = lx + mctx.measureText(pre).width, adv = mctx.measureText(ch).width;
+        letters.push({ch, k: letters.length, model:null, x, adv, bbox:{l:x, t:baseline - 2 * u, r:x + adv, b:baseline + u}});
+      });
+      letters.fontPx = fpx; letters.x0 = lx;
+    }
+    return letters;
+  }
+
+  function paintModel(ctx, g, which, lw, dotR){
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.lineWidth = lw;
+    const list = which == null ? g.letters : [g.letters[which]];
+    list.forEach(Lt => Lt.model.forEach(m => {
+      if (m.dot) { ctx.beginPath(); ctx.arc(m.pts[0].x, m.pts[0].y, dotR, 0, Math.PI * 2); ctx.fill(); return; }
+      ctx.beginPath(); ctx.moveTo(m.pts[0].x, m.pts[0].y);
+      for (let i = 1; i < m.pts.length; i++) ctx.lineTo(m.pts[i].x, m.pts[i].y);
+      ctx.stroke();
+    }));
+  }
+  function paintFont(ctx, g, which, lw){
+    const st = g.st;
+    ctx.font = `${st.weight} ${g.letters.fontPx}px ${st.family}`;
+    ctx.textBaseline = 'alphabetic'; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    const boost = g.size / 2 / cursiveXRatio * 0 + g.size * st.boost;
+    if (which == null) {
+      ctx.fillText(g.text, g.letters.x0, g.baseline);
+      ctx.lineWidth = boost + lw; ctx.strokeText(g.text, g.letters.x0, g.baseline);
+    } else {
+      const Lt = g.letters[which];
+      ctx.fillText(Lt.ch, Lt.x, g.baseline);
+      ctx.lineWidth = boost + lw; ctx.strokeText(Lt.ch, Lt.x, g.baseline);
+    }
+  }
+  function paintShape(ctx, g, which, extra){
+    if (g.stroke) paintModel(ctx, g, which, g.stem + extra, g.stem * 0.62 + extra / 2);
+    else paintFont(ctx, g, which, extra);
+  }
+
+  function buildMasks(g){
+    const {W, H} = g, N = W * H;
+    measCan.width = W; measCan.height = H;
+    const m = mctx;
+    m.fillStyle = '#000'; m.strokeStyle = '#000';
+    const read = () => m.getImageData(0, 0, W, H).data;
+    m.clearRect(0, 0, W, H); paintShape(m, g, null, 0);
+    let d = read();
+    const core = new Uint8Array(N);
+    for (let i = 0; i < N; i++) core[i] = d[i * 4 + 3] > 110 ? 1 : 0;
+    m.clearRect(0, 0, W, H); paintShape(m, g, null, 2 * g.tol);
+    d = read();
+    const road = new Uint8Array(N);
+    for (let i = 0; i < N; i++) road[i] = d[i * 4 + 3] > 40 ? 1 : 0;
+
+    const coreId = new Int16Array(N), roadId = new Int16Array(N);
+    g.letters.forEach(Lt => {
+      const bb = Lt.bbox;
+      const x0 = clamp(Math.floor(bb.l - g.tol - g.size * 0.4), 0, W), x1 = clamp(Math.ceil(bb.r + g.tol + g.size * 0.4), 0, W);
+      const y0 = 0, y1 = H, rw = x1 - x0, rh = y1 - y0;
+      if (rw <= 0) return;
+      m.clearRect(x0, y0, rw, rh); paintShape(m, g, Lt.k, 0);
+      let img = m.getImageData(x0, y0, rw, rh).data;
+      for (let yy = 0; yy < rh; yy++) for (let xx = 0; xx < rw; xx++) {
+        if (img[(yy * rw + xx) * 4 + 3] > 110) { const gi = (y0 + yy) * W + x0 + xx; if (core[gi] && !coreId[gi]) coreId[gi] = Lt.k + 1; }
+      }
+      m.clearRect(x0, y0, rw, rh); paintShape(m, g, Lt.k, 2 * g.tol);
+      img = m.getImageData(x0, y0, rw, rh).data;
+      for (let yy = 0; yy < rh; yy++) for (let xx = 0; xx < rw; xx++) {
+        if (img[(yy * rw + xx) * 4 + 3] > 40) { const gi = (y0 + yy) * W + x0 + xx; if (road[gi] && !roadId[gi]) roadId[gi] = Lt.k + 1; }
+      }
+    });
+    // any leftover pixels (cursive joins): nearest letter by x
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const gi = y * W + x;
+      if ((core[gi] && !coreId[gi]) || (road[gi] && !roadId[gi])) {
+        const k = nearestLetterX(g, x);
+        if (core[gi] && !coreId[gi]) coreId[gi] = k + 1;
+        if (road[gi] && !roadId[gi]) roadId[gi] = k + 1;
+      }
+    }
+    const c = Math.max(5, Math.round(g.size * 0.06));
+    const cols = Math.ceil(W / c), rows = Math.ceil(H / c);
+    const cellCount = new Uint16Array(cols * rows), cellLetter = new Int16Array(cols * rows);
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const gi = y * W + x; if (!core[gi]) continue;
+      const ci = ((y / c) | 0) * cols + ((x / c) | 0);
+      cellCount[ci]++; if (!cellLetter[ci]) cellLetter[ci] = coreId[gi];
+    }
+    const minCount = Math.max(2, Math.round(c * c * 0.08));
+    const target = new Uint8Array(cols * rows);
+    const targetsPer = new Array(g.letters.length).fill(0);
+    let targetTotal = 0;
+    for (let i = 0; i < target.length; i++) if (cellCount[i] >= minCount) {
+      target[i] = 1; targetTotal++; const k = cellLetter[i] - 1; if (k >= 0) targetsPer[k]++;
+    }
+    Object.assign(g, {core, road, coreId, roadId, c, cols, rows, target, cellLetter, targetsPer, targetTotal});
+  }
+  function nearestLetterX(g, x){
+    let best = 0, bd = Infinity;
+    g.letters.forEach(Lt => { const d = x < Lt.bbox.l ? Lt.bbox.l - x : x > Lt.bbox.r ? x - Lt.bbox.r : 0; if (d < bd) { bd = d; best = Lt.k; } });
+    return best;
+  }
+
+  // =====================================================================
+  // Showing a step
+  // =====================================================================
+  function showStep(keepInk){
+    stopAnim();
+    const step = state.steps[state.stepIdx];
+    if (!step) return;
+    const size = state.sizeInfo.size;
+    renderStepper(); renderModel(); updateInstruction(); renderStrip();
+    G = buildGeometry(step.text, size);
+    const r = dpr();
+    [gC, iC, fC].forEach(cv => {
+      cv.width = Math.round(G.W * r); cv.height = Math.round(G.H * r);
+      cv.style.width = G.W + 'px'; cv.style.height = G.H + 'px';
+      cv.getContext('2d').setTransform(r, 0, 0, r, 0, 0);
+    });
+    sheet.style.height = G.H + 'px';
+    if (!keepInk) { state.strokes = []; state.t0 = null; clearChecked(); }
+    else if (state.checked) { state.lastEval = evaluate(); showFeedback(state.lastEval, false); }
+    drawGuide(); redrawInk();
+    updateNote(); syncNext(); syncStudentBits();
+    if (!keepInk) {
+      say(instructionText());
+      if (S.autoWatch && G.stroke && step.chunk === 0) {
+        setTimeout(() => { if (state.steps[state.stepIdx] === step && !state.strokes.length && !anim) watchMe(); }, 700);
+      }
+    }
+  }
+
+  function instructionText(){
+    const step = state.steps[state.stepIdx]; if (!step) return '';
+    const sup = supportFor(step.row);
+    const start = styleDef().stroke && S.fbStart ? ' Start at the green dot.' : '';
+    if (step.warm) return `Warm up! Trace the lines and curves.${start}`;
+    if (sup === 'blank') return 'Write your name on the lines by yourself. Look at the model if you need help.';
+    if (sup === 'none') return `Write it on the lines by yourself.${start}`;
+    if (sup === 'faint') return `Trace the light letters.${start}`;
+    if (sup === 'outline') return `Trace inside the outline letters.${start}`;
+    if (sup === 'solid') return `Trace the gray letters.${start}`;
+    return `Trace the dotted letters.${start}`;
+  }
+  function updateInstruction(){ $('instructText').textContent = instructionText(); }
+
+  function updateNote(){
+    const info = state.sizeInfo, parts = [];
+    const sd = sizeDef();
+    const inches = info.size / DEV.ppi;
+    const fmtIn = v => (Math.round(v * 4) / 4).toString().replace('.25', '¼').replace('.5', '½').replace('.75', '¾').replace(/^0(?=[¼½¾])/, '');
+    if (info.reduced) parts.push(`<strong>Letters are ${fmtIn(inches)} in tall</strong> because ${sd.label} letters are wider than this screen.`);
+    else if (info.fill) parts.push(`Letters fill the screen (about ${fmtIn(inches)} in tall).`);
+    else parts.push(`Letters are <strong>${sd.label}</strong> tall.`);
+    const firstName = state.steps.find(s => !s.warm);
+    const chunks = firstName ? firstName.chunks : 1;
+    if (S.mode === 'whole' && chunks > 1) parts.push(`The name is split into ${chunks} parts so the letters keep their size.`);
+    if (!styleDef().stroke) parts.push('Cursive is scored by shape only.');
+    noteEl.innerHTML = parts.join(' ');
+  }
+
+  function renderStepper(){
+    const rows = +S.rows || 1;
+    const multi = state.steps.length > 1;
+    stepperEl.hidden = !multi;
+    if (!multi) { stepperEl.innerHTML = ''; return; }
+    if (isStudent()) {
+      stepperEl.innerHTML = `<div class="dots" role="img" aria-label="Part ${state.stepIdx + 1} of ${state.steps.length}">` +
+        state.steps.map((st, i) => `<i class="${i === state.stepIdx ? 'cur' : state.results[i] ? 'done' : ''}"></i>`).join('') + '</div>';
+      return;
+    }
+    const fam = styleDef().stroke ? 'var(--kid)' : STYLES.cursive.family;
+    const groups = [];
+    const warm = state.steps.map((s, i) => i).filter(i => state.steps[i].warm);
+    if (warm.length) groups.push({label: 'Warm-up', sub: '', idx: warm});
+    for (let r = 0; r < rows; r++) groups.push({label: `Row ${r + 1}`, sub: SUPPORT_LABEL[supportFor(r)], idx: state.steps.map((s, i) => i).filter(i => !state.steps[i].warm && state.steps[i].row === r)});
+    const agg = idx => {
+      const rs = idx.map(i => state.results[i]);
+      if (rs.some(r => !r)) return null;
+      const tw = rs.reduce((a, x) => a + x.weight, 0) || 1;
+      return Math.round(rs.reduce((a, x) => a + x.acc * x.weight, 0) / tw);
+    };
+    let h = '<div class="track" role="list">';
+    groups.forEach((g, gi) => {
+      if (gi) h += '<span class="track-conn" aria-hidden="true"></span>';
+      const cur = g.idx.includes(state.stepIdx);
+      const score = agg(g.idx);
+      const numTxt = g.label === 'Warm-up' ? 'W' : g.label.replace('Row ', '');
+      if (g.idx.length === 1) {
+        const i = g.idx[0];
+        let cls = 'track-step';
+        if (cur) cls += ' current';
+        if (score != null) cls += ' done ' + tierClass(score);
+        h += `<button type="button" role="listitem" class="${cls}" data-step="${i}" aria-label="${g.label}${g.sub ? ', ' + g.sub : ''}${score != null ? ', scored ' + score + ' percent' : ''}${cur ? ', current' : ''}">` +
+          `<span class="num">${score != null && !cur ? '✓' : numTxt}</span><span>${g.label}${g.sub ? ` <small>${g.sub}</small>` : ''}</span>${score != null && S.fbPercent ? `<b style="color:${tierColor(score)}">${score}%</b>` : ''}</button>`;
+      } else {
+        h += `<div role="listitem" class="track-group${cur ? ' current' : ''}"><span class="glabel"><span class="track-step${cur ? ' current' : ''}${score != null ? ' done ' + tierClass(score) : ''}" style="border:0;background:none;box-shadow:none;padding:0;min-height:0"><span class="num">${score != null && !cur ? '✓' : numTxt}</span></span>${g.label}${g.sub ? ` <small style="font-weight:400;color:var(--muted)">${g.sub}</small>` : ''}</span>`;
+        g.idx.forEach(i => {
+          const s = state.steps[i], res = state.results[i];
+          let cls = 'chip';
+          if (i === state.stepIdx) cls += ' current';
+          if (res) cls += ' ' + tierClass(res.acc);
+          h += `<button type="button" class="${cls}" data-step="${i}" style="font-family:${fam}" aria-label="${g.label}, ${esc(s.warm ? 'lines and curves' : s.text)}${res ? ', scored ' + res.acc + ' percent' : ''}"><span>${esc(showText(s.text))}</span>${res && S.fbPercent ? `<small>${res.acc}%</small>` : ''}</button>`;
+        });
+        h += '</div>';
+      }
+    });
+    stepperEl.innerHTML = h + '</div>';
+  }
+  stepperEl.addEventListener('click', e => {
+    const b = e.target.closest('button[data-step]'); if (!b) return;
+    state.stepIdx = +b.dataset.step; showStep(false);
+  });
+
+  function renderModel(){
+    const box = $('modelBox');
+    const step = state.steps[state.stepIdx];
+    const sup = step ? supportFor(step.row) : 'dotted';
+    const allowed = isStudent() ? ['none', 'blank'] : ['none', 'faint', 'blank'];
+    if (!step || !allowed.includes(sup)) { box.hidden = true; return; }
+    box.hidden = false;
+    const mc = $('modelCanvas');
+    const size = 40;
+    const g = buildLite(step.text, size);
+    const r = dpr();
+    mc.width = Math.round(g.W * r); mc.height = Math.round(g.H * r);
+    mc.style.width = g.W + 'px'; mc.style.height = g.H + 'px';
+    const ctx = mc.getContext('2d'); ctx.setTransform(r, 0, 0, r, 0, 0);
+    ctx.clearRect(0, 0, g.W, g.H);
+    const col = tok('--model');
+    ctx.fillStyle = col; ctx.strokeStyle = col;
+    ctx.strokeStyle = tok('--rule-blue'); ctx.lineWidth = 1;
+    [[g.baseline - 2 * g.u, []], [g.baseline - g.u, [3, 3]], [g.baseline, []]].forEach(([y, dash]) => { ctx.setLineDash(dash); ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(g.W, y); ctx.stroke(); });
+    ctx.setLineDash([]);
+    ctx.fillStyle = col; ctx.strokeStyle = col;
+    if (g.stroke) paintModel(ctx, g, null, Math.max(2.5, size * 0.09), size * 0.07);
+    else { const st = g.st; ctx.font = `${st.weight} ${g.letters.fontPx}px ${st.family}`; ctx.fillText(g.text, g.letters.x0, g.baseline); }
+  }
+  function buildLite(text, size){
+    const st = styleDef(), u = size / 2;
+    const w = textWidthPx(text, size);
+    const W = Math.ceil(w + 12), baseline = Math.ceil(u * 2 + 4), H = Math.ceil(baseline + u + 4);
+    const letters = [];
+    if (st.stroke) {
+      let xU = 0, first = true;
+      const ox = 6 + st.slant * u;
+      for (const ch of text) {
+        if (/\s/.test(ch)) { xU += SPACE_U; first = true; continue; }
+        const gl = glyphFor(ch); if (!gl) continue;
+        if (!first) xU += GAP_U;
+        letters.push({ch, model: gl.strokes.map(s => ({dot: s.dot, pts: s.pts.map(p => ({x: ox + (xU + p.x + st.slant * (-p.y)) * u, y: baseline + p.y * u}))}))});
+        xU += gl.width; first = false;
+      }
+    } else {
+      const fpx = cursiveFontPx(size);
+      mctx.font = `${st.weight} ${fpx}px ${st.family}`;
+      const mm = mctx.measureText(text);
+      letters.fontPx = fpx; letters.x0 = 6 + mm.actualBoundingBoxLeft;
+    }
+    return {text, u, W, H, baseline, letters, stroke: st.stroke, st};
+  }
+
+  // =====================================================================
+  // Guide drawing
+  // =====================================================================
+  const PRINT = {paper:'#FFFFFF', blue:'#8AA8DC', red:'#E06A63', guide:'#7F8898', lane:'#E3EBFA', start:'#12925A', ring:'#FFFFFF', num:'#43506A', bad:'#C8352D', hc:false,
+    pens:['#1F47C8','#C62F6B','#0F8A55','#7440C9','#1B1B1B']};
+  function screenColors(){
+    return {paper:tok('--paper'), blue:tok('--rule-blue'), red:tok('--rule-red'), guide:tok('--guide'), lane:tok('--lane'),
+      start:tok('--start'), ring:tok('--start-ring'), num:tok('--num'), hc:!!S.contrast};
+  }
+  function drawGuide(){
+    if (!G) return;
+    const g = gC.getContext('2d');
+    const step = state.steps[state.stepIdx];
+    const sup = step ? supportFor(step.row) : S.guide;
+    const col = screenColors();
+    g.clearRect(0, 0, G.W, G.H);
+    g.fillStyle = col.paper; g.fillRect(0, 0, G.W, G.H);
+    const xm = Math.max(8, G.size * 0.06);
+    renderSheet(g, G, {col, sup, lines: S.lines, lane: S.lane && (!S.fade || !step || step.row <= 0) && sup !== 'none',
+      starts: S.fbStart, order: S.fbOrder, x0: xm, x1: G.W - xm});
+  }
+
+  // Draw lines, lane, letter support and start dots for one row onto ctx.
+  function renderSheet(g, geo, o){
+    if (o.lines) drawRules(g, geo, o.col, o.x0, o.x1);
+    if (o.lane && o.sup !== 'blank') { g.fillStyle = o.col.lane; g.strokeStyle = o.col.lane; paintShape(g, geo, null, 2 * geo.tol); }
+    if (o.sup !== 'blank') paintSupport(g, geo, o.sup, o.col);
+    if (geo.stroke && o.sup !== 'blank' && (o.starts || o.order)) drawStarts(g, geo, o.col, o.starts, o.order);
+  }
+  function drawRules(g, geo, col, x0, x1){
+    const {size, u, baseline} = geo, px = geo.px || 1;
+    const lw = Math.max(1.5 * px, size * 0.008);
+    g.save();
+    g.lineCap = 'butt';
+    g.strokeStyle = col.blue; g.lineWidth = lw; g.setLineDash([]);
+    g.beginPath(); g.moveTo(x0, baseline - 2 * u); g.lineTo(x1, baseline - 2 * u); g.stroke();
+    g.setLineDash([lw * 5, lw * 4]);
+    g.beginPath(); g.moveTo(x0, baseline - u); g.lineTo(x1, baseline - u); g.stroke();
+    g.setLineDash([lw * 1.5, lw * 5]); g.globalAlpha = 0.6;
+    g.beginPath(); g.moveTo(x0, baseline + u); g.lineTo(x1, baseline + u); g.stroke();
+    g.globalAlpha = 1; g.setLineDash([]);
+    g.strokeStyle = col.red; g.lineWidth = lw * 1.4;
+    g.beginPath(); g.moveTo(x0, baseline); g.lineTo(x1, baseline); g.stroke();
+    g.restore();
+  }
+  function scratchLike(g){
+    const tmp = document.createElement('canvas'); tmp.width = g.canvas.width; tmp.height = g.canvas.height;
+    const t = tmp.getContext('2d'); t.setTransform(g.getTransform());
+    return {tmp, t};
+  }
+  function blit(g, tmp){ g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(tmp, 0, 0); g.restore(); }
+  function paintSupport(g, geo, sup, col){
+    const {size, stem} = geo;
+    const c = col.guide;
+    g.fillStyle = c; g.strokeStyle = c;
+    if (sup === 'solid' || sup === 'faint') {
+      g.save(); g.globalAlpha = sup === 'faint' ? (col.hc ? 0.4 : 0.25) : (col.hc ? 1 : 0.55);
+      paintShape(g, geo, null, 0); g.restore();
+    } else if (sup === 'outline') {
+      const {tmp, t} = scratchLike(g);
+      t.fillStyle = c; t.strokeStyle = c;
+      const ow = Math.max(1.6 * (geo.px || 1), size * 0.012);
+      paintShape(t, geo, null, 0);
+      t.globalCompositeOperation = 'destination-out';
+      if (geo.stroke) paintModel(t, geo, null, Math.max(1, stem - 2 * ow), Math.max(1, stem * 0.62 - ow));
+      else { t.save(); paintFont(t, geo, null, -Math.min(2 * ow, size * geo.st.boost)); t.restore(); }
+      blit(g, tmp);
+    } else if (sup === 'dotted') {
+      if (geo.stroke) {
+        const sp = Math.max(6 * (geo.px || 1), stem * 1.05), rad = Math.max(1.8, stem * 0.3);
+        geo.letters.forEach(Lt => Lt.model.forEach(m => {
+          if (m.dot) { g.beginPath(); g.arc(m.pts[0].x, m.pts[0].y, stem * 0.55, 0, Math.PI * 2); g.fill(); return; }
+          const n = Math.max(1, Math.round(m.len / sp));
+          for (let i = 0; i <= n; i++) {
+            const p = pointAt(m, m.len * i / n);
+            g.beginPath(); g.arc(p.x, p.y, rad, 0, Math.PI * 2); g.fill();
+          }
+        }));
+      } else {
+        const {tmp, t} = scratchLike(g);
+        t.fillStyle = c; t.strokeStyle = c; paintFont(t, geo, null, 0);
+        const scale = Math.hypot(g.getTransform().a, g.getTransform().b) || 1;
+        const sp = Math.max(4, size * 0.042) * scale;
+        const pat = document.createElement('canvas'); pat.width = pat.height = Math.max(3, Math.round(sp));
+        const p = pat.getContext('2d'); p.fillStyle = '#000'; p.beginPath(); p.arc(pat.width / 2, pat.height / 2, pat.width * 0.34, 0, Math.PI * 2); p.fill();
+        t.setTransform(1, 0, 0, 1, 0, 0); t.globalCompositeOperation = 'destination-in';
+        t.fillStyle = t.createPattern(pat, 'repeat'); t.fillRect(0, 0, tmp.width, tmp.height);
+        blit(g, tmp);
+      }
+    }
+  }
+
+  function pointAt(m, dist){
+    const C = m.C;
+    if (dist <= 0) return m.pts[0];
+    if (dist >= m.len) return m.pts[m.pts.length - 1];
+    let lo = 0, hi = C.length - 1;
+    while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (C[mid] < dist) lo = mid; else hi = mid; }
+    const f = (dist - C[lo]) / Math.max(1e-6, C[hi] - C[lo]);
+    return {x: m.pts[lo].x + (m.pts[hi].x - m.pts[lo].x) * f, y: m.pts[lo].y + (m.pts[hi].y - m.pts[lo].y) * f};
+  }
+  function arrowAlong(ctx, m, from, to, color, lw){
+    const n = Math.max(2, Math.ceil((to - from) / 3));
+    ctx.save(); ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = lw; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.beginPath();
+    for (let i = 0; i <= n; i++) { const p = pointAt(m, from + (to - from) * i / n); if (i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y); }
+    ctx.stroke();
+    const a = pointAt(m, to - Math.max(3, lw)), b = pointAt(m, to);
+    const ang = Math.atan2(b.y - a.y, b.x - a.x), ah = lw * 2.6;
+    ctx.beginPath();
+    ctx.moveTo(b.x + Math.cos(ang) * ah * 0.7, b.y + Math.sin(ang) * ah * 0.7);
+    ctx.lineTo(b.x + Math.cos(ang + 2.5) * ah, b.y + Math.sin(ang + 2.5) * ah);
+    ctx.lineTo(b.x + Math.cos(ang - 2.5) * ah, b.y + Math.sin(ang - 2.5) * ah);
+    ctx.closePath(); ctx.fill(); ctx.restore();
+  }
+  function drawStarts(g, geo, col, starts, order){
+    const {size, stem, u} = geo, px = geo.px || 1;
+    const rad = clamp(size * 0.05, 8 * px, 22 * px);
+    const green = col.start, ring = col.ring, numCol = col.num;
+    geo.letters.forEach(Lt => {
+      if (!Lt.model || !isForm(Lt.ch)) return;
+      Lt.model.forEach((m, si) => {
+        const p = m.pts[0];
+        if (si === 0 && starts) {
+          if (!m.dot) arrowAlong(g, m, rad * 0.6, Math.min(m.len * 0.45, rad * 0.6 + u * 0.55), green, clamp(stem * 0.32, 2.5 * px, 8 * px));
+          g.beginPath(); g.arc(p.x, p.y, rad, 0, Math.PI * 2); g.fillStyle = green; g.fill();
+          g.lineWidth = 3 * px; g.strokeStyle = ring; g.stroke();
+          if (order) numLabel(g, p.x, p.y, '1', rad, ring);
+        } else if (order) {
+          const r2 = rad * 0.8;
+          const ox = m.dot ? rad * 1.4 : 0;
+          g.beginPath(); g.arc(p.x + ox, p.y, r2, 0, Math.PI * 2); g.fillStyle = numCol; g.fill();
+          g.lineWidth = 2.5 * px; g.strokeStyle = ring; g.stroke();
+          numLabel(g, p.x + ox, p.y, String(si + 1), r2, ring);
+        }
+      });
+    });
+  }
+  function numLabel(g, x, y, t, r, col){
+    g.save(); g.fillStyle = col; g.font = `700 ${Math.round(r * 1.2)}px "Atkinson Hyperlegible", system-ui, sans-serif`;
+    g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(t, x, y + r * 0.05); g.restore();
+  }
+
+  // =====================================================================
+  // Ink
+  // =====================================================================
+  const penWidth = () => clamp((G ? G.size : 140) * PEN[S.pen], 4, 44);
+  const onRoad = (x, y) => {
+    const xi = Math.round(x), yi = Math.round(y);
+    if (xi < 0 || yi < 0 || xi >= G.W || yi >= G.H) return false;
+    return G.road[yi * G.W + xi] === 1;
+  };
+  const inkColor = (s, off) => off && S.live ? tok('--bad') : tok('--pen-' + s.pen);
+  function drawDot(ctx, p, s){ ctx.fillStyle = inkColor(s, !p.on); ctx.beginPath(); ctx.arc(p.x, p.y, s.w / 2, 0, Math.PI * 2); ctx.fill(); }
+  function drawSeg(ctx, a, b, s){
+    ctx.strokeStyle = inkColor(s, !b.on || !a.on); ctx.lineWidth = s.w; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+  }
+  function redrawInk(){
+    if (!G) return;
+    const ctx = iC.getContext('2d'); ctx.clearRect(0, 0, G.W, G.H);
+    state.strokes.forEach(s => { if (s.pts.length === 1) drawDot(ctx, s.pts[0], s); for (let i = 1; i < s.pts.length; i++) drawSeg(ctx, s.pts[i-1], s.pts[i], s); });
+  }
+  function clearChecked(){
+    state.checked = false; state.lastEval = null;
+    if (G) fC.getContext('2d').clearRect(0, 0, G.W, G.H);
+    resultEl.hidden = true;
+    hidePop(); syncNext();
+  }
+  function pointFromEvent(e){
+    const r = fC.getBoundingClientRect();
+    const x = (e.clientX - r.left) * (G.W / r.width), y = (e.clientY - r.top) * (G.H / r.height);
+    return {x, y, on: onRoad(x, y)};
+  }
+  fC.addEventListener('pointerdown', e => {
+    if (!G) return;
+    if (e.pointerType === 'pen') sawPen = true;
+    if (e.pointerType === 'touch' && sawPen && S.palm) return;
+    if (active) return;
+    e.preventDefault();
+    stopAnim();
+    if (state.checked) clearChecked();
+    if (!state.t0) state.t0 = performance.now();
+    try { fC.setPointerCapture(e.pointerId); } catch(_) {}
+    const s = {pen: state.pen, w: penWidth(), pts: [pointFromEvent(e)], type: e.pointerType, pr: [], t: performance.now()};
+    if (e.pointerType === 'pen' && e.pressure > 0) s.pr.push(e.pressure);
+    state.strokes.push(s);
+    active = {id: e.pointerId, s};
+    drawDot(iC.getContext('2d'), s.pts[0], s);
+  });
+  fC.addEventListener('pointermove', e => {
+    if (!active || e.pointerId !== active.id) return;
+    e.preventDefault();
+    const evs = typeof e.getCoalescedEvents === 'function' ? e.getCoalescedEvents() : [e];
+    const ctx = iC.getContext('2d'), s = active.s;
+    (evs.length ? evs : [e]).forEach(ev => {
+      const p = pointFromEvent(ev), last = s.pts[s.pts.length - 1];
+      if (Math.abs(p.x - last.x) + Math.abs(p.y - last.y) < 1) return;
+      s.pts.push(p); drawSeg(ctx, last, p, s);
+      if (ev.pointerType === 'pen' && ev.pressure > 0) s.pr.push(ev.pressure);
+    });
+  });
+  const endStroke = e => { if (active && e.pointerId === active.id) active = null; };
+  fC.addEventListener('pointerup', endStroke);
+  fC.addEventListener('pointercancel', endStroke);
+  fC.addEventListener('contextmenu', e => e.preventDefault());
+
+  $('undoBtn').addEventListener('click', () => { state.strokes.pop(); if (!state.strokes.length) state.t0 = null; clearChecked(); redrawInk(); });
+  $('clearBtn').addEventListener('click', () => { state.strokes = []; state.t0 = null; clearChecked(); redrawInk(); });
+  $('checkBtn').addEventListener('click', check);
+  $('hearBtn').addEventListener('click', () => say(instructionText()));
+  $('watchBtn').addEventListener('click', () => { if (anim) stopAnim(); else watchMe(); });
+
+  // =====================================================================
+  // Scoring
+  // =====================================================================
+  function letterNear(x, y){
+    const xi = Math.round(x), yi = Math.round(y);
+    if (xi >= 0 && yi >= 0 && xi < G.W && yi < G.H) { const k = G.roadId[yi * G.W + xi]; if (k) return k - 1; }
+    return -1;
+  }
+  function evaluate(){
+    const {c, cols, rows, target, cellLetter, letters, targetsPer, targetTotal} = G;
+    const covered = new Uint8Array(cols * rows);
+    const per = letters.map(() => ({on:0, tot:0, cov:0}));
+    let on = 0, total = 0;
+    const offPts = [];
+    const sample = (x, y, w) => {
+      total++;
+      const isOn = onRoad(x, y);
+      let k = letterNear(x, y); if (k < 0) k = nearestLetterX(G, x);
+      per[k].tot++;
+      if (!isOn) { offPts.push(x, y, w); return; }
+      on++; per[k].on++;
+      const R = w / 2 + c * 0.6;
+      const cx0 = clamp(Math.floor((x - R) / c), 0, cols - 1), cx1 = clamp(Math.floor((x + R) / c), 0, cols - 1);
+      const cy0 = clamp(Math.floor((y - R) / c), 0, rows - 1), cy1 = clamp(Math.floor((y + R) / c), 0, rows - 1);
+      for (let cy = cy0; cy <= cy1; cy++) for (let cx = cx0; cx <= cx1; cx++) {
+        const mx = (cx + 0.5) * c, my = (cy + 0.5) * c;
+        if ((mx - x) ** 2 + (my - y) ** 2 <= R * R) covered[cy * cols + cx] = 1;
+      }
+    };
+    state.strokes.forEach(s => {
+      const p = s.pts;
+      sample(p[0].x, p[0].y, s.w);
+      for (let i = 1; i < p.length; i++) {
+        const a = p[i-1], b = p[i], n = Math.max(1, Math.ceil(Math.hypot(b.x - a.x, b.y - a.y) / 2));
+        for (let j = 1; j <= n; j++) sample(a.x + (b.x - a.x) * j / n, a.y + (b.y - a.y) * j / n, s.w);
+      }
+    });
+    let cov = 0;
+    for (let i = 0; i < target.length; i++) if (target[i] && covered[i]) { cov++; const k = cellLetter[i] - 1; if (k >= 0) per[k].cov++; }
+    const f1 = (p, r) => (p + r) > 0 ? 2 * p * r / (p + r) : 0;
+    const P = total ? on / total : 0, R = targetTotal ? cov / targetTotal : 0;
+    const letterScores = letters.map((Lt, k) => {
+      const pp = per[k].tot ? per[k].on / per[k].tot : 0, rr = targetsPer[k] ? per[k].cov / targetsPer[k] : 0;
+      return {ch: Lt.ch, acc: Math.round(100 * f1(pp, rr))};
+    });
+    const form = G.stroke ? evalFormation() : null;
+    const prs = state.strokes.flatMap(s => s.pr);
+    const types = [...new Set(state.strokes.map(s => s.type))];
+    const modelStrokes = G.stroke ? G.letters.reduce((a, Lt) => a + Lt.model.length, 0) : null;
+    return {
+      acc: Math.round(100 * f1(P, R)), onPath: Math.round(P * 100), finished: Math.round(R * 100),
+      covered, offPts, letterScores, form,
+      secs: state.t0 ? Math.round((performance.now() - state.t0) / 1000) : 0,
+      lifts: Math.max(0, state.strokes.length - 1),
+      modelLifts: modelStrokes != null ? Math.max(0, modelStrokes - 1) : null,
+      pressure: prs.length ? Math.round(100 * prs.reduce((a, b) => a + b, 0) / prs.length) : null,
+      input: types.length === 1 ? types[0] : 'mixed'
+    };
+  }
+
+  function nearestIdx(m, x, y, lo, hi){
+    let best = -1, bd = Infinity;
+    for (let i = lo; i <= hi; i++) {
+      const j = m.closed ? ((i % (m.pts.length - 1)) + (m.pts.length - 1)) % (m.pts.length - 1) : clamp(i, 0, m.pts.length - 1);
+      const p = m.pts[j], d = (p.x - x) ** 2 + (p.y - y) ** 2;
+      if (d < bd) { bd = d; best = j; }
+    }
+    return {j: best, d: Math.sqrt(bd)};
+  }
+  function evalFormation(){
+    const letters = G.letters;
+    const byLetter = letters.map(() => []);
+    state.strokes.forEach(s => {
+      const counts = new Map();
+      s.pts.forEach(p => { const k = letterNear(p.x, p.y); if (k >= 0) counts.set(k, (counts.get(k) || 0) + 1); });
+      let best = -1, bc = 0; counts.forEach((cnt, k) => { if (cnt > bc) { bc = cnt; best = k; } });
+      if (best >= 0) byLetter[best].push(s);
+    });
+    const near = G.stem / 2 + G.tol * 1.2;
+    const startR = Math.max(0.3 * G.u, G.stem, 16);
+    let startsOK = 0, startsN = 0, dirsOK = 0, dirsN = 0;
+    const out = letters.map((Lt, k) => {
+      const us = byLetter[k];
+      const res = {ch: Lt.ch, startOK: null, userStart: null, wrong: [], traced: us.length > 0};
+      if (!Lt.model || !us.length || !isForm(Lt.ch)) return res;
+      const m0 = Lt.model[0];
+      const p0 = us[0].pts[0];
+      res.userStart = p0;
+      res.startOK = Math.hypot(p0.x - m0.pts[0].x, p0.y - m0.pts[0].y) <= startR + (us[0].w / 2);
+      startsN++; if (res.startOK) startsOK++;
+      const acc = Lt.model.map(() => ({fwd:0, back:0}));
+      us.forEach(s => {
+        let run = [], runM = -1;
+        const flush = () => { if (runM >= 0 && run.length >= 3) track(Lt.model[runM], run, acc[runM]); run = []; };
+        s.pts.forEach(p => {
+          let bm = -1, bd = Infinity;
+          Lt.model.forEach((m, mi) => { if (m.dot) return; const r = nearestIdx(m, p.x, p.y, 0, m.pts.length - 1); if (r.d < bd) { bd = r.d; bm = mi; } });
+          if (bd > near) bm = -1;
+          if (bm !== runM) { flush(); runM = bm; }
+          if (bm >= 0) run.push(p);
+        });
+        flush();
+      });
+      Lt.model.forEach((m, mi) => {
+        if (m.dot) return;
+        const a = acc[mi];
+        if (a.fwd + a.back < 0.3 * m.len) return;
+        dirsN++;
+        if (a.fwd >= 1.5 * a.back) dirsOK++; else res.wrong.push(mi);
+      });
+      return res;
+    });
+    const n = startsN + dirsN;
+    return {letters: out, startsOK, startsN, dirsOK, dirsN, pct: n ? Math.round(100 * (startsOK + dirsOK) / n) : null};
+  }
+  function track(m, run, acc){
+    const N = m.pts.length;
+    const w = Math.max(6, Math.round(N * 0.15));
+    let cur = nearestIdx(m, run[0].x, run[0].y, 0, N - 1).j;
+    const bias = G.stem * 0.2;
+    for (let i = 1; i < run.length; i++) {
+      const p = run[i];
+      let best = cur, bc = Infinity;
+      for (let o = -w; o <= w; o++) {
+        let j = cur + o;
+        if (m.closed) j = ((j % (N - 1)) + (N - 1)) % (N - 1); else if (j < 0 || j >= N) continue;
+        const q = m.pts[j], d = Math.hypot(q.x - p.x, q.y - p.y) + (o < 0 ? bias : 0);
+        if (d < bc) { bc = d; best = j; }
+      }
+      let dt = m.C[best] - m.C[cur];
+      if (m.closed && Math.abs(dt) > m.len / 2) dt -= Math.sign(dt) * m.len;
+      if (dt > 0) acc.fwd += dt; else acc.back -= dt;
+      cur = best;
+    }
+  }
+
+  // =====================================================================
+  // Check and feedback
+  // =====================================================================
+  function check(){
+    if (!G) return;
+    stopAnim();
+    if (!state.strokes.length) {
+      resultEl.hidden = false;
+      resultEl.innerHTML = `<p class="message">Trace the letters first!</p><p class="tip">${esc(instructionText())}</p>`;
+      say('Trace the letters first!');
+      return;
+    }
+    const ev = evaluate();
+    state.checked = true; state.lastEval = ev;
+    const step = state.steps[state.stepIdx];
+    state.results[state.stepIdx] = {acc: ev.acc, form: ev.form ? ev.form.pct : null, weight: G.targetTotal};
+    renderStepper();
+    showFeedback(ev, true);
+    const stars = starsFor(starScore(ev));
+    chime(stars);
+    try { state.snaps[state.stepIdx] = makeSnapshot(ev, step); } catch(e) {}
+    const rec = {
+      t: new Date().toISOString(), name: state.name, traced: step.warm ? 'Warm-up: ' + pdfText(step.text) : step.text, row: step.warm ? 0 : step.row + 1, rows: +S.rows,
+      support: SUPPORT_LABEL[supportFor(step.row)], style: styleDef().label,
+      height: state.sizeInfo.fill ? 'Fill screen' : state.sizeInfo.reduced ? `${(state.sizeInfo.size / DEV.ppi).toFixed(2)} in` : sizeDef().label,
+      acc: ev.acc, onPath: ev.onPath, finished: ev.finished,
+      form: ev.form ? ev.form.pct : null,
+      starts: ev.form ? `${ev.form.startsOK}/${ev.form.startsN}` : '',
+      dirs: ev.form ? `${ev.form.dirsOK}/${ev.form.dirsN}` : '',
+      secs: ev.secs, lifts: ev.lifts, modelLifts: ev.modelLifts, pressure: ev.pressure, input: ev.input, tol: S.tol
+    };
+    saveAttempt(rec);
+  }
+  const starsFor = acc => acc >= S.goal ? 3 : acc >= S.goal - 20 ? 2 : 1;
+  const starScore = ev => (S.fbFormation && ev.form && ev.form.pct != null) ? Math.round(0.7 * ev.acc + 0.3 * ev.form.pct) : ev.acc;
+
+  function drawOverlay(ev){
+    if (!ev || !G) return;
+    const ctx = fC.getContext('2d');
+    ctx.clearRect(0, 0, G.W, G.H);
+    if (S.fbMissed) {
+      const {W, H, c, cols, target, core} = G;
+      const tmp = document.createElement('canvas'); tmp.width = W; tmp.height = H;
+      const t = tmp.getContext('2d'); const img = t.createImageData(W, H);
+      const col = hexToRgb(tok('--missed'));
+      for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+        const gi = y * W + x; if (!core[gi]) continue;
+        const ci = ((y / c) | 0) * cols + ((x / c) | 0);
+        if (target[ci] && !ev.covered[ci]) { const o = gi * 4; img.data[o] = col[0]; img.data[o+1] = col[1]; img.data[o+2] = col[2]; img.data[o+3] = 110; }
+      }
+      t.putImageData(img, 0, 0); ctx.drawImage(tmp, 0, 0, W, H);
+    }
+    if (S.fbOff && ev.offPts.length) {
+      ctx.save(); ctx.globalAlpha = 0.55; ctx.fillStyle = tok('--bad'); ctx.beginPath();
+      const p = ev.offPts;
+      for (let i = 0; i < p.length; i += 3) { const r = p[i + 2] / 2 + 2; ctx.moveTo(p[i] + r, p[i + 1]); ctx.arc(p[i], p[i + 1], r, 0, Math.PI * 2); }
+      ctx.fill(); ctx.restore();
+    }
+    if (S.fbFormation && ev.form) {
+      const green = tok('--demo'), warn = tok('--missed');
+      const lw = clamp(G.stem * 0.3, 2.5, 8);
+      ev.form.letters.forEach((fl, k) => {
+        const Lt = G.letters[k];
+        if (fl.startOK === false && fl.userStart) {
+          ctx.save(); ctx.strokeStyle = warn; ctx.lineWidth = 3; ctx.setLineDash([5, 4]);
+          ctx.beginPath(); ctx.arc(fl.userStart.x, fl.userStart.y, clamp(G.size * 0.06, 10, 26), 0, Math.PI * 2); ctx.stroke();
+          ctx.setLineDash([]); ctx.strokeStyle = green; ctx.lineWidth = 4;
+          const s0 = Lt.model[0].pts[0];
+          ctx.beginPath(); ctx.arc(s0.x, s0.y, clamp(G.size * 0.075, 12, 30), 0, Math.PI * 2); ctx.stroke();
+          ctx.restore();
+        }
+        fl.wrong.forEach(mi => {
+          const m = Lt.model[mi];
+          const seg = Math.max(G.u * 0.6, 24);
+          for (let d = 0; d + seg * 0.5 < m.len; d += seg) arrowAlong(ctx, m, d, Math.min(m.len, d + seg * 0.55), green, lw);
+        });
+      });
+    }
+  }
+  function hexToRgb(h){
+    h = (h || '').replace('#', ''); if (h.length === 3) h = h.split('').map(x => x + x).join('');
+    const n = parseInt(h, 16); return isNaN(n) ? [240, 161, 26] : [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  }
+
+  const STAR = 'M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9z';
+  function meter(label, v){
+    return `<div class="meter"><div class="meter-top"><span>${label}</span><span>${v}%</span></div><div class="bar"><i style="width:${v}%;background:${tierColor(v)}"></i></div></div>`;
+  }
+  function showFeedback(ev, fresh){
+    if (!ev) return;
+    drawOverlay(ev);
+    const first = (state.name.split(' ')[0]) || 'friend';
+    const stars = starsFor(starScore(ev));
+    const MSG = {
+      3: [`Super tracing, ${first}!`, `You nailed it, ${first}!`, `Wow, ${first}! Right on the lines!`],
+      2: [`Nice work, ${first}!`, `Good job, ${first}! You're getting closer.`, `Great effort, ${first}!`],
+      1: [`Good start, ${first}!`, `Keep going, ${first}! Practice makes it easier.`, `Nice try, ${first}!`],
+    };
+    if (fresh || !showFeedback.msg) showFeedback.msg = MSG[stars][Math.floor(Math.random() * 3)];
+    const msg = showFeedback.msg;
+    const f = ev.form;
+    let tip;
+    if (S.fbFormation && f && f.startsN && f.startsOK < f.startsN) tip = 'Tip: start each letter at the green dot.';
+    else if (S.fbFormation && f && f.dirsN && f.dirsOK < f.dirsN) tip = 'Tip: follow the green arrows to go the right way.';
+    else if (stars < 3) tip = ev.finished < ev.onPath ? 'Tip: trace every part of each letter, all the way to the end.' : 'Tip: go slowly and keep your line inside the path.';
+    else tip = 'Ready for the next row?';
+
+    const isLast = state.stepIdx >= state.steps.length - 1;
+    const allDone = state.results.every(Boolean);
+    let h = '<div class="result-head">';
+    if (S.fbStars) h += `<div class="stars${fresh ? ' popin' : ''}" role="img" aria-label="${stars} out of 3 stars">` +
+      [1,2,3].map(i => `<svg viewBox="0 0 24 24" aria-hidden="true"><path class="${i <= stars ? 'star-on' : 'star-off'}" d="${STAR}"/></svg>`).join('') + '</div>';
+    if (S.fbPercent) h += `<div class="bigscore"><b style="color:${tierColor(ev.acc)}">${ev.acc}%</b><span>Tracing accuracy</span></div>`;
+    h += '<div>';
+    if (S.fbStars) h += `<p class="message">${esc(msg)}</p><p class="tip">${esc(tip)}</p>`;
+    else if (!S.fbPercent) h += `<p class="message">All done, ${esc(first)}!</p>`;
+    h += '</div></div>';
+
+    const meters = [];
+    if (S.fbBreakdown) { meters.push(meter('Stayed on the path', ev.onPath)); meters.push(meter('Finished the letters', ev.finished)); }
+    if (S.fbFormation && f && f.pct != null) meters.push(meter('Letter formation', f.pct));
+    if (meters.length) h += `<div class="meters">${meters.join('')}</div>`;
+
+    if (S.fbFormation && f && (f.startsN || f.dirsN)) {
+      const issues = f.letters.filter(l => l.startOK === false || l.wrong.length);
+      h += `<p class="details">Started at the green dot: <b>${f.startsOK} of ${f.startsN}</b> letters · Went the right way: <b>${f.dirsOK} of ${f.dirsN}</b> strokes</p>`;
+      if (issues.length) {
+        h += '<p class="section-label">Letters to practice</p><ul class="form-list">' + issues.map(l => {
+          const bits = [];
+          if (l.startOK === false) bits.push('start at the green dot');
+          if (l.wrong.length) bits.push(l.wrong.length > 1 ? `${l.wrong.length} strokes went the wrong way — follow the green arrows` : 'one stroke went the wrong way — follow the green arrows');
+          return `<li><b style="font-family:var(--kid)">${esc(showText(l.ch))}</b><span>${bits.join('; ')}</span></li>`;
+        }).join('') + '</ul>';
+      }
+    }
+    if (S.fbLetters && ev.letterScores.length > 1) {
+      const fam = styleDef().stroke ? 'var(--kid)' : STYLES.cursive.family;
+      h += '<p class="section-label">Each letter</p><div class="letters-row">' +
+        ev.letterScores.map(l => `<span class="chip ${tierClass(l.acc)}" style="font-family:${fam}">${esc(showText(l.ch))}${S.fbPercent ? `<small>${l.acc}%</small>` : ''}</span>`).join('') + '</div>';
+    }
+    const leg = [];
+    if (S.fbOff) leg.push('<span><i class="sw" style="background:var(--bad)"></i>Red: ink went off the path</span>');
+    if (S.fbMissed) leg.push('<span><i class="sw" style="background:var(--missed)"></i>Orange: part of a letter not traced yet</span>');
+    if (S.fbFormation && f && (f.startsOK < f.startsN || f.dirsOK < f.dirsN)) leg.push('<span><i class="sw" style="background:var(--demo)"></i>Green: where to start and which way to go</span>');
+    if (leg.length) h += `<div class="legend">${leg.join('')}</div>`;
+    const bits = [`Time ${ev.secs} s`, `Pen lifts ${ev.lifts}${ev.modelLifts != null ? ` (letters need ${ev.modelLifts})` : ''}`];
+    if (ev.pressure != null) bits.push(`Pencil pressure ${pressureWord(ev.pressure)} (${ev.pressure})`);
+    h += `<p class="details">${bits.join(' · ')}</p>`;
+
+    if (allDone && state.steps.length > 1) h += summaryHtml();
+
+    h += '<div class="result-actions"><button class="btn btn-big" type="button" data-act="again">Try again</button>';
+    if (!isLast) {
+      h += `<button class="btn btn-next btn-big" type="button" data-act="next">${nextLabel()}</button>`;
+    } else if (allDone) {
+      h += '<button class="btn btn-primary btn-big" type="button" data-act="restart">Start over</button>';
+    } else {
+      h += '<button class="btn btn-primary btn-big" type="button" data-act="missing">Go to the next unfinished part →</button>';
+    }
+    h += '</div>';
+    resultEl.innerHTML = h;
+    resultEl.hidden = false;
+    syncNext();
+    if (fresh) {
+      showPop(ev, stars, msg, tip);
+      if (S.fbStars) say(msg + ' ' + tip);
+    }
+  }
+
+  // ---------- Next: toolbar button and pop-up ----------
+  function nextLabel(){
+    const cur = state.steps[state.stepIdx], nx = state.steps[state.stepIdx + 1];
+    if (!nx) return '';
+    if (nx.warm) return 'Next part →';
+    if (cur.warm || nx.row !== cur.row) return `Next: row ${nx.row + 1} →`;
+    return S.mode === 'letter' ? 'Next letter →' : 'Next part →';
+  }
+  function syncNext(){
+    const b = $('nextBtn');
+    const has = state.checked && state.stepIdx < state.steps.length - 1;
+    b.hidden = !has;
+    if (has) b.textContent = nextLabel();
+  }
+  function goNext(){
+    hidePop();
+    if (state.stepIdx >= state.steps.length - 1) return;
+    state.stepIdx++; showStep(false);
+    sheetCard.scrollIntoView({block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  }
+  function tryAgain(){ hidePop(); state.strokes = []; state.t0 = null; clearChecked(); redrawInk(); }
+  $('nextBtn').addEventListener('click', goNext);
+  const popEl = $('pop');
+  let popTimer = null;
+  function hidePop(){ clearInterval(popTimer); popTimer = null; popEl.hidden = true; }
+  function showPop(ev, stars, msg, tip){
+    hidePop();
+    const hasNext = state.stepIdx < state.steps.length - 1;
+    const allDone = state.results.every(Boolean);
+    let h = '<div class="pop-top">';
+    if (S.fbStars) h += `<div class="stars popin" role="img" aria-label="${stars} out of 3 stars">` +
+      [1,2,3].map(i => `<svg viewBox="0 0 24 24" aria-hidden="true"><path class="${i <= stars ? 'star-on' : 'star-off'}" d="${STAR}"/></svg>`).join('') + '</div>';
+    if (S.fbPercent) h += `<div class="pop-score" style="color:${tierColor(ev.acc)}">${ev.acc}%</div>`;
+    h += '</div>';
+    if (S.fbStars) h += `<div><p class="pop-msg">${esc(msg)}</p><p class="pop-tip">${esc(tip)}</p></div>`;
+    else if (!S.fbPercent) h += `<p class="pop-msg">All done!</p>`;
+    const auto = S.autoNext && stars === 3 && hasNext;
+    if (auto) h += '<p class="pop-count" id="popCount">Moving on in 3…</p>';
+    h += '<div class="pop-actions">';
+    h += `<button class="btn btn-big" type="button" data-pop="again">Try again</button>`;
+    if (hasNext) h += `<button class="btn btn-next btn-big" type="button" data-pop="next">${nextLabel()}</button>`;
+    else if (allDone) h += `<button class="btn btn-primary btn-big" type="button" data-pop="restart">Start over</button>`;
+    else h += `<button class="btn btn-primary btn-big" type="button" data-pop="missing">Next unfinished part →</button>`;
+    h += '</div>';
+    if (!isStudent()) h += `<div><button class="linkish" type="button" data-pop="details">${auto ? 'Stay here and see details' : 'See details and my tracing'}</button></div>`;
+    $('popBody').innerHTML = h;
+    popEl.hidden = false;
+    const nb = popEl.querySelector('[data-pop="next"],[data-pop="restart"],[data-pop="missing"]');
+    if (nb) nb.focus({preventScroll: true});
+    if (auto) {
+      let n = 3;
+      popTimer = setInterval(() => {
+        n--;
+        const c = $('popCount'); if (c) c.textContent = n > 0 ? `Moving on in ${n}…` : 'Moving on…';
+        if (n <= 0) { clearInterval(popTimer); popTimer = null; goNext(); }
+      }, 1000);
+    }
+  }
+  $('popX').addEventListener('click', hidePop);
+  popEl.addEventListener('click', e => {
+    const b = e.target.closest('[data-pop]'); if (!b) return;
+    const act = b.dataset.pop;
+    if (act === 'next') goNext();
+    else if (act === 'again') tryAgain();
+    else if (act === 'restart') { hidePop(); state.results = state.steps.map(() => null); state.snaps = []; state.stepIdx = 0; showStep(false); }
+    else if (act === 'missing') { hidePop(); const i = state.results.findIndex(r => !r); if (i >= 0) { state.stepIdx = i; showStep(false); } }
+    else if (act === 'details') { hidePop(); resultEl.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start'}); }
+  });
+  const pressureWord = p => p < 25 ? 'light' : p < 60 ? 'medium' : 'heavy';
+
+  function summaryHtml(){
+    const rows = +S.rows || 1;
+    let h = '<p class="section-label">Summary of all rows</p><div class="log-wrap"><table class="sum-table"><thead><tr><th>Row</th><th>Support</th><th>Accuracy</th><th>Formation</th></tr></thead><tbody>';
+    for (let r = 0; r < rows; r++) {
+      const idx = state.steps.map((s, i) => s.row === r ? i : -1).filter(i => i >= 0);
+      const rs = idx.map(i => state.results[i]).filter(Boolean);
+      const tw = rs.reduce((a, x) => a + x.weight, 0) || 1;
+      const acc = Math.round(rs.reduce((a, x) => a + x.acc * x.weight, 0) / tw);
+      const fs = rs.filter(x => x.form != null);
+      const form = fs.length ? Math.round(fs.reduce((a, x) => a + x.form, 0) / fs.length) : null;
+      h += `<tr><td>Row ${r + 1}</td><td>${SUPPORT_LABEL[supportFor(r)]}</td><td class="num"><b style="color:${tierColor(acc)}">${acc}%</b></td><td class="num">${form == null ? '—' : form + '%'}</td></tr>`;
+    }
+    return h + '</tbody></table></div>';
+  }
+
+  resultEl.addEventListener('click', e => {
+    const b = e.target.closest('button[data-act]'); if (!b) return;
+    const act = b.dataset.act;
+    if (act === 'again') tryAgain();
+    if (act === 'next') { goNext(); return; }
+    if (act === 'restart') { state.results = state.steps.map(() => null); state.snaps = []; state.stepIdx = 0; showStep(false); }
+    if (act === 'missing') { const i = state.results.findIndex(r => !r); if (i >= 0) { state.stepIdx = i; showStep(false); } }
+    sheetCard.scrollIntoView({block: 'nearest'});
+  });
+
+  // =====================================================================
+  // Watch me
+  // =====================================================================
+  function stopAnim(){
+    if (!anim) return;
+    anim.cancel = true; anim = null;
+    $('watchBtn').querySelector('span').textContent = 'Watch me';
+    if (G) { fC.getContext('2d').clearRect(0, 0, G.W, G.H); if (state.checked) drawOverlay(state.lastEval); }
+    try { if (S.readAloud) speechSynthesis.cancel(); } catch(e) {}
+  }
+  const wait = (ms, a) => new Promise(r => setTimeout(() => r(!a.cancel), ms));
+  async function watchMe(){
+    if (!G || !G.stroke) return;
+    const a = anim = {cancel: false};
+    $('watchBtn').querySelector('span').textContent = 'Stop';
+    const ctx = fC.getContext('2d');
+    ctx.clearRect(0, 0, G.W, G.H);
+    const green = tok('--demo');
+    const lw = Math.max(3, G.stem * 0.55);
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const done = [];
+    const style = S.watchStyle || 'pen';
+    const edgeD = G.stem / 2 + G.tol * 0.7, edgeW = clamp(G.stem * 0.22, 2.5, 6);
+    const repaint = (m, upTo) => {
+      ctx.clearRect(0, 0, G.W, G.H);
+      let tip = null;
+      if (style !== 'outline') {
+        ctx.save(); ctx.globalAlpha = 0.8; ctx.strokeStyle = green; ctx.fillStyle = green; ctx.lineWidth = lw; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+        done.forEach(d => drawPartial(ctx, d, d.len, lw));
+        if (m) tip = drawPartial(ctx, m, upTo, lw);
+        ctx.restore();
+      }
+      if (style !== 'pen') {
+        done.forEach(d => drawEdges(ctx, d, d.len, edgeD, green, edgeW));
+        if (m) { drawEdges(ctx, m, upTo, edgeD, green, edgeW); if (!tip) tip = m.dot ? m.pts[0] : pointAt(m, upTo); }
+      }
+      if (tip) { ctx.beginPath(); ctx.arc(tip.x, tip.y, lw * 0.9, 0, Math.PI * 2); ctx.fillStyle = tok('--pencil'); ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = tok('--pencil-ink') || '#2A1F00'; ctx.stroke(); }
+    };
+    for (const Lt of G.letters) {
+      if (!Lt.model) continue;
+      if (S.readAloud) say(`${letterSayName(Lt.ch)} ${Lt.cue}`, true);
+      for (const m of Lt.model) {
+        if (m.dot) {
+          if (!(await wait(250, a))) return;
+          done.push(m); repaint(null, 0);
+          continue;
+        }
+        const dur = reduce ? 0 : clamp(m.len / (G.u * 1.6) * 1000, 350, 4000);
+        const t0 = performance.now();
+        await new Promise(res => {
+          const tick = () => {
+            if (a.cancel) return res();
+            const p = dur ? clamp((performance.now() - t0) / dur, 0, 1) : 1;
+            repaint(m, m.len * p);
+            if (p < 1) requestAnimationFrame(tick); else res();
+          };
+          tick();
+        });
+        if (a.cancel) return;
+        done.push(m);
+        if (!(await wait(300, a))) return;
+      }
+      if (!(await wait(S.readAloud ? 1200 : 450, a))) return;
+    }
+    if (!(await wait(1200, a))) return;
+    stopAnim();
+  }
+  // Offset edges of a stroke (the outside border of the tracing path)
+  function edgesFor(m, d){
+    if (m._edges && m._edges.d === d) return m._edges;
+    const Lp = [], Rp = [], n = m.pts.length;
+    for (let i = 0; i < n; i++) {
+      const a = m.pts[Math.max(0, i - 2)], b = m.pts[Math.min(n - 1, i + 2)];
+      let tx = b.x - a.x, ty = b.y - a.y; const l = Math.hypot(tx, ty) || 1; tx /= l; ty /= l;
+      const p = m.pts[i];
+      Lp.push({x: p.x - ty * d, y: p.y + tx * d}); Rp.push({x: p.x + ty * d, y: p.y - tx * d});
+    }
+    return (m._edges = {d, L: Lp, R: Rp});
+  }
+  function drawEdges(ctx, m, upTo, d, color, lw){
+    ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = lw; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    if (m.dot) { ctx.beginPath(); ctx.arc(m.pts[0].x, m.pts[0].y, d * 0.8, 0, Math.PI * 2); ctx.stroke(); ctx.restore(); return; }
+    const e = edgesFor(m, d);
+    let k = 0; while (k + 1 < m.pts.length && m.C[k + 1] <= upTo) k++;
+    const p0 = m.pts[0], aL = Math.atan2(e.L[0].y - p0.y, e.L[0].x - p0.x);
+    ctx.beginPath(); ctx.arc(p0.x, p0.y, d, aL, aL + Math.PI, false); ctx.stroke();
+    [e.L, e.R].forEach(arr => { ctx.beginPath(); ctx.moveTo(arr[0].x, arr[0].y); for (let i = 1; i <= k; i++) ctx.lineTo(arr[i].x, arr[i].y); ctx.stroke(); });
+    if (upTo >= m.len - 0.5) {
+      const n = m.pts.length - 1, pe = m.pts[n], aLe = Math.atan2(e.L[n].y - pe.y, e.L[n].x - pe.x);
+      ctx.beginPath(); ctx.arc(pe.x, pe.y, d, aLe, aLe - Math.PI, true); ctx.stroke();
+    }
+    ctx.restore();
+  }
+  function drawPartial(ctx, m, upTo, lw){
+    if (m.dot) { ctx.beginPath(); ctx.arc(m.pts[0].x, m.pts[0].y, lw * 0.9, 0, Math.PI * 2); ctx.fill(); return m.pts[0]; }
+    ctx.beginPath(); ctx.moveTo(m.pts[0].x, m.pts[0].y);
+    let last = m.pts[0];
+    for (let i = 1; i < m.pts.length && m.C[i] <= upTo; i++) { ctx.lineTo(m.pts[i].x, m.pts[i].y); last = m.pts[i]; }
+    const e = pointAt(m, upTo); ctx.lineTo(e.x, e.y); ctx.stroke();
+    return e;
+  }
+
+
+  // =====================================================================
+  // Stroke strip
+  // =====================================================================
+  const stripEl = $('strip');
+  let stripTiles = [], stripRaf = 0, stripActive = 0, stripT0 = 0;
+  function renderStrip(){
+    cancelAnimationFrame(stripRaf);
+    const step = state.steps[state.stepIdx];
+    const off = () => { stripEl.hidden = true; stripEl.innerHTML = ''; stripTiles = []; };
+    if (!S.strip || !step || !styleDef().stroke) return off();
+    const chars = [...step.text].filter(ch => !/\s/.test(ch) && glyphFor(ch));
+    if (!chars.length) return off();
+    stripEl.hidden = false;
+    stripEl.innerHTML = `<span class="strip-title">${step.warm ? 'Watch the lines and curves' : 'Watch how to write ' + esc(step.text)} · tap a letter to see it again</span>`;
+    const r = dpr(), slant = styleDef().slant;
+    const u = 22, pad = 10, H = Math.round(3 * u + 2 * pad), base = pad + 2 * u;
+    stripTiles = chars.map(ch => {
+      const gl = glyphFor(ch);
+      const W = Math.max(56, Math.round(gl.width * u + slant * 2 * u + 2 * pad + 8));
+      const ox = (W - gl.width * u - slant * 2 * u) / 2 + slant * 2 * u;
+      const strokes = gl.strokes.map(st => {
+        const pts = st.pts.map(q => ({x: ox + (q.x + slant * (-q.y)) * u, y: base + q.y * u}));
+        const C = [0]; for (let i = 1; i < pts.length; i++) C.push(C[i - 1] + Math.hypot(pts[i].x - pts[i-1].x, pts[i].y - pts[i-1].y));
+        return {dot: st.dot, pts, C, len: C[C.length - 1]};
+      });
+      const total = strokes.reduce((a, m) => a + (m.dot ? u : m.len), 0);
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'tile';
+      const name = WARM_NAME[ch] ? WARM_NAME[ch] : (/\p{Lu}/u.test(ch) ? 'Capital ' : /\p{Ll}/u.test(ch) ? 'Lowercase ' : '') + ch;
+      b.setAttribute('aria-label', `${name}: ${gl.cue}`); b.style.width = 'auto'; b.style.minWidth = (W + 8) + 'px';
+      const cv = document.createElement('canvas'); cv.width = Math.round(W * r); cv.height = Math.round(H * r); cv.style.width = W + 'px'; cv.style.height = H + 'px';
+      cv.setAttribute('aria-hidden', 'true');
+      const lab = document.createElement('span'); lab.textContent = WARM_NAME[ch] || ch; lab.style.fontFamily = WARM_NAME[ch] ? '' : 'var(--kid)'; if (!WARM_NAME[ch]) lab.style.fontSize = '16px';
+      b.append(cv, lab); stripEl.appendChild(b);
+      const tile = {ch, b, cv, W, H, u, base, strokes, total, cue: gl.cue, name};
+      b.addEventListener('click', () => { stripActive = stripTiles.indexOf(tile); stripT0 = performance.now(); say(`${name}. ${gl.cue}`); if (reduceMotion()) stripDraw(); });
+      return tile;
+    });
+    stripActive = 0; stripT0 = performance.now();
+    if (reduceMotion()) stripDraw(); else stripLoop();
+  }
+  const reduceMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function drawTile(t, prog, active){
+    const ctx = t.cv.getContext('2d'), r = dpr(), {W, H, u, base} = t;
+    ctx.setTransform(r, 0, 0, r, 0, 0); ctx.clearRect(0, 0, W, H);
+    const guide = tok('--guide'), green = tok('--demo');
+    ctx.lineWidth = 1; ctx.strokeStyle = tok('--rule-blue');
+    [[base - 2 * u, []], [base - u, [3, 3]]].forEach(([y, d]) => { ctx.setLineDash(d); ctx.beginPath(); ctx.moveTo(2, y); ctx.lineTo(W - 2, y); ctx.stroke(); });
+    ctx.setLineDash([]); ctx.strokeStyle = tok('--rule-red'); ctx.beginPath(); ctx.moveTo(2, base); ctx.lineTo(W - 2, base); ctx.stroke();
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    // faint full letter underneath
+    ctx.save(); ctx.globalAlpha = 0.3; ctx.strokeStyle = guide; ctx.fillStyle = guide; ctx.lineWidth = 6;
+    t.strokes.forEach(m => { if (m.dot) { ctx.beginPath(); ctx.arc(m.pts[0].x, m.pts[0].y, 3.5, 0, Math.PI * 2); ctx.fill(); } else { ctx.beginPath(); ctx.moveTo(m.pts[0].x, m.pts[0].y); m.pts.forEach(q => ctx.lineTo(q.x, q.y)); ctx.stroke(); } });
+    ctx.restore();
+    let left = active ? prog * t.total : t.total, tip = null;
+    ctx.strokeStyle = green; ctx.fillStyle = green; ctx.lineWidth = 4.5;
+    for (const m of t.strokes) {
+      if (left <= 0) break;
+      if (m.dot) { ctx.beginPath(); ctx.arc(m.pts[0].x, m.pts[0].y, 3.5, 0, Math.PI * 2); ctx.fill(); left -= u; tip = m.pts[0]; continue; }
+      const d = Math.min(m.len, left);
+      tip = drawPartial(ctx, m, d, 4.5);
+      if (d >= m.len && (!active || prog >= 1)) arrowAlong(ctx, m, Math.max(0, m.len - 9), m.len, green, 3);
+      left -= m.len;
+    }
+    if (active && prog < 1 && tip) { ctx.beginPath(); ctx.arc(tip.x, tip.y, 4.5, 0, Math.PI * 2); ctx.fillStyle = tok('--pencil'); ctx.fill(); ctx.lineWidth = 1.5; ctx.strokeStyle = '#2A1F00'; ctx.stroke(); }
+    const s0 = t.strokes[0].pts[0];
+    ctx.beginPath(); ctx.arc(s0.x, s0.y, 4.5, 0, Math.PI * 2); ctx.fillStyle = tok('--start'); ctx.fill();
+  }
+  function stripDraw(){ stripTiles.forEach((t, i) => { t.b.classList.toggle('on', i === stripActive); drawTile(t, 1, false); }); }
+  function stripLoop(){
+    if (!stripTiles.length) return;
+    const now = performance.now(), t = stripTiles[stripActive];
+    const dur = clamp(t.total / t.u * 420, 900, 3200), hold = 800;
+    let el = now - stripT0;
+    if (el > dur + hold) { stripActive = (stripActive + 1) % stripTiles.length; stripT0 = now; el = 0; }
+    stripTiles.forEach((tt, i) => { const act = i === stripActive; tt.b.classList.toggle('on', act); drawTile(tt, act ? Math.min(1, el / (act ? clamp(tt.total / tt.u * 420, 900, 3200) : 1)) : 1, act); });
+    stripRaf = requestAnimationFrame(stripLoop);
+  }
+
+  // =====================================================================
+  // Snapshots and PDFs
+  // =====================================================================
+  function makeSnapshot(ev, step){
+    const sc = 1.5, W = G.W, H = G.H;
+    const cv = document.createElement('canvas'); cv.width = Math.round(W * sc); cv.height = Math.round(H * sc);
+    const g = cv.getContext('2d'); g.setTransform(sc, 0, 0, sc, 0, 0);
+    g.fillStyle = '#FFFFFF'; g.fillRect(0, 0, W, H);
+    renderSheet(g, G, {col: PRINT, sup: supportFor(step.row), lines: true, lane: false, starts: G.stroke && S.fbStart, order: false, x0: 8, x1: W - 8});
+    g.lineCap = 'round'; g.lineJoin = 'round';
+    state.strokes.forEach(s => {
+      const c = PRINT.pens[s.pen - 1] || PRINT.pens[0];
+      g.strokeStyle = c; g.fillStyle = c; g.lineWidth = s.w;
+      if (s.pts.length === 1) { g.beginPath(); g.arc(s.pts[0].x, s.pts[0].y, s.w / 2, 0, Math.PI * 2); g.fill(); return; }
+      g.beginPath(); g.moveTo(s.pts[0].x, s.pts[0].y); s.pts.forEach(p => g.lineTo(p.x, p.y)); g.stroke();
+    });
+    if (ev.offPts.length) {
+      g.save(); g.globalAlpha = 0.5; g.fillStyle = PRINT.bad; g.beginPath();
+      for (let i = 0; i < ev.offPts.length; i += 3) { const r = ev.offPts[i + 2] / 2 + 2; g.moveTo(ev.offPts[i] + r, ev.offPts[i + 1]); g.arc(ev.offPts[i], ev.offPts[i + 1], r, 0, Math.PI * 2); }
+      g.fill(); g.restore();
+    }
+    const f = ev.form;
+    const issues = f ? f.letters.filter(l => l.startOK === false || l.wrong.length).map(l => {
+      const bits = [];
+      if (l.startOK === false) bits.push('did not start at the green dot');
+      if (l.wrong.length) bits.push(l.wrong.length > 1 ? `${l.wrong.length} strokes went the wrong way` : '1 stroke went the wrong way');
+      return `${pdfText(l.ch)}: ${bits.join('; ')}`;
+    }) : [];
+    return {
+      img: cv.toDataURL('image/jpeg', 0.9), w: cv.width, h: cv.height,
+      label: step.warm ? `Warm-up (${pdfText(step.text)})` : `Row ${step.row + 1} · ${SUPPORT_LABEL[supportFor(step.row)]} · ${step.text}`,
+      acc: ev.acc, onPath: ev.onPath, finished: ev.finished, form: f ? f.pct : null,
+      starts: f ? `${f.startsOK} of ${f.startsN}` : '', dirs: f ? `${f.dirsOK} of ${f.dirsN}` : '',
+      secs: ev.secs, lifts: ev.lifts, modelLifts: ev.modelLifts, pressure: ev.pressure, issues,
+      style: styleDef().label, height: state.sizeInfo.fill ? 'Fill screen' : sizeDef().label, t: new Date()
+    };
+  }
+
+  const pdfModal = $('pdfModal');
+  $('pdfBtn').addEventListener('click', () => guarded(openPdf));
+  $('pdfClose').addEventListener('click', closePdf);
+  function closePdf(){ pdfModal.hidden = true; unlocked = false; $('pdfBtn').focus(); }
+  function syncWs(){
+    $('wsSize').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.value === String(S.wsSize))));
+    $('wsWarm').checked = !!S.wsWarm;
+  }
+  $('wsSize').addEventListener('click', e => { const b = e.target.closest('button[data-value]'); if (!b) return; S.wsSize = b.dataset.value; saveS(); syncWs(); });
+  $('wsWarm').addEventListener('change', e => { S.wsWarm = e.target.checked; saveS(); });
+  async function openPdf(){
+    pdfModal.hidden = false;
+    $('pdfStatus').textContent = '';
+    $('pdfWsName').textContent = displayName();
+    syncWs();
+    const n = state.snaps.filter(Boolean).length;
+    $('pdfTodayHint').textContent = n
+      ? `A picture of each part traced during this visit (${n} so far), with scores and letters to practice.`
+      : 'A picture of each part traced during this visit, with scores. Nothing has been checked yet.';
+    $('pdfToday').disabled = !n;
+    const sel = $('pdfStudent');
+    sel.innerHTML = '<option>Loading…</option>';
+    const data = await loadProgress();
+    sel.innerHTML = data.length ? data.map(p => `<option value="${esc(p.id)}">${esc(p.name)} (${p.attempts.length})</option>`).join('') : '<option value="">No saved tries yet</option>';
+    const cur = slug(state.name);
+    if (data.some(p => p.id === cur)) sel.value = cur;
+    $('pdfReport').disabled = !data.length;
+    pdfModal._data = data;
+    $('pdfClose').focus();
+  }
+  const LIB = () => window.PDFLib || null;
+  // Small drawing helper over pdf-lib, using points with a top-left origin.
+  async function newPdf(){
+    const {PDFDocument, StandardFonts} = LIB();
+    const doc = await PDFDocument.create();
+    const reg = await doc.embedFont(StandardFonts.Helvetica), bold = await doc.embedFont(StandardFonts.HelveticaBold);
+    const P = {doc, page: null, W: 612, H: 792, pages: []};
+    const col = hex => { const n = parseInt(hex.replace('#', ''), 16); return LIB().rgb(((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255); };
+    P.addPage = (w = 612, h = 792) => { P.page = doc.addPage([w, h]); P.W = w; P.H = h; P.pages.push(P.page); return P.page; };
+    P.font = b => b ? bold : reg;
+    P.width = (t, size, b) => P.font(b).widthOfTextAtSize(pdfSafe(t), size);
+    P.text = (t, x, y, o = {}) => {
+      t = pdfSafe(t); const size = o.size || 10, f = P.font(o.bold);
+      let xx = x; const w = f.widthOfTextAtSize(t, size);
+      if (o.align === 'right') xx = x - w; else if (o.align === 'center') xx = x - w / 2;
+      P.page.drawText(t, {x: xx, y: P.H - y, size, font: f, color: col(o.color || '#18212F')});
+    };
+    P.fit = (t, w, size, b) => { t = pdfSafe(t); if (P.width(t, size, b) <= w) return t; while (t.length > 1 && P.width(t + '...', size, b) > w) t = t.slice(0, -1); return t + '...'; };
+    P.wrap = (t, w, size, b) => { const out = []; let cur = ''; pdfSafe(t).split(' ').forEach(word => { const tr = cur ? cur + ' ' + word : word; if (P.width(tr, size, b) > w && cur) { out.push(cur); cur = word; } else cur = tr; }); if (cur) out.push(cur); return out; };
+    P.line = (x1, y1, x2, y2, o = {}) => P.page.drawLine({start: {x: x1, y: P.H - y1}, end: {x: x2, y: P.H - y2}, thickness: o.w || 1, color: col(o.color || '#D3DBE7'), dashArray: o.dash});
+    P.rect = (x, y, w, h, o = {}) => P.page.drawRectangle({x, y: P.H - y - h, width: w, height: h, color: o.fill ? col(o.fill) : undefined, borderColor: o.stroke ? col(o.stroke) : undefined, borderWidth: o.stroke ? (o.w || 1) : 0});
+    P.circle = (x, y, r, fill) => P.page.drawCircle({x, y: P.H - y, size: r, color: col(fill)});
+    P.image = async (dataUrl, x, y, w, h) => {
+      const img = dataUrl.startsWith('data:image/png') ? await doc.embedPng(dataUrl) : await doc.embedJpg(dataUrl);
+      P.page.drawImage(img, {x, y: P.H - y - h, width: w, height: h});
+    };
+    P.footer = label => P.pages.forEach((pg, i) => { P.page = pg; P.H = pg.getHeight(); P.text(`${label} · Page ${i + 1} of ${P.pages.length}`, 48, P.H - 24, {size: 8.5, color: '#8C96A8'}); });
+    return P;
+  }
+  async function savePdf(P, filename, statusEl){
+    const bytes = await P.doc.save();
+    const blob = new Blob([bytes], {type: 'application/pdf'});
+    if (!downloads) { const m = 'Downloading is not available in this view.'; if (statusEl) statusEl.textContent = m; toast(m); return; }
+    try { await downloads.save({filename, data: blob}); toast('Saved ' + filename); if (statusEl) statusEl.textContent = 'Saved ' + filename; }
+    catch(e) {
+      if (e && e.code === 'declined') return;
+      const msg = e && e.code === 'rate_limited' ? 'A save is already waiting for you to confirm.' : 'The PDF could not be saved. Try again.';
+      toast(msg); if (statusEl) statusEl.textContent = msg;
+    }
+  }
+  function needLib(statusEl){
+    if (LIB()) return true;
+    const m = 'The PDF tool is still loading. Try again in a moment.';
+    if (statusEl) statusEl.textContent = m; toast(m); return false;
+  }
+  const busy = async (btn, fn) => { if (btn.disabled) return; btn.disabled = true; const t = btn.textContent; btn.textContent = 'Making PDF…'; try { await fn(); } catch(e) { toast('The PDF could not be made. Try again.'); } finally { btn.disabled = false; btn.textContent = t; } };
+  $('pdfWs').addEventListener('click', e => { if (needLib($('pdfStatus'))) busy(e.currentTarget, () => worksheetPdf(+S.wsSize || 1, !!S.wsWarm)); });
+  $('pdfToday').addEventListener('click', e => { if (needLib($('pdfStatus'))) busy(e.currentTarget, todayPdf); });
+  $('pdfReport').addEventListener('click', e => {
+    const p = (pdfModal._data || []).find(x => x.id === $('pdfStudent').value);
+    if (p && needLib($('pdfStatus'))) busy(e.currentTarget, () => reportPdf(p, $('pdfStatus')));
+  });
+  $('progPdf').addEventListener('click', e => {
+    const p = progData.find(x => x.id === $('progStudent').value);
+    if (p && needLib($('progStatus'))) busy(e.currentTarget, () => reportPdf(p, $('progStatus')));
+  });
+  const pdfSafe = s => String(s == null ? '' : s).replace(/[→←]/g, '-').replace(/[–—]/g, '-').replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/…/g, '...').replace(/[^\x20-\x7E -ÿ]/g, '?');
+
+  // ---- Worksheet (drawn at 200 dots per inch, placed on a letter page) ----
+  function worksheetCanvas(hIn, warm){
+    const text = displayName(), st = styleDef(), DPI = 200;
+    const perH = t => textWidthPx(t, 100) / 100;
+    const margin = 0.5, indent = 0.15;
+    const usable = pw => pw - 2 * margin - indent - 0.1;
+    const land = perH(text) * hIn > usable(8.5);
+    const pw = land ? 11 : 8.5, ph = land ? 8.5 : 11;
+    let h = hIn;
+    if (perH(text) * h > usable(pw)) h = Math.floor(usable(pw) / perH(text) * 16) / 16;
+    const cv = document.createElement('canvas'); cv.width = pw * DPI; cv.height = ph * DPI;
+    const g = cv.getContext('2d');
+    g.fillStyle = '#FFFFFF'; g.fillRect(0, 0, cv.width, cv.height);
+    const M = margin * DPI, x0 = M + indent * DPI, x1 = cv.width - M;
+    g.fillStyle = '#18212F'; g.font = `700 ${0.17 * DPI}px "Atkinson Hyperlegible", Arial, sans-serif`; g.textBaseline = 'alphabetic';
+    const hy = M + 0.2 * DPI;
+    g.fillText('Name', M, hy); g.fillText('Date', cv.width * 0.64, hy);
+    g.strokeStyle = '#18212F'; g.lineWidth = 2;
+    g.beginPath(); g.moveTo(M + 0.62 * DPI, hy + 4); g.lineTo(cv.width * 0.6, hy + 4); g.moveTo(cv.width * 0.64 + 0.55 * DPI, hy + 4); g.lineTo(x1, hy + 4); g.stroke();
+    g.fillStyle = '#586377'; g.font = `400 ${0.12 * DPI}px "Atkinson Hyperlegible", Arial, sans-serif`;
+    const tip = st.stroke && S.fbStart ? 'Start at the green dot and follow the arrow. Trace, then write on your own.' : 'Trace the letters, then write on your own.';
+    g.fillText(`Handwriting practice · ${st.label} · ${tip}`, M, hy + 0.34 * DPI);
+    const size = h * DPI, u = size / 2;
+    const stem = Math.max(0.05 * DPI, size * 0.085);
+    const px = DPI / 96;
+    const rowH = 3 * u + 0.32 * DPI;
+    let y = hy + 0.6 * DPI;
+    const rowsFit = Math.max(1, Math.floor((cv.height - M - 0.2 * DPI - y) / rowH));
+    const plan = [];
+    if (warm && st.stroke) plan.push({text: WARM_TEXT, sup: 'dotted', warm: true});
+    const k = Math.max(1, rowsFit - plan.length);
+    const a = Math.max(1, Math.round(k * 0.3)), b = k > 1 ? Math.max(1, Math.round(k * 0.3)) : 0;
+    for (let i = 0; i < k; i++) plan.push({text, sup: i < a ? S.guide : i < a + b ? (S.dotsRow ? 'none' : 'faint') : 'blank'});
+    plan.slice(0, rowsFit).forEach(row => {
+      let t = row.text;
+      if (row.warm && perH(t) * h > usable(pw)) t = t.split(' ')[0];
+      const baseline = y + 2 * u;
+      const letters = layoutLetters(t, size, cv.width, baseline, stem, x0);
+      const geo = {text: t, size, u, W: cv.width, H: cv.height, baseline, stem, tol: 0, st, letters, stroke: st.stroke, px};
+      renderSheet(g, geo, {col: PRINT, sup: row.sup, lines: true, lane: false, starts: st.stroke && S.fbStart, order: S.fbOrder, x0: M, x1});
+      y += rowH;
+    });
+    g.fillStyle = '#8C96A8'; g.font = `400 ${0.1 * DPI}px "Atkinson Hyperlegible", Arial, sans-serif`;
+    g.fillText(`Letters ${fmtIn(h)} tall${h < hIn ? ' (made smaller to fit the page)' : ''} · Trace My Name`, M, cv.height - M * 0.6);
+    return {cv, land};
+  }
+  async function worksheetPdf(hIn, warm){
+    const {cv, land} = worksheetCanvas(hIn, warm);
+    const P = await newPdf();
+    const w = land ? 792 : 612, h = land ? 612 : 792;
+    P.addPage(w, h);
+    await P.image(cv.toDataURL('image/png'), 0, 0, w, h);
+    await savePdf(P, `${slug(state.name)}-name-tracing-worksheet.pdf`, $('pdfStatus'));
+  }
+  function fmtIn(v){ const w = Math.floor(v), f = v - w; const fr = Math.abs(f - .25) < .07 ? '¼' : Math.abs(f - .5) < .07 ? '½' : Math.abs(f - .75) < .07 ? '¾' : ''; return (fr ? (w ? w : '') + fr : (Math.round(v * 100) / 100).toString()) + ' in'; }
+
+  // ---- Progress report ----
+  async function reportPdf(p, statusEl){
+    const at = p.attempts.slice().sort((a, b) => a.t.localeCompare(b.t));
+    if (!at.length) { if (statusEl) statusEl.textContent = 'No saved tries for this student yet.'; return; }
+    const dfmt = iso => new Date(iso).toLocaleDateString([], {month: 'short', day: 'numeric', year: 'numeric'});
+    const P = await newPdf(); P.addPage();
+    const M = 48, W = 612 - 2 * M;
+    P.text(`Handwriting progress: ${p.name}`, M, 58, {size: 19, bold: true});
+    P.text(`${dfmt(at[0].t)} to ${dfmt(at[at.length - 1].t)} · Zaner-Bloser name tracing · Made ${dfmt(new Date().toISOString())}`, M, 76, {size: 10.5, color: '#586377'});
+    let y = 96;
+    const last10 = at.slice(-10);
+    const avg = arr => arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : null;
+    const accAvg = avg(last10.map(r => r.acc)), formAvg = avg(last10.filter(r => r.form != null).map(r => r.form));
+    const days = new Set(at.map(r => r.t.slice(0, 10))).size;
+    const stats = [['TRIES SAVED', String(at.length)], ['PRACTICE DAYS', String(days)], ['ACCURACY, LAST 10', accAvg == null ? '-' : accAvg + '%'], ['FORMATION, LAST 10', formAvg == null ? '-' : formAvg + '%']];
+    const bw = (W - 30) / 4;
+    stats.forEach(([l, v], i) => {
+      const x = M + i * (bw + 10);
+      P.rect(x, y, bw, 52, {stroke: '#D3DBE7'});
+      P.text(l, x + 10, y + 16, {size: 7.5, bold: true, color: '#586377'});
+      P.text(v, x + 10, y + 42, {size: 20, bold: true});
+    });
+    y += 80;
+    const byDay = new Map();
+    at.forEach(r => { const d = r.t.slice(0, 10); if (!byDay.has(d)) byDay.set(d, []); byDay.get(d).push(r); });
+    const pts = [...byDay.keys()].sort().map(d => { const rs = byDay.get(d); const fs = rs.filter(r => r.form != null);
+      return {d, acc: Math.round(rs.reduce((a, r) => a + r.acc, 0) / rs.length), form: fs.length ? Math.round(fs.reduce((a, r) => a + r.form, 0) / fs.length) : null}; });
+    const hasForm = pts.some(q => q.form != null);
+    P.text('Daily average', M, y, {size: 11, bold: true});
+    let lx = M + 92;
+    P.circle(lx, y - 3.5, 3.5, '#2a78d6'); P.text('Accuracy', lx + 7, y, {size: 9, color: '#586377'}); lx += 62;
+    if (hasForm) { P.rect(lx - 3.5, y - 7, 7, 7, {fill: '#eb6834'}); P.text('Formation', lx + 7, y, {size: 9, color: '#586377'}); lx += 66; }
+    P.line(lx - 4, y - 3.5, lx + 10, y - 3.5, {color: '#586377', dash: [3, 3]}); P.text(`3-star goal (${S.goal}%)`, lx + 14, y, {size: 9, color: '#586377'});
+    y += 14;
+    const cx0 = M + 30, cx1 = M + W - 10, cy0 = y, cy1 = y + 160;
+    const X = i => pts.length === 1 ? (cx0 + cx1) / 2 : cx0 + (cx1 - cx0) * i / (pts.length - 1);
+    const Y = v => cy1 - (cy1 - cy0) * v / 100;
+    [0, 25, 50, 75, 100].forEach(v => { P.line(cx0, Y(v), cx1, Y(v), {color: '#E3E8EF', w: 0.6}); P.text(v + '%', cx0 - 6, Y(v) + 3, {size: 8, color: '#586377', align: 'right'}); });
+    P.line(cx0, Y(S.goal), cx1, Y(S.goal), {color: '#586377', dash: [3, 3]});
+    const stepL = Math.max(1, Math.ceil(pts.length / 8));
+    pts.forEach((q, i) => { if (i % stepL === 0 || i === pts.length - 1) P.text(new Date(q.d + 'T12:00:00').toLocaleDateString([], {month: 'short', day: 'numeric'}), X(i), cy1 + 13, {size: 8, color: '#586377', align: 'center'}); });
+    const series = (key, c) => { let prev = null; pts.forEach((q, i) => { if (q[key] == null) { prev = null; return; } const cur = [X(i), Y(q[key])]; if (prev) P.line(prev[0], prev[1], cur[0], cur[1], {color: c, w: 1.8}); prev = cur; }); };
+    series('acc', '#2a78d6'); if (hasForm) series('form', '#eb6834');
+    pts.forEach((q, i) => { P.circle(X(i), Y(q.acc), 3, '#2a78d6'); if (q.form != null) P.rect(X(i) - 3, Y(q.form) - 3, 6, 6, {fill: '#eb6834'}); });
+    y = cy1 + 36;
+    const cols = [['When', 70], ['Traced', 64], ['Row', 50], ['Height', 40], ['Acc.', 30], ['On path', 36], ['Finished', 38], ['Form.', 32], ['Starts', 32], ['Dirs.', 30], ['Time', 28], ['Lifts', 30], ['Press.', 36]];
+    const head = () => {
+      P.rect(M, y - 11, W, 16, {fill: '#F3F6FB'});
+      let x = M + 4; cols.forEach(([l, w]) => { P.text(l.toUpperCase(), x, y, {size: 7, bold: true, color: '#586377'}); x += w; });
+      y += 15;
+    };
+    head();
+    at.slice().reverse().forEach(r => {
+      if (y > 792 - 50) { P.addPage(); y = 60; head(); }
+      const vals = [new Date(r.t).toLocaleString([], {month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'}), r.traced,
+        (r.row === 0 ? 'Warm-up' : 'Row ' + r.row) + (r.support ? ' ' + r.support : ''), r.height, r.acc + '%', r.onPath + '%', r.finished + '%',
+        r.form == null ? '-' : r.form + '%', r.starts || '-', r.dirs || '-', r.secs + 's', r.lifts + (r.modelLifts != null ? '/' + r.modelLifts : ''), r.pressure == null ? '-' : String(r.pressure)];
+      let x = M + 4;
+      vals.forEach((v, i) => { P.text(P.fit(String(v), cols[i][1] - 5, 8.5), x, y, {size: 8.5}); x += cols[i][1]; });
+      P.line(M, y + 5, M + W, y + 5, {color: '#E3E8EF', w: 0.5});
+      y += 15;
+    });
+    y += 10;
+    const note = P.wrap("Accuracy balances staying on the path and finishing the letters. Formation checks starting at the green dot and stroke direction (Zaner-Bloser). Lifts show the student's pen lifts / the lifts the letters need. Pressure (0-100) is recorded only with a stylus that reports it.", W, 8.5);
+    if (y + note.length * 11 > 792 - 40) { P.addPage(); y = 60; }
+    note.forEach(l => { P.text(l, M, y, {size: 8.5, color: '#586377'}); y += 11; });
+    P.footer(`Trace My Name · ${p.name}`);
+    await savePdf(P, `${slug(p.name)}-handwriting-progress.pdf`, statusEl);
+  }
+
+  // ---- Today's results ----
+  async function todayPdf(){
+    const items = state.snaps.filter(Boolean);
+    if (!items.length) return;
+    const when = new Date().toLocaleString([], {weekday: 'short', month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit'});
+    const P = await newPdf(); P.addPage();
+    const M = 48, W = 612 - 2 * M;
+    P.text(`Tracing results: ${state.name}`, M, 58, {size: 19, bold: true});
+    P.text(`${when} · ${items[0].style} · Letters ${items[0].height}`, M, 76, {size: 10.5, color: '#586377'});
+    let y = 100;
+    for (const it of items) {
+      let iw = W, ih = W * it.h / it.w;
+      if (ih > 210) { ih = 210; iw = ih * it.w / it.h; }
+      const need = 20 + ih + 48 + it.issues.length * 12;
+      if (y + need > 792 - 40) { P.addPage(); y = 56; }
+      P.text(P.fit(it.label, W, 12, true), M, y, {size: 12, bold: true}); y += 8;
+      await P.image(it.img, M, y, iw, ih); P.rect(M, y, iw, ih, {stroke: '#D3DBE7', w: 0.8});
+      y += ih + 16;
+      const bits = [`Accuracy ${it.acc}%`, `On path ${it.onPath}%`, `Finished ${it.finished}%`];
+      if (it.form != null) bits.push(`Formation ${it.form}% (starts ${it.starts}, directions ${it.dirs})`);
+      P.text(P.fit(bits.join(' · '), W, 10), M, y, {size: 10}); y += 14;
+      const b2 = [`Time ${it.secs} s`, `Pen lifts ${it.lifts}${it.modelLifts != null ? ' (letters need ' + it.modelLifts + ')' : ''}`];
+      if (it.pressure != null) b2.push(`Pressure ${it.pressure}`);
+      P.text(b2.join(' · '), M, y, {size: 9.5, color: '#586377'}); y += 13;
+      it.issues.forEach(t => { P.text(P.fit('Practice ' + t, W, 9.5), M, y, {size: 9.5, color: '#A96400'}); y += 12; });
+      y += 16;
+    }
+    if (y > 792 - 60) { P.addPage(); y = 56; }
+    P.text('Red marks show where the ink went off the tracing path.', M, y, {size: 9, color: '#586377'});
+    P.footer(`Trace My Name · ${state.name}`);
+    const d = new Date(), stamp = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    await savePdf(P, `${slug(state.name)}-tracing-results-${stamp}.pdf`, $('pdfStatus'));
+  }
+
+  // =====================================================================
+  // Progress (saved in the page's shared database)
+  // =====================================================================
+  let db = null, downloads = null, dbReady = false;
+  const slug = name => {
+    const s = baseChar(name.toLowerCase()).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
+    if (s) return s;
+    let h = 0; for (const ch of name) h = (h * 31 + ch.codePointAt(0)) >>> 0;
+    return 'student-' + h.toString(36);
+  };
+  let writeChain = Promise.resolve();
+  function saveAttempt(rec){
+    state.local.unshift(rec);
+    if (!S.save || !db) return;
+    const id = slug(rec.name);
+    writeChain = writeChain.then(async () => {
+      const ref = db.doc('progress/' + id);
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          const snap = await ref.get();
+          const cur = snap.exists ? snap.data() : null;
+          const attempts = [...((cur && cur.attempts) || []), rec].slice(-700);
+          await ref.set({name: (cur && cur.name) || rec.name, updated: rec.t, attempts});
+          return;
+        } catch(e) {
+          if (e && e.code === 'unavailable' && attempt === 0) { await new Promise(r => setTimeout(r, 600 + Math.random() * 600)); continue; }
+          if (e && e.code === 'quota_exceeded') toast('Progress storage is full. Delete old students in Progress.');
+          else toast('This try could not be saved to Progress.');
+          return;
+        }
+      }
+    });
+  }
+  // Outside Claude (for example on GitHub Pages) progress is kept in this browser
+  // and files download directly.
+  const STANDALONE = !(window.claude && typeof window.claude.use === 'function');
+  const LOCAL_KEY = 'trace-my-name-progress-v1';
+  function localDb(){
+    const read = () => { try { return JSON.parse(localStorage.getItem(LOCAL_KEY) || '{}'); } catch(e) { return {}; } };
+    const write = all => { try { localStorage.setItem(LOCAL_KEY, JSON.stringify(all)); } catch(e) { throw {code: 'quota_exceeded'}; } };
+    const snap = (id, v) => ({id, exists: v != null, data: () => v});
+    return {
+      doc(path){ const id = path.split('/')[1]; return {
+        get: async () => snap(id, read()[id]),
+        set: async v => { const all = read(); all[id] = v; write(all); },
+        delete: async () => { const all = read(); delete all[id]; write(all); }
+      }; },
+      collection(){ return { get: async () => { const all = read(); return {docs: Object.keys(all).map(k => snap(k, all[k]))}; } }; }
+    };
+  }
+  const localDownloads = {
+    save: async ({filename, data}) => {
+      const blob = data instanceof Blob ? data : new Blob([data], {type: filename.endsWith('.csv') ? 'text/csv' : 'application/octet-stream'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = filename;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+      return {status: 'saved'};
+    }
+  };
+  if (STANDALONE) { db = localDb(); downloads = localDownloads; dbReady = true; }
+  (async () => {
+    try {
+      if (STANDALONE) return;
+      const [d, dl] = await Promise.all([window.claude.use('db'), window.claude.use('downloads')]);
+      db = d; downloads = dl; dbReady = true;
+    } catch(e) {}
+  })();
+
+  const progModal = $('progressModal');
+  let progData = [];
+  $('progressBtn').addEventListener('click', () => guarded(openProgress));
+  $('progClose').addEventListener('click', closeProgress);
+  function closeProgress(){ progModal.hidden = true; unlocked = false; $('progressBtn').focus(); }
+  let loadNote = '';
+  async function loadProgress(){
+    let data = null;
+    loadNote = '';
+    if (db) {
+      try {
+        await writeChain;
+        const snap = await db.collection('progress').get();
+        data = snap.docs.filter(d => d.exists).map(d => { const x = d.data(); return {id: d.id, name: x.name || d.id, attempts: x.attempts || []}; });
+      } catch(e) { loadNote = 'Saved progress could not be loaded right now. Showing tries from this visit.'; }
+    } else {
+      loadNote = 'Saving is not available in this view, so only tries from this visit are shown.';
+    }
+    if (!data) {
+      const map = new Map();
+      state.local.slice().reverse().forEach(r => { const id = slug(r.name); if (!map.has(id)) map.set(id, {id, name: r.name, attempts: []}); map.get(id).attempts.push(r); });
+      data = [...map.values()];
+    }
+    return data.sort((a, b) => a.name.localeCompare(b.name));
+  }
+  async function openProgress(){
+    progModal.hidden = false;
+    $('progBody').innerHTML = '<p class="empty">Loading…</p>';
+    $('progStatus').textContent = '';
+    progData = await loadProgress();
+    $('progStatus').textContent = loadNote;
+    const sel = $('progStudent');
+    sel.innerHTML = progData.map(p => `<option value="${esc(p.id)}">${esc(p.name)} (${p.attempts.length})</option>`).join('');
+    const cur = slug(state.name);
+    if (progData.some(p => p.id === cur)) sel.value = cur;
+    $('progCsv').disabled = !progData.length; $('progPdf').disabled = !progData.length; $('progDelete').disabled = !progData.length || !db;
+    renderProgress();
+  }
+  $('progStudent').addEventListener('change', renderProgress);
+  const fmtDay = iso => new Date(iso).toLocaleDateString([], {month:'short', day:'numeric'});
+  const fmtTime = iso => new Date(iso).toLocaleString([], {month:'short', day:'numeric', hour:'numeric', minute:'2-digit'});
+  function renderProgress(){
+    const body = $('progBody');
+    const p = progData.find(x => x.id === $('progStudent').value);
+    if (!p || !p.attempts.length) {
+      body.innerHTML = '<p class="empty">No saved tries yet. Each time a student taps "I\'m done!" the try is saved here under their name.</p>';
+      return;
+    }
+    const at = p.attempts.slice().sort((a, b) => a.t.localeCompare(b.t));
+    const last10 = at.slice(-10);
+    const avg = arr => arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : null;
+    const accAvg = avg(last10.map(r => r.acc));
+    const formAvg = avg(last10.filter(r => r.form != null).map(r => r.form));
+    const days = new Set(at.map(r => r.t.slice(0, 10))).size;
+    let h = `<div class="stats">
+      <div class="stat"><span>Tries saved</span><b>${at.length}</b></div>
+      <div class="stat"><span>Practice days</span><b>${days}</b></div>
+      <div class="stat"><span>Accuracy, last 10</span><b>${accAvg == null ? '—' : accAvg + '%'}</b></div>
+      <div class="stat"><span>Formation, last 10</span><b>${formAvg == null ? '—' : formAvg + '%'}</b></div>
+    </div>`;
+    h += '<div><p class="section-label" style="margin-bottom:6px">Daily average</p><div class="chart-box" id="chartBox"></div></div>';
+    h += '<div class="log-wrap" style="max-height:340px;overflow:auto"><table class="log"><thead><tr><th>When</th><th>Traced</th><th>Row</th><th>Style</th><th>Height</th><th>Accuracy</th><th>On path</th><th>Finished</th><th>Formation</th><th>Starts</th><th>Directions</th><th>Time</th><th>Pen lifts</th><th>Pressure</th><th>Input</th></tr></thead><tbody>' +
+      at.slice().reverse().map(r => `<tr><td>${fmtTime(r.t)}</td><td>${esc(r.traced)}</td><td>${r.row === 0 ? 'Warm-up' : r.row} · ${esc(r.support || '')}</td><td>${esc(r.style)}</td><td>${esc(r.height)}</td><td class="num"><b style="color:${tierColor(r.acc)}">${r.acc}%</b></td><td class="num">${r.onPath}%</td><td class="num">${r.finished}%</td><td class="num">${r.form == null ? '—' : r.form + '%'}</td><td class="num">${r.starts || '—'}</td><td class="num">${r.dirs || '—'}</td><td class="num">${r.secs} s</td><td class="num">${r.lifts}${r.modelLifts != null ? ' / ' + r.modelLifts : ''}</td><td class="num">${r.pressure == null ? '—' : r.pressure}</td><td>${esc(r.input || '')}</td></tr>`).join('') +
+      '</tbody></table></div>';
+    h += '<p class="about">Pen lifts show the student\'s count and the count the letters need. Pressure (0–100) is only recorded with a stylus that reports it, such as Apple Pencil. ' + (STANDALONE ? 'Progress is saved only in this browser on this device. Clearing the browser\'s data erases it, so download a CSV or PDF report now and then.' : 'Anyone this page is shared with can see saved progress, so first names or initials are safest.') + '</p>';
+    body.innerHTML = h;
+    drawChart($('chartBox'), at);
+  }
+
+  function drawChart(box, at){
+    const byDay = new Map();
+    at.forEach(r => { const d = r.t.slice(0, 10); if (!byDay.has(d)) byDay.set(d, []); byDay.get(d).push(r); });
+    const days = [...byDay.keys()].sort();
+    const pts = days.map(d => {
+      const rs = byDay.get(d);
+      const acc = Math.round(rs.reduce((a, r) => a + r.acc, 0) / rs.length);
+      const fs = rs.filter(r => r.form != null);
+      return {d, acc, form: fs.length ? Math.round(fs.reduce((a, r) => a + r.form, 0) / fs.length) : null, n: rs.length};
+    });
+    const W = Math.max(300, box.clientWidth || 600), H = 240;
+    const m = {l: 40, r: 70, t: 12, b: 30};
+    const iw = W - m.l - m.r, ih = H - m.t - m.b;
+    const x = i => m.l + (pts.length === 1 ? iw / 2 : iw * i / (pts.length - 1));
+    const y = v => m.t + ih * (1 - v / 100);
+    const hasForm = pts.some(p => p.form != null);
+    let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Daily average accuracy${hasForm ? ' and formation' : ''} over ${pts.length} day${pts.length > 1 ? 's' : ''}">`;
+    [0, 25, 50, 75, 100].forEach(v => {
+      s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)" stroke-width="1"/>`;
+      s += `<text x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end" font-size="12" fill="var(--muted)">${v}%</text>`;
+    });
+    const goalY = y(S.goal);
+    s += `<line x1="${m.l}" x2="${W - m.r}" y1="${goalY}" y2="${goalY}" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/>`;
+    s += `<text x="${W - m.r + 6}" y="${goalY + 4}" font-size="12" fill="var(--muted)">Goal</text>`;
+    const step = Math.max(1, Math.ceil(pts.length / Math.max(2, Math.floor(iw / 70))));
+    pts.forEach((p, i) => { if (i % step === 0 || i === pts.length - 1) s += `<text x="${x(i)}" y="${H - 8}" text-anchor="middle" font-size="12" fill="var(--muted)">${fmtDay(p.d + 'T12:00:00')}</text>`; });
+    const line = (key, col) => {
+      const seg = pts.map((p, i) => p[key] == null ? null : [x(i), y(p[key])]).filter(Boolean);
+      if (seg.length > 1) s += `<polyline fill="none" stroke="${col}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="${seg.map(q => q.join(',')).join(' ')}"/>`;
+    };
+    line('acc', 'var(--series-1)');
+    if (hasForm) line('form', 'var(--series-2)');
+    pts.forEach((p, i) => {
+      s += `<circle cx="${x(i)}" cy="${y(p.acc)}" r="4.5" fill="var(--series-1)" stroke="var(--surface)" stroke-width="2"/>`;
+      if (p.form != null) s += `<rect x="${x(i) - 4.5}" y="${y(p.form) - 4.5}" width="9" height="9" rx="1.5" fill="var(--series-2)" stroke="var(--surface)" stroke-width="2"/>`;
+    });
+    const lastP = pts[pts.length - 1], li = pts.length - 1;
+    let ya = y(lastP.acc), yf = lastP.form != null ? y(lastP.form) : null;
+    if (yf != null && Math.abs(ya - yf) < 16) { if (ya <= yf) { ya -= 8; yf += 8; } else { ya += 8; yf -= 8; } }
+    s += `<text x="${x(li) + 10}" y="${ya + 4}" font-size="12" font-weight="700" fill="var(--text)">Accuracy</text>`;
+    if (yf != null) s += `<text x="${x(li) + 10}" y="${yf + 4}" font-size="12" font-weight="700" fill="var(--text)">Formation</text>`;
+    s += `<line id="cross" x1="0" x2="0" y1="${m.t}" y2="${m.t + ih}" stroke="var(--muted)" stroke-width="1" visibility="hidden"/>`;
+    pts.forEach((p, i) => {
+      const half = pts.length === 1 ? iw / 2 : iw / (pts.length - 1) / 2;
+      s += `<rect data-i="${i}" x="${x(i) - half}" y="${m.t}" width="${half * 2}" height="${ih}" fill="transparent"/>`;
+    });
+    s += '</svg>';
+    const legend = `<div class="chart-legend"><span><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="var(--series-1)"/></svg>Accuracy</span>${hasForm ? '<span><svg width="14" height="14" aria-hidden="true"><rect x="2" y="2" width="10" height="10" rx="1.5" fill="var(--series-2)"/></svg>Formation</span>' : ''}<span><svg width="18" height="14" aria-hidden="true"><line x1="0" x2="18" y1="7" y2="7" stroke="var(--muted)" stroke-dasharray="4 3"/></svg>3-star goal (${S.goal}%)</span></div>`;
+    box.innerHTML = legend + `<div style="overflow-x:auto;position:relative">${s}</div><div class="chart-tip" hidden></div>`;
+    const svg = box.querySelector('svg'), tip = box.querySelector('.chart-tip'), cross = svg.querySelector('#cross');
+    svg.addEventListener('pointermove', e => {
+      const r = e.target.closest('rect[data-i]');
+      if (!r) { tip.hidden = true; cross.setAttribute('visibility', 'hidden'); return; }
+      const i = +r.dataset.i, p = pts[i];
+      cross.setAttribute('x1', x(i)); cross.setAttribute('x2', x(i)); cross.setAttribute('visibility', 'visible');
+      tip.innerHTML = `<b>${fmtDay(p.d + 'T12:00:00')}</b><div><span>Accuracy</span><span>${p.acc}%</span></div>${p.form != null ? `<div><span>Formation</span><span>${p.form}%</span></div>` : ''}<div><span>Tries</span><span>${p.n}</span></div>`;
+      tip.hidden = false;
+      const bx = box.getBoundingClientRect(), sx = svg.getBoundingClientRect();
+      let left = sx.left - bx.left + x(i) + 12;
+      if (left + 160 > bx.width) left = sx.left - bx.left + x(i) - 172;
+      tip.style.left = left + 'px'; tip.style.top = (sx.top - bx.top + 10) + 'px';
+    });
+    svg.addEventListener('pointerleave', () => { tip.hidden = true; cross.setAttribute('visibility', 'hidden'); });
+  }
+
+  const CSV_COLS = [['t','Date and time'],['name','Student'],['traced','Traced'],['row','Row'],['support','Support'],['style','Style'],['height','Letter height'],['tol','Path width'],['acc','Accuracy %'],['onPath','On path %'],['finished','Finished %'],['form','Formation %'],['starts','Correct starts'],['dirs','Correct directions'],['secs','Seconds'],['lifts','Pen lifts'],['modelLifts','Pen lifts needed'],['pressure','Pressure 0-100'],['input','Input']];
+  $('progCsv').addEventListener('click', async () => {
+    const p = progData.find(x => x.id === $('progStudent').value); if (!p) return;
+    const q = v => { const s = v == null ? '' : String(v); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+    const rows = [CSV_COLS.map(c => c[1]).join(',')].concat(p.attempts.slice().sort((a, b) => a.t.localeCompare(b.t)).map(r => CSV_COLS.map(c => q(c[0] === 't' ? new Date(r.t).toLocaleString() : r[c[0]])).join(',')));
+    const csv = rows.join('\n');
+    const fname = `${slug(p.name)}-handwriting-progress.csv`;
+    if (downloads) {
+      try { await downloads.save({filename: fname, data: csv}); toast('Saved ' + fname); return; }
+      catch(e) { if (e && e.code === 'declined') return; if (e && e.code === 'rate_limited') { toast('A save is already waiting for you.'); return; } }
+    }
+    try { await navigator.clipboard.writeText(csv); toast('Copied the table. Paste it into a spreadsheet.'); }
+    catch(e) { toast('Download is not available here.'); }
+  });
+  $('progDelete').addEventListener('click', () => {
+    const p = progData.find(x => x.id === $('progStudent').value); if (!p || !db) return;
+    const st = $('progStatus');
+    st.innerHTML = `<span class="confirm"><p>Delete all ${p.attempts.length} saved tries for ${esc(p.name)}? This can't be undone.</p><button class="btn btn-danger" type="button" id="delYes">Delete</button><button class="btn" type="button" id="delNo">Cancel</button></span>`;
+    $('delNo').addEventListener('click', () => { st.textContent = ''; });
+    $('delYes').addEventListener('click', async () => {
+      try { await db.doc('progress/' + p.id).delete(); st.textContent = `Deleted ${p.name}'s tries.`; await openProgress(); $('progStatus').textContent = `Deleted ${p.name}'s tries.`; }
+      catch(e) { st.textContent = 'Could not delete right now. Try again in a moment.'; }
+    });
+  });
+
+  // =====================================================================
+  // Name form, resize, theme, boot
+  // =====================================================================
+  const cleanName = v => (v || '').replace(/[^\p{L}\p{M}' .-]/gu, '').replace(/\s+/g, ' ').trim().slice(0, 24);
+  $('nameForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const n = cleanName($('nameInput').value);
+    if (!n) { $('nameInput').focus(); noteEl.innerHTML = '<strong>Type a name first.</strong> Letters, spaces, hyphens and apostrophes work.'; return; }
+    $('nameInput').value = n; state.name = n;
+    rebuild(false);
+  });
+
+  let lastW = 0, rT = 0;
+  new ResizeObserver(() => {
+    const w = Math.floor(sheet.clientWidth);
+    if (Math.abs(w - lastW) < 2) return;
+    lastW = w;
+    clearTimeout(rT); rT = setTimeout(() => { if (state.strokes.length) toast('The screen changed size, so the tracing was cleared.'); rebuild(true); }, 150);
+  }).observe(sheet);
+  function retheme(){ retheme0(); }
+  const retheme0 = () => { drawGuide(); redrawInk(); renderModel(); renderStrip(); if (state.checked) drawOverlay(state.lastEval); };
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', retheme);
+  new MutationObserver(retheme).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme', 'data-look']});
+
+  syncControls(); syncPens();
+  lastW = Math.floor(sheet.clientWidth);
+  rebuild(false);
+  const fontsLoaded = Promise.allSettled([
+    document.fonts.load(`400 100px "Playwrite US Trad"`, 'Maya'),
+    document.fonts.load(`400 20px "Andika"`, 'Aa'),
+  ]);
+  Promise.race([fontsLoaded, new Promise(r => setTimeout(r, 3500))]).then(() => {
+    measureCursiveRatio();
+    if (!state.strokes.length) rebuild(false); else rebuild(true);
+    renderModel();
+  });
+})();
+</script>
+
+</body>
+</html>

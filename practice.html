@@ -152,7 +152,8 @@ h2{font-family:var(--display); font-size:22px; font-weight:700; margin:0}
 .hint{font-size:14px; color:var(--mut)}
 
 /* ---------- receipt + money ---------- */
-.till{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:18px; margin-top:18px; align-items:start}
+/* receipt, money and calculator sit side by side when there is room, and stack on a narrow screen */
+.till{display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:18px; margin-top:18px; align-items:start}
 .receipt{background:var(--panel); border-radius:20px; box-shadow:var(--shadow); padding:18px}
 .line{display:flex; justify-content:space-between; gap:10px; padding:6px 0; font-size:17px; font-variant-numeric:tabular-nums}
 .line .q{color:var(--mut)}
@@ -255,6 +256,31 @@ h2{font-family:var(--display); font-size:22px; font-weight:700; margin:0}
   .gobar .go{flex:1 1 auto; justify-content:center}
 }
 
+/* A plain money keypad, sitting beside the change panel. */
+.calc{background:var(--panel); border-radius:20px; box-shadow:var(--shadow); padding:16px}
+.calchead{display:flex; align-items:center; justify-content:space-between; gap:10px}
+.calchead h2{margin:0}
+.hidebtn{border:2px solid var(--line); background:var(--panel); border-radius:11px; padding:7px 13px;
+  font-weight:700; font-size:14px; color:var(--mut)}
+.hidebtn:hover{border-color:var(--accent); color:var(--accent)}
+.calcsum{margin-top:10px; text-align:right; font-size:15px; color:var(--mut); min-height:20px;
+  font-variant-numeric:tabular-nums}
+.calcshow{text-align:right; font-family:var(--display); font-weight:700; font-size:38px; line-height:1.1;
+  font-variant-numeric:tabular-nums; overflow-wrap:anywhere}
+.keys{display:grid; grid-template-columns:repeat(4,1fr); gap:9px; margin-top:12px}
+.keys button{
+  border:2px solid var(--line); background:var(--panel); border-radius:14px; min-height:62px;
+  font-family:var(--display); font-weight:700; font-size:23px; font-variant-numeric:tabular-nums;
+}
+.keys button:active{transform:translateY(1px)}
+.keys .op{border-color:var(--coin); color:var(--coin)}
+.keys .back{color:var(--mut)}
+.keys .clr{grid-column:span 2; border-color:var(--no); color:var(--no); font-size:19px}
+.keys .eq{grid-column:span 2; background:var(--accent); border-color:var(--accent); color:#fff}
+:root[data-theme="dark"] .keys .eq{color:#0B1A1F}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .keys .eq{color:#0B1A1F} }
+@media (max-width:720px){ .keys button{min-height:56px; font-size:21px} }
+
 .filebox{margin-top:16px; background:var(--panel); border:3px solid var(--accent); border-radius:20px;
   padding:18px; box-shadow:var(--shadow)}
 .filebox h2{font-size:20px; margin:0 0 6px}
@@ -327,6 +353,12 @@ h2{font-family:var(--display); font-size:22px; font-weight:700; margin:0}
       <h3>How hard</h3>
       <p>Changes take effect with the next customer.</p>
       <div class="pickrow" id="levels" role="group" aria-label="Difficulty"></div>
+    </div>
+
+    <div class="set">
+      <h3>Calculator</h3>
+      <p>A plain money keypad beside the change panel. The student can hide it; this switches it off.</p>
+      <div class="pickrow" id="calcSet" role="group" aria-label="Calculator"></div>
     </div>
 
     <div class="set">
@@ -446,7 +478,38 @@ h2{font-family:var(--display); font-size:22px; font-weight:700; margin:0}
         <button type="button" class="btn" id="clearChange">Start over</button>
       </div>
     </section>
+
+    <section class="calc" id="calc" hidden>
+      <div class="calchead">
+        <h2>Calculator</h2>
+        <button type="button" class="hidebtn" id="calcHide">Hide</button>
+      </div>
+      <div class="calcsum" id="calcSum">&nbsp;</div>
+      <div class="calcshow" id="calcShow">$0.00</div>
+      <div class="keys" id="keys">
+        <button type="button" data-k="7">7</button>
+        <button type="button" data-k="8">8</button>
+        <button type="button" data-k="9">9</button>
+        <button type="button" class="op" data-k="/">&divide;</button>
+        <button type="button" data-k="4">4</button>
+        <button type="button" data-k="5">5</button>
+        <button type="button" data-k="6">6</button>
+        <button type="button" class="op" data-k="*">&times;</button>
+        <button type="button" data-k="1">1</button>
+        <button type="button" data-k="2">2</button>
+        <button type="button" data-k="3">3</button>
+        <button type="button" class="op" data-k="-">&minus;</button>
+        <button type="button" data-k="0">0</button>
+        <button type="button" data-k=".">.</button>
+        <button type="button" class="back" data-k="back">&#9003;</button>
+        <button type="button" class="op" data-k="+">+</button>
+        <button type="button" class="clr" data-k="clear">Clear</button>
+        <button type="button" class="eq" data-k="=">=</button>
+      </div>
+    </section>
   </div>
+
+  <button type="button" class="btn" id="calcShowBtn" hidden style="margin-top:12px">Show calculator</button>
 
   <div class="msg" id="msg" role="status" aria-live="polite"></div>
 
@@ -531,7 +594,8 @@ const todayStr = () => { const d = new Date();
 
 /* ---------- state ---------- */
 let S = { name:"", date: todayStr(), mode:"both", level:"medium", count:5, tries:"level",
-          vol:1, rate:0.9, voice:"", prompts:1, round:0, sets:1, secs:0, saved:false, log:[] };
+          vol:1, rate:0.9, voice:"", prompts:1, calcOn:true, calcOpen:true,
+          round:0, sets:1, secs:0, saved:false, log:[] };
 let roundStart = Date.now();
 /* One sitting can run over several sets of customers. */
 const goal = () => S.count * (S.sets || 1);
@@ -626,7 +690,7 @@ function newOrder(){
   }
   shelf = order.map(o => o.it).concat(others).sort(() => Math.random() - 0.5);
   rung = {}; stage = "ring"; picked = 0; handed = []; wrongPicks = 0; rightPicks = 0;
-  moneyTries = 0; moneyOK = false; prompted = 0;
+  moneyTries = 0; moneyOK = false; prompted = 0; usedCalc = false;
   showSmall = lvl().small;
   roundStart = Date.now();
   if (S.mode === "money"){
@@ -784,7 +848,7 @@ function renderBar(){
     : "All done with this customer";
 }
 
-function renderAll(){ showStages(); renderOrder(); renderShelf(); renderReceipt(); renderProgress(); renderPays(); }
+function renderAll(){ showStages(); renderCalc(); renderOrder(); renderShelf(); renderReceipt(); renderProgress(); renderPays(); }
 
 /* ---------- ringing up ---------- */
 /* A green tick or a red cross right on the picture that was tapped. */
@@ -965,7 +1029,7 @@ function nextRound(){
                  moneyFirst: asked && moneyOK && moneyTries === 0,
                  moneyOK: asked ? moneyOK : null,
                  mode: S.mode, level: S.level, limit: triesLimit(),
-                 prompted: prompted, promptsAllowed: S.prompts || 0,
+                 prompted: prompted, promptsAllowed: S.prompts || 0, calc: usedCalc,
                  secs: Math.max(1, Math.round((Date.now() - roundStart) / 1000)),
                  at: new Date().toISOString() });
     S.round++;
@@ -1094,6 +1158,7 @@ $("restart").onclick = () => {
   $("yes").onclick = () => {
     S = { name:"", date: todayStr(), mode: S.mode, level: S.level, count: S.count, tries: S.tries,
           vol: S.vol, rate: S.rate, voice: S.voice, prompts: S.prompts,
+          calcOn: S.calcOn, calcOpen: S.calcOpen,
           round:0, sets:1, secs:0, saved:false, log:[] };
     save(); $("student").value = ""; $("next").disabled = false;
     $("confirmBox").innerHTML = ""; newOrder(); renderAll();
@@ -1241,6 +1306,13 @@ function buildPDF(){
            (t.done ? "   -   about " + clock(Math.round(S.secs / t.done)) + " a customer" : ""),
            M, y, { size: 11, color: mut });
   y += 16;
+  const calcN = S.log.filter(r => r.calc).length;
+  if (calcN){
+    doc.text("Calculator used on " + calcN + " of " + t.done +
+             (t.done === 1 ? " customer" : " customers") + " (not scored)",
+             M, y, { size: 11, color: mut });
+    y += 16;
+  }
   doc.text("Practising: " + (S.mode === "both" ? "ringing up and making change"
                            : S.mode === "ring" ? "ringing up only" : "making change only") +
            "   -   level: " + lvl().label.toLowerCase() +
@@ -1340,6 +1412,8 @@ function plainReport(){
   L.push(t.taps + " of " + t.tapsAll + " picks right; " + t.clean + " of " + t.iRounds +
          " customers with nothing picked wrong");
   L.push(t.mOK + " of " + t.mAsked + " change questions worked out, " + t.mFirst + " on the first try");
+  const calcUsed = S.log.filter(r => r.calc).length;
+  if (calcUsed) L.push("Calculator used on " + calcUsed + " of " + t.done + " customers (not scored)");
   L.push("");
   L.push("By skill");
   bySkill().forEach(g => L.push("  " + g.label + ": " + g.n + " customers, items " + pc(g.iPct) +
@@ -1363,7 +1437,7 @@ function buildCSV(){
   const head = ["Student","Date","Customer","What they bought","Total","Paid","Change due",
                 "Items asked","Right picks","Wrong picks","Items all right","Money asked",
                 "Money right first try","Money tries","Money right in the end","Mode","Level","Tries allowed",
-                "Prompts used","Prompts allowed","Seconds"];
+                "Prompts used","Prompts allowed","Calculator used","Seconds"];
   const rows = S.log.map(r => [
     S.name, S.date, r.c, r.items, r.total, r.cash, r.change,
     r.itemsAsked ? "yes" : "no",
@@ -1377,6 +1451,7 @@ function buildCSV(){
     (LEVELS[r.level] || lvl()).label,
     r.limit === Infinity || r.limit === null ? "no limit" : (r.limit || lvl().reveal),
     r.prompted || 0, r.promptsAllowed === undefined ? (S.prompts || 0) : r.promptsAllowed,
+    r.calc ? "yes" : "no",
     r.secs || ""
   ]);
   const t = tallies();
@@ -1384,16 +1459,17 @@ function buildCSV(){
   rows.push([S.name, S.date, "TOTALS", "", "", "", "", "",
              t.taps, t.tapsAll - t.taps, t.clean + " of " + t.iRounds,
              "", t.mFirst + " of " + t.mAsked, "", t.mOK + " of " + t.mAsked, "", "", "",
-             S.log.reduce((n, r) => n + (r.prompted || 0), 0), "", S.secs]);
+             S.log.reduce((n, r) => n + (r.prompted || 0), 0), "",
+             S.log.filter(r => r.calc).length + " of " + S.log.length, S.secs]);
   rows.push([S.name, S.date, "ACCURACY", "Items " + (t.iPct === null ? "--" : t.iPct + "%"),
              "Money " + (t.mPct === null ? "--" : t.mPct + "%"),
              "Score " + (t.score === null ? "--" : t.score + "%"),
-             "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]);
+             "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]);
   const line = (title, g) => [S.name, S.date, title, g.label, g.n + " customers",
     "Items " + (g.iPct === null ? "--" : g.iPct + "%"),
     "Money " + (g.mPct === null ? "--" : g.mPct + "%"),
     "Score " + (g.score === null ? "--" : g.score + "%"),
-    clock(g.secs), "", "", "", "", "", "", "", "", "", "", ""];
+    clock(g.secs), "", "", "", "", "", "", "", "", "", "", "", ""];
   rows.push([]);
   bySkill().forEach(g => rows.push(line("BY SKILL", g)));
   byLevel().forEach(g => rows.push(line("BY LEVEL", g)));
@@ -1495,7 +1571,10 @@ $("fbShow").onclick = () => {
       '<div><b>' + pc(t.score) + '</b>accuracy score</div></div>' +
     '<div class="who">' + t.taps + ' of ' + t.tapsAll + ' picks right &middot; ' +
       t.clean + ' of ' + t.iRounds + ' customers with nothing picked wrong &middot; ' +
-      t.mOK + ' of ' + t.mAsked + ' change questions worked out, ' + t.mFirst + ' first try</div>' +
+      t.mOK + ' of ' + t.mAsked + ' change questions worked out, ' + t.mFirst + ' first try' +
+      (S.log.filter(r => r.calc).length
+        ? ' &middot; calculator used on ' + S.log.filter(r => r.calc).length + ' of ' + t.done + ' (not scored)'
+        : '') + '</div>' +
     '<h3>By skill</h3><table>' + head + bySkill().map(row).join("") + '</table>' +
     '<h3>By level</h3><table>' + head + byLevel().map(row).join("") + '</table>' +
     '<h3>Every customer</h3><table><tr><th>What they bought</th><th>Total</th><th>Paid</th>' +
@@ -1519,11 +1598,75 @@ $("csv").onclick = () => {
   say("Results ready below.", "good");
 };
 
+/* ---------- the calculator ----------
+   A plain money keypad. It works nothing out for the student: it only adds up
+   what they type. Using it is noted against the customer, but scores nothing. */
+let calc = { entry: "0", acc: null, op: null, fresh: true };
+let usedCalc = false;
+
+function calcShow(){
+  const n = parseFloat(calc.entry);
+  $("calcShow").textContent = isNaN(n) ? "$0.00"
+    : "$" + (calc.entry.indexOf(".") >= 0 ? calc.entry : n.toFixed(0) + "");
+  $("calcSum").textContent = calc.op
+    ? "$" + (Math.round(calc.acc * 100) / 100).toFixed(2) + " " +
+      ({ "+":"+", "-":"\u2212", "*":"\u00D7", "/":"\u00F7" }[calc.op] || calc.op)
+    : "\u00A0";
+}
+function calcRun(){
+  const b = parseFloat(calc.entry) || 0;
+  if (calc.op === null || calc.acc === null) return b;
+  const a = calc.acc;
+  const v = calc.op === "+" ? a + b : calc.op === "-" ? a - b
+          : calc.op === "*" ? a * b : (b === 0 ? 0 : a / b);
+  return Math.round(v * 100) / 100;
+}
+function calcKey(k){
+  usedCalc = true;
+  if (/^[0-9]$/.test(k)){
+    calc.entry = (calc.fresh || calc.entry === "0") ? k : (calc.entry + k).slice(0, 12);
+    calc.fresh = false;
+  } else if (k === "."){
+    if (calc.fresh){ calc.entry = "0."; calc.fresh = false; }
+    else if (calc.entry.indexOf(".") < 0) calc.entry += ".";
+  } else if (k === "back"){
+    if (calc.fresh) { calc.entry = "0"; }
+    else { calc.entry = calc.entry.slice(0, -1) || "0"; }
+  } else if (k === "clear"){
+    calc = { entry: "0", acc: null, op: null, fresh: true };
+  } else if (k === "+" || k === "-" || k === "*" || k === "/"){
+    const v = calcRun();
+    calc.acc = v; calc.op = k; calc.entry = String(v); calc.fresh = true;
+  } else if (k === "="){
+    const v = calcRun();
+    calc.acc = null; calc.op = null;
+    calc.entry = (Math.round(v * 100) / 100).toFixed(2);
+    calc.fresh = true;
+  }
+  calcShow();
+}
+$("keys").addEventListener("click", e => {
+  const b = e.target.closest("button[data-k]"); if (!b) return;
+  calcKey(b.dataset.k);
+});
+function renderCalc(){
+  const on = S.calcOn !== false && S.calcOpen !== false;
+  $("calc").hidden = S.calcOn === false || !on;
+  $("calcShowBtn").hidden = S.calcOn === false || on;
+  calcShow();
+}
+$("calcHide").onclick = () => { S.calcOpen = false; save(); renderCalc(); };
+$("calcShowBtn").onclick = () => { S.calcOpen = true; save(); renderCalc(); };
+
 /* ---------- the settings panel ---------- */
 function renderSettings(){
   $("levels").innerHTML = ORDER.map((k, i) =>
     '<button type="button" data-level="' + k + '" aria-pressed="' + (S.level === k) + '">' +
       (i + 1) + '. ' + LEVELS[k].label + '<small>' + LEVELS[k].blurb + '</small></button>').join("");
+  $("calcSet").innerHTML = [[true, "Available", "the student can show or hide it"],
+                            [false, "Off", "no calculator at all"]].map(([v, label, blurb]) =>
+    '<button type="button" data-calc="' + v + '" aria-pressed="' + ((S.calcOn !== false) === v) + '">' +
+      label + '<small>' + blurb + '</small></button>').join("");
   $("prompts").innerHTML = PROMPTS.map(([v, label, blurb]) =>
     '<button type="button" data-prompts="' + v + '" aria-pressed="' + (S.prompts === v) + '">' +
       label + '<small>' + blurb + '</small></button>').join("");
@@ -1566,6 +1709,13 @@ $("levels").addEventListener("click", e => {
   S.level = b.dataset.level; save(); renderSettings(); renderProgress();
   newOrder(); renderAll();
   say("Level set to " + lvl().label.toLowerCase() + ". This customer starts again.", "plain");
+});
+$("calcSet").addEventListener("click", e => {
+  const b = e.target.closest("button[data-calc]"); if (!b) return;
+  S.calcOn = b.dataset.calc === "true";
+  if (S.calcOn) S.calcOpen = true;
+  save(); renderSettings(); renderCalc();
+  say(S.calcOn ? "The calculator is available." : "The calculator is switched off.", "plain");
 });
 $("prompts").addEventListener("click", e => {
   const b = e.target.closest("button[data-prompts]"); if (!b) return;

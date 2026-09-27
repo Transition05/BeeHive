@@ -6,7 +6,7 @@ It is one self-contained web page (`index.html`). There is nothing to install or
 
 ## Features
 
-- **Zaner-Bloser print letters** built from real stroke paths, with green start dots, direction arrows and optional stroke numbers. Slanted print and cursive are also available. Cursive is scored by shape only.
+- **Zaner-Bloser print letters** built from real stroke paths, with green start dots, direction arrows and optional stroke numbers. Slanted print and joined Zaner-Bloser style cursive are also available, with start dots, Watch me and formation checks.
 - **Scoring**
   - Tracing accuracy combines *Stayed on the path* and *Finished the letters*.
   - Letter formation checks each letter's starting point and stroke direction.
@@ -15,8 +15,9 @@ It is one self-contained web page (`index.html`). There is nothing to install or
 - **Letter heights in real inches** (½ in to 3 in, plus Fill screen), with a ruler check to match each screen.
 - **Accessibility**
   - high contrast, wide tracing path, thick pen
-  - left-handed layout, palm rejection, read-aloud directions
+  - left-handed layout, read-aloud directions
   - reduced motion, ALL CAPS, one letter at a time
+- **Palm protection** (Teacher settings): ignore palm touches after a stylus is used, or allow the stylus only; a smart palm filter for finger tracing; and an optional hand rest area below or beside the letters.
 - **Student view:** big writing area, progress dots, three large buttons and a short results pop-up. Leaving it takes a press-and-hold and the teacher code if one is set.
 - **Progress tracking:** time, pen lifts and stylus pressure for each try, a daily chart, CSV export and a PDF progress report.
 - **PDF downloads:** a printable practice worksheet, a progress report and today's results.
@@ -46,7 +47,7 @@ Use first names or initials, and follow your school's rules on student data.
 
 ## Known limits
 
-- Scoring on the lines-only rows expects the name in the same place and size as the hidden model. A name written well somewhere else can score lower.
+- On the lines-only rows the student can write anywhere on the lines and at their own size. The scoring fits the letters to the writing first. Writing that is much smaller than half the line height, or only part of the name, is scored without that fitting.
 - The formation check covers starting points and stroke direction, not stroke order.
 - The letter strokes follow Zaner-Bloser closely but are hand-drawn approximations, not official letter shapes.
 - Accent marks are not traced (José is traced as Jose), and letters without stroke data are skipped.

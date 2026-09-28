@@ -260,6 +260,7 @@ body.student .instruct p{font-family:var(--kid);font-size:26px;line-height:1.25}
 .dots i.done{background:var(--good);border-color:var(--good)}
 .dots i.cur{border-color:var(--primary);border-width:3px;box-shadow:0 0 0 3px var(--primary-soft)}
 body.student .app{padding-top:58px}
+body.student{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;overscroll-behavior:none;touch-action:manipulation}
 
 
 .strip{display:flex;flex-wrap:wrap;gap:8px;padding:8px;border:1.5px dashed var(--demo);border-radius:12px;background:var(--surface-2)}
@@ -594,9 +595,7 @@ body.locked .btn-lock{min-height:50px;padding:0 18px;font-size:16px;border-width
       </div>
     </div>
     <div class="top-actions">
-      <span class="lock-chip" id="lockChip" role="status"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0"/></svg>Locked for students</span>
-      <button class="btn btn-quiet btn-lock" id="lockBtn" type="button" aria-pressed="false"><i class="fill" id="lockFill"></i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path id="lockShackle" d="M8 11V7a4 4 0 0 1 7.8-1.2"/></svg><span id="lockLbl">Lock</span></button>
-      <button class="btn btn-quiet" id="studentBtn" type="button">
+<button class="btn btn-quiet" id="studentBtn" type="button">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Student view
       </button>
       <span class="top-sep" aria-hidden="true"></span>
@@ -708,6 +707,8 @@ body.locked .btn-lock{min-height:50px;padding:0 18px;font-size:16px;border-width
   <section class="result" id="result" hidden aria-live="polite"></section>
 </div>
 
+<div hidden aria-hidden="true"><span class="lock-chip" id="lockChip" role="status"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0"/></svg>Locked for students</span>
+      <button class="btn btn-quiet btn-lock" id="lockBtn" hidden type="button" aria-pressed="false"><i class="fill" id="lockFill"></i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path id="lockShackle" d="M8 11V7a4 4 0 0 1 7.8-1.2"/></svg><span id="lockLbl">Lock</span></button></div>
 <div class="pop-back" id="popBack" hidden></div>
 <div class="pop" id="pop" hidden role="dialog" aria-modal="true" aria-label="Your result">
   <button class="pop-x" id="popX" type="button" aria-label="Close">×</button>
@@ -850,13 +851,13 @@ body.locked .btn-lock{min-height:50px;padding:0 18px;font-size:16px;border-width
     <div class="group">
       <h3>Palm protection</h3>
       <div class="setting">
-        <span class="lbl" id="palmLbl">Ignore palm touches</span>
+        <span class="lbl" id="palmLbl">What can write</span>
         <div class="seg" data-setting="palmMode" role="group" aria-labelledby="palmLbl">
-          <button type="button" data-value="off">Off</button>
-          <button type="button" data-value="auto">After a stylus is used</button>
+          <button type="button" data-value="off">Finger and stylus</button>
+          <button type="button" data-value="auto">Stylus after it's used</button>
           <button type="button" data-value="stylus">Stylus only</button>
         </div>
-        <p class="hint">"After a stylus is used": once the stylus touches the screen, fingers and palms no longer draw. "Stylus only": only a stylus (like Apple Pencil) can draw, so a palm never leaves a mark.</p>
+        <p class="hint">Each time the tool opens, fingers and a stylus both write, with palm protection on: while one finger is tracing, a palm or second finger is ignored so the line never jumps or stops. "Stylus after it's used" stops fingers once a stylus touches the screen. "Stylus only" lets only a stylus write. Both last until the page is closed.</p>
       </div>
       <label class="switch" for="set-palmSmart"><span>Smart palm filter for finger tracing<small>Ignores big touches, keeps the touch on the letters when a palm and finger land together, and removes small accidental marks away from the letters</small></span><input type="checkbox" id="set-palmSmart" data-setting="palmSmart"></label>
       <div class="setting">
@@ -895,18 +896,14 @@ body.locked .btn-lock{min-height:50px;padding:0 18px;font-size:16px;border-width
     </div>
 
     <div class="group">
-      <h3>Saving and lock</h3>
+      <h3>Saving and leaving Student view</h3>
       <label class="switch" for="set-save"><span>Save tries to Progress<small>Each finished row is saved under the student's name</small></span><input type="checkbox" id="set-save" data-setting="save"></label>
-      <div class="setting"><span class="lbl" id="umSetLbl">How to unlock</span>
-        <div class="seg" id="umSet" role="group" aria-labelledby="umSetLbl"><button type="button" data-v="code">4-digit code</button><button type="button" data-v="hold">Press and hold</button></div></div>
-      <div class="setting" id="holdSetRow"><span class="lbl" id="hsLbl">How long to hold</span>
+      <div class="setting" id="holdSetRow"><span class="lbl" id="hsLbl">Hold to leave Student view</span>
         <div class="seg" id="hsSet" role="group" aria-labelledby="hsLbl"><button type="button" data-v="1">1 s</button><button type="button" data-v="2">2 s</button><button type="button" data-v="3">3 s</button></div>
-        <p class="hint">Also used for "Hold to exit" in Student view.</p></div>
-      <div class="setting"><span class="lbl">Teacher code</span>
-        <p class="hint" id="pinState"></p>
-        <div class="pin-row"><input id="pinInput" inputmode="numeric" maxlength="4" placeholder="4 digits" aria-label="New 4-digit code" autocomplete="off"><button class="btn" type="button" id="pinSave">Set code</button><button class="btn" type="button" id="pinClear" hidden>Remove code</button></div></div>
-      <label class="switch" for="devQuick"><span>Lock right away<small>Skip the "Lock for students" screen</small></span><input type="checkbox" id="devQuick"></label>
-      <p class="hint">The lock keeps students out of settings, Progress and PDFs. It is not a security feature. Lock settings are saved on this device only.</p>
+        <p class="hint">Student view is the locked mode: students can't open settings, Progress or PDFs. To leave, press and hold "Hold to exit" for this long. There is no code.</p></div>
+      <div hidden aria-hidden="true">
+        <div class="seg" id="umSet"></div><p id="pinState"></p><input id="pinInput"><button type="button" id="pinSave"></button><button type="button" id="pinClear"></button><input type="checkbox" id="devQuick">
+      </div>
     </div>
 
     <div class="group">
@@ -1295,6 +1292,8 @@ body.locked .btn-lock{min-height:50px;padding:0 18px;font-size:16px;border-width
   let DEV = {ppi:96, calibrated:false, pin:'', locked:false};
   try { const raw = localStorage.getItem(DEVICE_KEY); if (raw) DEV = {...DEV, ...JSON.parse(raw)}; } catch(e) {}
   if (!S.palmModeV) { S.palmModeV = 1; S.palmMode = S.palm === false ? 'off' : 'auto'; try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch(e) {} }
+  // Every time the tool opens: finger tracing with palm protection on (stylus-only lasts until the page is closed)
+  S.palmMode = 'off'; S.palmSmart = true;
   const saveS = () => { try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch(e) {} };
   const saveDev = () => { try { localStorage.setItem(DEVICE_KEY, JSON.stringify(DEV)); } catch(e) {} };
 
@@ -1529,7 +1528,9 @@ body.locked .btn-lock{min-height:50px;padding:0 18px;font-size:16px;border-width
   });
   const unlockMode = () => (DEV.unlockMode === 'code' || (!DEV.unlockMode && DEV.pin)) && DEV.pin ? 'code' : 'hold';
   const holdSecs = () => clamp(+DEV.holdSecs || 2, 1, 3);
-  async function guarded(fn){
+  // Codes and the Lock screen were removed: Student view is the locked mode, left by press-and-hold only.
+  DEV.pin = ''; DEV.locked = false; DEV.unlockMode = 'hold'; DEV.quickLock = false; saveDev();
+  async function guarded(fn){ fn(); return;
     if (!DEV.pin || unlocked || unlockMode() !== 'code') { fn(); return; }
     const ok = await openPinPad('check');
     if (ok === true) { unlocked = true; fn(); }
@@ -1631,7 +1632,7 @@ body.locked .btn-lock{min-height:50px;padding:0 18px;font-size:16px;border-width
   $('studentBtn').addEventListener('click', () => {
     setStudent(true);
     try { const p = document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); if (p && p.catch) p.catch(() => {}); } catch(e) {}
-    toast('Student view. Hold "Hold to exit" to leave.');
+    toast(`Student view. To leave, press and hold "Hold to exit" for ${holdSecs()} seconds.`);
   });
   let holdT = null, holdStart = 0, holdRaf = 0;
   function holdTick(){
@@ -1648,7 +1649,14 @@ body.locked .btn-lock{min-height:50px;padding:0 18px;font-size:16px;border-width
     }); }, holdSecs() * 1000);
   });
   ['pointerup','pointerleave','pointercancel'].forEach(ev => exitBtn.addEventListener(ev, holdEnd));
-  exitBtn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); guarded(() => { setStudent(false); unlocked = false; }); } });
+  exitBtn.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && !e.repeat) { e.preventDefault(); exitBtn.dispatchEvent(new PointerEvent('pointerdown', {bubbles: false})); } });
+  exitBtn.addEventListener('keyup', e => { if (e.key === 'Enter' || e.key === ' ') holdEnd(); });
+  // Student view: stray touches outside the writing area do nothing (no zoom, text selection, long-press menus or page bounce)
+  const stuBlock = e => { if (isStudent() && document.documentElement.scrollHeight <= innerHeight + 4 && !(e.target && e.target.closest && e.target.closest('#fxCanvas, button, input, select'))) e.preventDefault(); };
+  ['contextmenu', 'selectstart', 'dragstart', 'dblclick'].forEach(t => document.addEventListener(t, e => { if (isStudent()) e.preventDefault(); }));
+  ['gesturestart', 'gesturechange'].forEach(t => document.addEventListener(t, e => { if (isStudent()) e.preventDefault(); }));
+  document.addEventListener('touchmove', stuBlock, {passive: false});
+  document.addEventListener('touchstart', e => { if (isStudent() && e.touches && e.touches.length > 1) e.preventDefault(); }, {passive: false});
 
   // =====================================================================
   // Sound and speech
@@ -2286,7 +2294,7 @@ body.locked .btn-lock{min-height:50px;padding:0 18px;font-size:16px;border-width
   }
   // ---- palm protection
   const pathLen = s => { let L = 0; for (let i = 1; i < s.pts.length; i++) L += Math.hypot(s.pts[i].x - s.pts[i-1].x, s.pts[i].y - s.pts[i-1].y); return L; };
-  const bigTouch = e => Math.max(e.width || 0, e.height || 0) > 44;
+  const bigTouch = e => Math.max(e.width || 0, e.height || 0) > 100;
   let nudgeAt = -1e9;
   function dropActive(){
     if (!active) return; const s = active.s, i = state.strokes.indexOf(s);
@@ -2299,13 +2307,15 @@ body.locked .btn-lock{min-height:50px;padding:0 18px;font-size:16px;border-width
     if (pen) sawPen = true;
     if (touch && S.palmMode === 'stylus') { if (performance.now() - nudgeAt > 6000) { nudgeAt = performance.now(); toast('Stylus only is on: trace with the stylus. A teacher can change this in Palm protection.'); } return; }
     if (touch && sawPen && S.palmMode === 'auto') return;
-    if (touch && S.palmSmart && bigTouch(e)) return;
+    if (touch && S.palmSmart && bigTouch(e) && !pointFromEvent(e).on) return;
+    if (active && performance.now() - (active.last || active.s.t) > 700) { const st = active; active = null; inkEnd = performance.now(); try { fC.releasePointerCapture(st.id); } catch(_) {} }
     if (active) {
       const a = active.s;
       // a stylus always wins over a palm that landed first
-      if (pen && a.type === 'touch' && S.palmMode !== 'off') dropActive();
-      // palm then finger: if the first touch just landed or is resting still, keep the new touch when it is on the letters or above the first one
-      else if (touch && S.palmSmart && a.type === 'touch' && (performance.now() - a.t < 450 || pathLen(a) < a.w * 4)) { const p = pointFromEvent(e); if (p.on || p.y < a.pts[0].y - a.w) dropActive(); else return; }
+      if (pen && a.type === 'touch') dropActive();
+      // the first touch keeps drawing; the only exception is a touch that has not moved at all and is off the letters
+      // (a resting palm), when a new touch lands on the letters
+      else if (touch && S.palmSmart && a.type === 'touch' && a.pts.length <= 2 && pathLen(a) < a.w * 1.5 && !a.pts.some(p => p.on)) { const p = pointFromEvent(e); if (p.on) dropActive(); else return; }
       else return;
     }
     e.preventDefault();
@@ -2327,19 +2337,25 @@ body.locked .btn-lock{min-height:50px;padding:0 18px;font-size:16px;border-width
     (evs.length ? evs : [e]).forEach(ev => {
       const p = pointFromEvent(ev), last = s.pts[s.pts.length - 1];
       if (Math.abs(p.x - last.x) + Math.abs(p.y - last.y) < 1) return;
-      s.pts.push(p); drawSeg(ctx, last, p, s);
+      s.pts.push(p); drawSeg(ctx, last, p, s); active.last = performance.now();
       if (ev.pointerType === 'pen' && ev.pressure > 0) s.pr.push(ev.pressure);
     });
   });
   // a short touch mark that never reached the letters is treated as an accidental palm or wrist mark
+  let inkEnd = 0;
+  ['click', 'pointerdown'].forEach(t => document.addEventListener(t, e => {
+    if (e.target === fC || !(active || performance.now() - inkEnd < 350)) return;
+    if (e.target && e.target.closest && e.target.closest('#rail, #stepper, #sayBtn, #exitStudent, .top-actions')) { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true));
   const endStroke = e => {
-    if (!active || e.pointerId !== active.id) return; const s = active.s; active = null;
+    if (!active || e.pointerId !== active.id) return; const s = active.s; active = null; inkEnd = performance.now();
     if (S.palmSmart && s.type === 'touch' && !s.pts.some(p => p.on) && pathLen(s) < s.w * 3 && performance.now() - s.t < 500) {
       const i = state.strokes.indexOf(s); if (i >= 0) state.strokes.splice(i, 1); if (!state.strokes.length) state.t0 = null; redrawInk();
     }
   };
   fC.addEventListener('pointerup', endStroke);
   fC.addEventListener('pointercancel', endStroke);
+  fC.addEventListener('lostpointercapture', endStroke);
   fC.addEventListener('contextmenu', e => e.preventDefault());
 
   $('undoBtn').addEventListener('click', () => { state.strokes.pop(); if (!state.strokes.length) state.t0 = null; clearChecked(); redrawInk(); });

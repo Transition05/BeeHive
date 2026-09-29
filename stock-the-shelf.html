@@ -141,6 +141,47 @@ input[type=text]:focus,select:focus{border-color:var(--accent);outline:none}
 .facings img:nth-child(3){z-index:1;position:relative;transform:scale(.92) translateY(-4px)}
 .spot{overflow:hidden}
 .facings.stack img{transform:none!important;z-index:auto!important}
+.slot{position:relative}
+.aisle{position:relative}
+.slot.landed,.aisle.landed{box-shadow:0 0 0 4px var(--good);border-radius:8px;z-index:5}
+.slot.landed .cnt{background:var(--good);border-color:var(--good);color:#fff}
+.slot.landed .tag,.aisle.landed .sign{box-shadow:0 0 0 3px var(--good)}
+.okbadge{position:absolute;top:6px;left:8px;width:36px;height:36px;border-radius:50%;background:var(--good);color:#fff;display:flex;align-items:center;justify-content:center;z-index:7;box-shadow:0 2px 7px rgba(0,0,0,.3)}
+.okbadge svg{width:21px;height:21px}
+.items.frozen{pointer-events:none}
+.item.placed{position:relative;border-color:var(--good);background:var(--good-soft);transform:none}
+.item .tick{position:absolute;top:-8px;right:-8px;width:28px;height:28px;border-radius:50%;background:var(--good);color:#fff;display:flex;align-items:center;justify-content:center;z-index:3;box-shadow:0 2px 5px rgba(0,0,0,.28)}
+.item .tick svg{width:16px;height:16px}
+
+/* name matching: pictures are the shelf spots, name tags are the cart */
+.slot.nm.open .spot::before{display:none}
+.slot.nm .spot{align-items:center;justify-content:center}
+.prodpic{max-height:104px;max-width:92px;object-fit:contain;filter:drop-shadow(0 2px 3px rgba(0,0,0,.2))}
+.tagslot{min-height:56px;border:2px dashed var(--tag-line);border-radius:4px;display:flex;align-items:center;justify-content:center;padding:3px}
+.slot.nm.bad .tagslot{animation:shake .38s}
+.slot.nm.hint .spot{outline:3px solid var(--hint);outline-offset:-4px;background:color-mix(in srgb,var(--hint) 22%,transparent);animation:pulse 1.1s ease-in-out infinite}
+.slot.nm.landed .tagslot{box-shadow:0 0 0 3px var(--good);border-color:var(--good)}
+.tagcard{background:var(--tag);color:var(--tag-ink);border:1px solid var(--tag-line);border-radius:4px;padding:5px 7px;display:grid;gap:1px;justify-items:center;width:100%;font-family:Arial,Helvetica,sans-serif}
+.tagcard .tnm{font-weight:700;font-size:11.5px;line-height:1.1;text-transform:uppercase;text-align:center;overflow-wrap:break-word;hyphens:none}
+.tagcard .tpr{font-weight:700;font-size:19px;letter-spacing:-.02em}
+.item.tagitem{background:var(--tag);border-color:var(--tag-line);padding:12px 10px;align-content:center;min-height:118px;width:158px}
+.item.tagitem .tnm{font-weight:700;font-size:14px;line-height:1.2;text-transform:uppercase;text-align:center;color:var(--tag-ink);overflow-wrap:break-word;hyphens:none;font-family:Arial,Helvetica,sans-serif}
+.item.tagitem .tpr{font-weight:700;font-size:21px;color:var(--tag-ink);font-family:Arial,Helvetica,sans-serif}
+.item.tagitem[aria-pressed="true"]{background:var(--tag);color:var(--tag-ink);border-color:var(--accent);box-shadow:0 0 0 4px var(--accent),var(--shadow);transform:translateY(-6px)}
+.item.tagitem[aria-pressed="true"] .tnm,.item.tagitem[aria-pressed="true"] .tpr{color:var(--tag-ink)}
+.item.tagitem.placed{background:var(--tag);border-color:var(--good);box-shadow:0 0 0 4px var(--good)}
+.item.tagitem.placed .tnm,.item.tagitem.placed .tpr{color:var(--tag-ink)}
+.spotlab{background:var(--tag);color:var(--tag-ink);border:1px solid var(--tag-line);border-radius:4px;padding:8px 9px;display:grid;gap:1px;justify-items:center;width:90%;font-family:Arial,Helvetica,sans-serif;box-shadow:0 1px 2px rgba(0,0,0,.14)}
+.spotlab .snm2{font-weight:700;font-size:13px;line-height:1.15;text-transform:uppercase;text-align:center;overflow-wrap:break-word;hyphens:none}
+.spotlab .spr2{font-weight:700;font-size:23px;letter-spacing:-.02em;margin-top:2px}
+.shelflab{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:1px 3px 5px;color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+.shelflab .snm{font-weight:700;font-size:12.5px;line-height:1.1;text-transform:uppercase;overflow-wrap:break-word;hyphens:none}
+.shelflab .spr{font-weight:700;font-size:17px;white-space:nowrap;letter-spacing:-.02em}
+.tagslot .xn{position:absolute;right:4px;bottom:3px;font-family:var(--mono);font-weight:600;font-size:12px;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:0 7px}
+.tagslot{position:relative}
+.ghost.gtag{width:126px;height:auto;background:#fff;border:1px solid #B9C0C7;border-radius:4px;padding:9px 8px;color:#121417;text-align:center;font-family:Arial,Helvetica,sans-serif;transform:translate(-50%,-60%) rotate(-3deg)}
+.ghost.gtag .tnm{font-weight:700;font-size:12px;text-transform:uppercase;line-height:1.15;display:block;overflow-wrap:break-word}
+.ghost.gtag .tpr{font-weight:700;font-size:20px;display:block;margin-top:2px}
 .cnt{position:absolute;top:6px;right:8px;z-index:4;font-family:var(--mono);font-weight:600;font-size:13px;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:1px 8px;font-variant-numeric:tabular-nums}
 .slot.full .cnt{background:var(--good);border-color:var(--good);color:#fff}
 .rail{background:var(--lip);border-top:5px solid var(--steel);padding:6px 5px 8px}
@@ -242,6 +283,8 @@ tr.detail td{white-space:normal;background:var(--ground)}
   .shelf{grid-template-columns:repeat(auto-fill,minmax(118px,1fr))}
   .tag .pr b{font-size:20px}
   .item{width:98px}.item img{height:70px;width:84px}
+  .item.tagitem{width:134px}
+  .tagcard .tnm{font-size:10.5px}
   .btn.big{width:100%}
 }
 </style>
@@ -340,7 +383,10 @@ tr.detail td{white-space:normal;background:var(--ground)}
       <div class="set" data-for="sort"><span>Aisles to sort into</span>
         <div class="stepper"><button data-step="sortCats" data-d="-1" aria-label="Fewer aisles">−</button><output id="set-sortCats">2</output><button data-step="sortCats" data-d="1" aria-label="More aisles">+</button></div>
         <small>How many category shelves.</small></div>
-      <label class="set" data-for="match restock" for="set-tag"><span>Price tags show</span>
+      <div class="set" data-for="match"><span>Match the name</span>
+        <label class="switch" for="set-nameMatch"><input type="checkbox" id="set-nameMatch"> Name tags onto pictures</label>
+        <small>The product pictures go on the shelf and the cart holds name tags. The student reads a tag and puts it on the right picture.</small></div>
+      <label class="set" data-for="match restock" id="wrap-tag" for="set-tag"><span>Price tags show</span>
         <select id="set-tag">
           <option value="full">Picture + name + price</option>
           <option value="text">Name + details + price</option>
@@ -372,7 +418,30 @@ tr.detail td{white-space:normal;background:var(--ground)}
           <option value="3">After 3 wrong tries</option>
         </select>
         <small>Counts as a prompt in the data.</small></label>
-      <div class="set" data-for="all"><span>Item labels</span>
+      <label class="set" data-for="match" id="wrap-shelfPic" for="set-shelfPic"><span>Shelf spots show</span>
+        <select id="set-shelfPic">
+          <option value="full">Picture with name and price</option>
+          <option value="pic">Picture only</option>
+          <option value="label">Name and price only - no picture</option>
+        </select>
+        <small id="shelfPic-note">Used when matching the name. No picture makes it label to label - reading on both sides.</small></label>
+      <label class="set" data-for="all" for="set-move"><span>How items move</span>
+        <select id="set-move">
+          <option value="tap">Tap the item, then tap the spot</option>
+          <option value="drag">Drag only - no tapping</option>
+        </select>
+        <small id="move-note">Dragging works either way. Drag only turns tapping off.</small></label>
+      <label class="set" data-for="all" for="set-land"><span>Watch it land</span>
+        <select id="set-land">
+          <option value="0">Off - it goes right away</option>
+          <option value="900">Stays 1 second</option>
+          <option value="1600">Stays 1.5 seconds</option>
+          <option value="2600">Stays 2.5 seconds</option>
+          <option value="4000">Stays 4 seconds</option>
+          <option value="stay">Stays - never clears</option>
+        </select>
+        <small>How long the item sits in its spot, with a green check, before it clears and the next one comes out. The counter keeps the tally. "Stays" leaves every piece on the shelf.</small></label>
+      <div class="set" data-for="all" id="wrap-prodName"><span>Item labels</span>
         <label class="switch" for="set-prodName"><input type="checkbox" id="set-prodName"> Show names on items</label>
         <small>Off = student goes by the package.</small></div>
       <div class="set" data-for="all"><span>Extras</span>
@@ -496,14 +565,20 @@ const CATS=[
   {id:'breakfast',label:'Breakfast'},{id:'soda',label:'Soda'},{id:'drinks',label:'Cold Drinks'},{id:'hot',label:'Coffee & Tea'}];
 const CAT=Object.fromEntries(CATS.map(c=>[c.id,c]));
 const JOB={match:'Match the tag',sort:'Sort by aisle',upc:'Check the UPC',restock:'Restock'};
+const jobOf=r=>{
+  const nm=r&&(r.nameMatch||(r.settings&&r.settings.nameMatch));
+  if(!nm)return JOB[r.mode]||r.mode;
+  const sp=(r.settings&&r.settings.shelfPic)||r.shelfPic;
+  return (JOB[r.mode]||r.mode)+(sp==='label'?' (label to label)':' (match the name)');
+};
 const LEVEL_TXT={beginner:'4 items, one shelf, one at a time, tags with pictures (Restock: 2 tags, 3 each). Help shows up after 2 wrong tries.',
   intermediate:'8 items on 2 shelves, tags without pictures, 2 extra tags (Restock: 4 tags, 3 each). Help after 3 wrong tries.',
   advanced:'16 items on 4 shelves, name-only tags, no names on items, full UPC, timer on (Restock: 6 tags, 4 each). Help only when tapped.',
   custom:'Custom settings.'};
 const PRESETS={
-  beginner:{items:4,shelves:1,distractors:0,sortCats:2,matchCap:3,fillAll:true,pieces:12,restockTags:2,restockCap:3,tag:'full',upc:'4',handout:'one',autoHelp:'2',assist:true,prodName:true,timer:false},
-  intermediate:{items:8,shelves:2,distractors:2,sortCats:3,matchCap:3,fillAll:true,pieces:24,restockTags:4,restockCap:3,tag:'text',upc:'5',handout:'all',autoHelp:'3',assist:true,prodName:true,timer:false},
-  advanced:{items:16,shelves:4,distractors:4,sortCats:5,matchCap:3,fillAll:true,pieces:48,restockTags:6,restockCap:4,tag:'name',upc:'12',handout:'all',autoHelp:'0',assist:true,prodName:false,timer:true}};
+  beginner:{items:4,shelves:1,distractors:0,sortCats:2,matchCap:3,fillAll:true,pieces:12,restockTags:2,restockCap:3,tag:'full',upc:'4',handout:'one',autoHelp:'2',assist:true,prodName:true,timer:false,land:'1600',move:'tap',nameMatch:false,shelfPic:'full'},
+  intermediate:{items:8,shelves:2,distractors:2,sortCats:3,matchCap:3,fillAll:true,pieces:24,restockTags:4,restockCap:3,tag:'text',upc:'5',handout:'all',autoHelp:'3',assist:true,prodName:true,timer:false,land:'1600',move:'tap',nameMatch:false,shelfPic:'pic'},
+  advanced:{items:16,shelves:4,distractors:4,sortCats:5,matchCap:3,fillAll:true,pieces:48,restockTags:6,restockCap:4,tag:'name',upc:'12',handout:'all',autoHelp:'0',assist:true,prodName:false,timer:true,land:'900',move:'drag',nameMatch:false,shelfPic:'pic'}};
 const LIMITS={items:[2,24],shelves:[1,4],distractors:[0,8],sortCats:[2,7],restockTags:[2,8],restockCap:[2,6],matchCap:[1,6],pieces:[1,144]};
 const PBY=Object.fromEntries(PRODUCTS.map(p=>[p.id,p]));
 const $=s=>document.querySelector(s);
@@ -516,6 +591,10 @@ const store_set=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}
 /* ---------- settings ---------- */
 let S=Object.assign({student:'',mode:'match',level:'beginner',cats:CATS.map(c=>c.id),sound:true,speak:false},PRESETS.beginner,store_get('sts.settings')||{});
 if(S.assist==null)S.assist=true;
+if(S.land==null)S.land='1600';
+if(S.move==null)S.move='tap';
+if(S.nameMatch==null)S.nameMatch=false;
+if(S.shelfPic==null)S.shelfPic='full';
 if(S.matchCap==null){S.matchCap=3;S.fillAll=true;S.pieces=S.items*3}
 if(S.restockTags==null){S.restockTags=(PRESETS[S.level]||PRESETS.beginner).restockTags;S.restockCap=(PRESETS[S.level]||PRESETS.beginner).restockCap}
 function saveSettings(){store_set('sts.settings',S)}
@@ -547,6 +626,7 @@ function renderSettings(){
   $('#set-tag').value=S.tag;$('#set-upc').value=S.upc;$('#set-handout').value=S.handout;$('#set-autoHelp').value=S.autoHelp;
   $('#set-assist').checked=S.assist;$('#set-autoHelp').disabled=!S.assist;$('#wrap-autoHelp').classList.toggle('na',!S.assist);
   $('#assist-note').textContent=S.assist?'Help button and yellow spot are available.':'Off: a wrong item shakes, bounces back and says "Try again." No Help button, no yellow spot.';
+  $('#set-land').value=String(S.land);$('#set-move').value=S.move;$('#set-nameMatch').checked=!!S.nameMatch;$('#set-shelfPic').value=S.shelfPic;
   $('#set-prodName').checked=S.prodName;$('#set-timer').checked=S.timer;$('#set-sound').checked=S.sound;$('#set-speak').checked=S.speak;
   $('#student').value=S.student;
   document.querySelector(`input[name=mode][value=${S.mode}]`).checked=true;
@@ -554,6 +634,17 @@ function renderSettings(){
   $('#lvl-custom').setAttribute('aria-pressed',String(S.level==='custom'));
   $('#level-desc').textContent=LEVEL_TXT[S.level];
   document.querySelectorAll('.set[data-for]').forEach(el=>{const f=el.dataset.for;el.classList.toggle('na',!(f==='all'||f.split(' ').includes(S.mode)))});
+  const nmOn=S.mode==='match'&&!!S.nameMatch;
+  $('#wrap-tag').classList.toggle('na',nmOn);
+  $('#set-tag').disabled=nmOn;
+  $('#wrap-tag').querySelector('small').textContent=nmOn?'Not used: matching the name puts pictures on the shelf, so there are no price tags.':'Take the picture away to practice reading.';
+  $('#wrap-prodName').classList.toggle('na',nmOn);
+  $('#set-prodName').disabled=nmOn;
+  $('#wrap-prodName').querySelector('small').textContent=nmOn?'Not used: the cart holds name tags, not items.':'Off = student goes by the package.';
+  $('#wrap-shelfPic').classList.toggle('na',!nmOn);
+  $('#set-shelfPic').disabled=!nmOn;
+  $('#shelfPic-note').textContent=!nmOn?'Only used when "Match the name" is on.':S.shelfPic==='label'?'Label to label: no pictures at all, so they read both sides.':S.shelfPic==='full'?'The words on the shelf give them something to compare the tag to.':'Picture only, so they have to know the package.';
+  $('#move-note').textContent=S.move==='drag'?'Tapping is off. If they tap, it says "Drag it over to the shelf."':'Dragging works either way. Drag only turns tapping off.';
   updateNotes();
 }
 function pool(){return PRODUCTS.filter(p=>S.cats.includes(p.cat)&&(S.mode!=='upc'||p.upc))}
@@ -570,8 +661,8 @@ document.querySelectorAll('.lvl[data-level]').forEach(b=>b.addEventListener('cli
 document.querySelectorAll('[data-step]').forEach(b=>b.addEventListener('click',()=>{
   const k=b.dataset.step,[lo,hi]=LIMITS[k];S[k]=Math.max(lo,Math.min(hi,S[k]+Number(b.dataset.d)));if(k==='pieces')S.fillAll=false;toCustom();saveSettings();renderSettings();
 }));
-[['set-tag','tag'],['set-upc','upc'],['set-handout','handout'],['set-autoHelp','autoHelp']].forEach(([id,k])=>$('#'+id).addEventListener('change',e=>{S[k]=e.target.value;toCustom();saveSettings();renderSettings()}));
-[['set-assist','assist',true],['set-fillAll','fillAll',true],['set-prodName','prodName',true],['set-timer','timer',true],['set-sound','sound',false],['set-speak','speak',false]].forEach(([id,k,lv])=>$('#'+id).addEventListener('change',e=>{S[k]=e.target.checked;if(lv)toCustom();saveSettings();renderSettings()}));
+[['set-tag','tag'],['set-upc','upc'],['set-handout','handout'],['set-autoHelp','autoHelp'],['set-land','land'],['set-move','move'],['set-shelfPic','shelfPic']].forEach(([id,k])=>$('#'+id).addEventListener('change',e=>{S[k]=e.target.value;toCustom();saveSettings();renderSettings()}));
+[['set-assist','assist',true],['set-fillAll','fillAll',true],['set-nameMatch','nameMatch',true],['set-prodName','prodName',true],['set-timer','timer',true],['set-sound','sound',false],['set-speak','speak',false]].forEach(([id,k,lv])=>$('#'+id).addEventListener('change',e=>{S[k]=e.target.checked;if(lv)toCustom();saveSettings();renderSettings()}));
 document.querySelectorAll('input[name=mode]').forEach(r=>r.addEventListener('change',()=>{S.mode=r.value;saveSettings();renderSettings()}));
 $('#student').addEventListener('input',e=>{S.student=e.target.value;saveSettings()});
 
@@ -619,6 +710,7 @@ let G=null,timerId=null;
 function sample(arr,n){return shuffle(arr).slice(0,n)}
 function buildRound(){
   const P=pool();const cfg=Object.assign({},S);
+  cfg.nameMatch=(S.mode==='match'&&!!S.nameMatch);
   let items,targets,need=null;
   if(S.mode==='sort'){
     const avail=shuffle([...new Set(P.map(p=>p.cat))]);
@@ -660,11 +752,11 @@ function startRound(){
   if(!pool().length)return;
   buildRound();
   $('#g-student').textContent=G.student;
-  $('#g-job').textContent=JOB[G.mode]+' · '+(S.level==='custom'?'Custom':S.level[0].toUpperCase()+S.level.slice(1));
+  $('#g-job').textContent=jobOf({mode:G.mode,nameMatch:G.cfg.nameMatch,shelfPic:G.cfg.shelfPic})+' · '+(S.level==='custom'?'Custom':S.level[0].toUpperCase()+S.level.slice(1));
   $('#g-timer').hidden=!S.timer;$('#g-help').hidden=!G.cfg.assist;
   armEnd(false);
   renderUnit();renderCart();renderProgress();
-  setStatus(G.mode==='restock'?'Stock each item on its spot. Each spot holds '+G.cfg.restockCap+'.':G.mode==='sort'?'Put each item on the shelf where it belongs.':G.mode==='upc'?'Match the numbers on the item to a tag.':'Put each item above its price tag.');
+  setStatus(G.mode==='restock'?'Stock each item on its spot. Each spot holds '+G.cfg.restockCap+'.':G.mode==='sort'?'Put each item on the shelf where it belongs.':G.mode==='upc'?'Match the numbers on the item to a tag.':(G.cfg.nameMatch?(G.cfg.shelfPic==='label'?'Read each tag. Put it on the shelf tag that says the same thing.':'Read each name tag. Put it on the picture it belongs to.'):'Put each item above its price tag.'));
   clearInterval(timerId);timerId=setInterval(tick,1000);tick();
   show('game');
   if(S.handout==='one'||G.mode==='restock')autoSelectOne();
@@ -701,8 +793,19 @@ function renderUnit(){
     const shelf=document.createElement('div');shelf.className='shelf';
     G.targets.slice(s*per,(s+1)*per).forEach(t=>{
       const b=document.createElement('button');b.className='slot open';b.dataset.target=t.id;b.type='button';
-      b.setAttribute('aria-label','Shelf spot: '+(G.mode==='upc'?'UPC '+t.p.upc:t.p.name));
-      b.innerHTML=`<div class="spot">${G.need[t.id]?`<span class="cnt">0/${G.need[t.id]}</span>`:''}<div class="facings"></div></div><div class="rail">${tagHTML(t.p,G.mode)}</div>`;
+      b.setAttribute('aria-label',G.cfg.nameMatch?('Picture of '+t.p.name):('Shelf spot: '+(G.mode==='upc'?'UPC '+t.p.upc:t.p.name)));
+      if(G.cfg.nameMatch){
+        b.classList.add('nm');
+        const onlyLab=G.cfg.shelfPic==='label';
+        const lab=G.cfg.shelfPic==='full'?`<div class="shelflab"><span class="snm">${esc(t.p.name)}</span><span class="spr">${esc(t.p.price)}</span></div>`:'';
+        const face=onlyLab
+          ?`<div class="spotlab"><span class="snm2">${esc(t.p.name)}</span><span class="spr2">${esc(t.p.price)}</span></div>`
+          :`<img class="prodpic" src="${t.p.img}" alt="">`;
+        b.setAttribute('aria-label',(onlyLab?'Shelf tag: ':'Picture of ')+t.p.name);
+        b.innerHTML=`<div class="spot">${G.need[t.id]?`<span class="cnt">0/${G.need[t.id]}</span>`:''}${face}</div><div class="rail">${lab}<div class="tagslot"></div></div>`;
+      }else{
+        b.innerHTML=`<div class="spot">${G.need[t.id]?`<span class="cnt">0/${G.need[t.id]}</span>`:''}<div class="facings"></div></div><div class="rail">${tagHTML(t.p,G.mode)}</div>`;
+      }
       b.addEventListener('click',()=>tapTarget(t.id));
       shelf.appendChild(b);
     });
@@ -722,10 +825,16 @@ function renderCart(){
     const b=document.createElement('button');b.type='button';b.className='item';b.dataset.id=id;
     b.setAttribute('aria-pressed',String(G.selected===id));
     b.setAttribute('aria-label',(G.cfg.prodName?p.name:'Item')+(G.mode==='upc'?' UPC '+p.upc:''));
-    let lab='';
-    if(G.mode==='upc')lab=`<span class="sticker"><span class="upcnum">${upcText(p.upc,+G.cfg.upc)}</span></span>`;
-    if(G.cfg.prodName)lab=`<span class="nm">${esc(p.name)}</span>`+lab;
-    b.innerHTML=`<img src="${p.img}" alt="">${lab}`;
+    if(G.cfg.nameMatch){
+      b.classList.add('tagitem');
+      b.setAttribute('aria-label','Name tag: '+p.name+', '+p.price);
+      b.innerHTML=`<span class="tnm">${esc(p.name)}</span><span class="tpr">${esc(p.price)}</span>`;
+    }else{
+      let lab='';
+      if(G.mode==='upc')lab=`<span class="sticker"><span class="upcnum">${upcText(p.upc,+G.cfg.upc)}</span></span>`;
+      if(G.cfg.prodName)lab=`<span class="nm">${esc(p.name)}</span>`+lab;
+      b.innerHTML=`<img src="${p.img}" alt="">${lab}`;
+    }
     attachDrag(b,id);
     box.appendChild(b);
   });
@@ -755,17 +864,62 @@ function giveHelp(id,auto){
   setStatus(auto?'Look for the yellow spot.':'Here it goes: the yellow spot.','');
 }
 $('#g-help').addEventListener('click',()=>{
-  if(!G||G.over||!G.cfg.assist)return;
+  if(!G||G.over||G.holding||!G.cfg.assist)return;
   let id=G.selected;
   if(!id){const v=cartVisible();if(!v.length)return;id=v[0];select(id)}
   giveHelp(id,false);
 });
+const LANDMS=()=>{const v=+(G.cfg.land||0);return isFinite(v)&&v>0?v:0};
+const TICK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg>';
+function landShow(tid,id){
+  const el=targetEl(tid);
+  if(el){
+    el.classList.add('landed');
+    if(!el.querySelector('.okbadge')){
+      const host=el.querySelector('.spot')||el.querySelector('.stock')||el;
+      const b=document.createElement('span');b.className='okbadge';b.setAttribute('aria-hidden','true');b.innerHTML=TICK;host.appendChild(b);
+    }
+  }
+  const card=document.querySelector(`.item[data-id="${CSS.escape(id)}"]`);
+  if(card&&!card.querySelector('.tick')){
+    card.classList.add('placed');card.setAttribute('aria-pressed','false');
+    const t=document.createElement('span');t.className='tick';t.setAttribute('aria-hidden','true');t.innerHTML=TICK;card.appendChild(t);
+  }
+  const box=$('#g-items');if(box)box.classList.add('frozen');
+}
+/* the placed piece has had its moment - take the picture away, keep the counter */
+function clearPlaced(){
+  if(G&&G.cfg&&G.cfg.land==='stay')return;
+  document.querySelectorAll('.facings').forEach(e=>{e.innerHTML='';e.classList.remove('stack')});
+  document.querySelectorAll('.tagslot').forEach(e=>e.innerHTML='');
+}
+function landClear(){
+  document.querySelectorAll('.landed').forEach(e=>e.classList.remove('landed'));
+  document.querySelectorAll('.okbadge,.item .tick').forEach(e=>e.remove());
+  document.querySelectorAll('.item.placed').forEach(e=>e.classList.remove('placed'));
+  const box=$('#g-items');if(box)box.classList.remove('frozen');
+  clearPlaced();
+}
+function holdThen(tid,id,after){
+  const ms=LANDMS();
+  if(!ms){clearPlaced();after();return}
+  G.holding=true;landShow(tid,id);
+  G.holdTimer=setTimeout(()=>{G.holdTimer=null;G.holding=false;landClear();if(G&&!G.over)after()},ms);
+}
+function endHold(){
+  if(G&&G.holdTimer){clearTimeout(G.holdTimer);G.holdTimer=null}
+  if(G)G.holding=false;
+  landClear();
+}
+const DRAGONLY='Drag it over to the shelf.';
 function tapTarget(tid){
-  if(!G||G.over)return;
+  if(!G||G.over||G.holding)return;
+  if(G.cfg.move==='drag'){setStatus(DRAGONLY,'');return}
   if(!G.selected){setStatus('First tap an item in the cart.','');return}
   attempt(G.selected,tid);
 }
 function attempt(id,tid){
+  if(G.holding)return;
   const it=G.itemBy[id];if(!it||it.done)return;
   const ok=correctTarget(id)===tid;
   G.trials.push({item:id,target:tid,ok,t:Date.now()-G.start});
@@ -777,15 +931,18 @@ function attempt(id,tid){
     place(id,tid);sGood();
     const praise=['Nice!','Good job!','That\'s right!','Great stocking!','You got it!'];
     setStatus(praise[Math.floor(Math.random()*praise.length)],'good');
-    renderCart();renderProgress();
-    if(G.items.every(i=>i.done)){finish(true);return}
-    if(G.cfg.handout==='one'||G.mode==='restock')autoSelectOne();
+    renderProgress();
+    holdThen(tid,id,()=>{
+      renderCart();
+      if(G.items.every(i=>i.done)){finish(true);return}
+      if(G.cfg.handout==='one'||G.mode==='restock')autoSelectOne();
+    });
   }else{
     it.errors++;sBad();
     if(el){el.classList.remove('bad');void el.offsetWidth;el.classList.add('bad');setTimeout(()=>el.classList.remove('bad'),600)}
     const card=document.querySelector(`.item[data-id="${CSS.escape(id)}"]`);
     if(card){card.classList.remove('back');void card.offsetWidth;card.classList.add('back')}
-    const tip=G.mode==='sort'?'Not that shelf. What kind of item is it?':G.mode==='upc'?'Those numbers don\'t match. Check them one at a time.':'Not that tag. Look at the name again.';
+    const tip=G.mode==='sort'?'Not that shelf. What kind of item is it?':G.mode==='upc'?'Those numbers don\'t match. Check them one at a time.':G.cfg.nameMatch?(G.cfg.shelfPic==='label'?'Those two do not say the same thing. Read them again.':'Not that one. Read the name again.'):'Not that tag. Look at the name again.';
     if(!G.cfg.assist){setStatus('Try again.','bad');return}
     setStatus(tip,'bad');
     const ah=+G.cfg.autoHelp;
@@ -797,10 +954,20 @@ function place(id,tid){
   const p=PBY[G.itemBy[id].pid];
   if(G.mode!=='sort'){
     const cap=G.need[tid]||1,f=G.fill[tid]=(G.fill[tid]||0)+1;
-    const fc=el.querySelector('.facings');fc.classList.add('stack');
-    const step=f>1?Math.min(40,(118-62)/(f-1)):0;
-    fc.innerHTML=Array.from({length:f},(_,k)=>`<img src="${p.img}" alt="${k?'':esc(p.name)}" style="${k?'margin-left:'+(step-62)+'px':''};max-width:62px">`).join('');
     const c=el.querySelector('.cnt');if(c)c.textContent=f+'/'+cap;
+    const stay=G.cfg.land==='stay';
+    if(G.cfg.nameMatch){
+      const ts=el.querySelector('.tagslot');
+      if(ts)ts.innerHTML=`<div class="tagcard"><span class="tnm">${esc(p.name)}</span><span class="tpr">${esc(p.price)}</span></div>`+(stay&&f>1?`<span class="xn">${f}</span>`:'');
+    }else{
+      const fc=el.querySelector('.facings');fc.classList.add('stack');
+      if(stay){
+        const step=f>1?Math.min(40,(118-62)/(f-1)):0;
+        fc.innerHTML=Array.from({length:f},(_,k)=>`<img src="${p.img}" alt="${k?'':esc(p.name)}" style="${k?'margin-left:'+(step-62)+'px':''};max-width:62px">`).join('');
+      }else{
+        fc.innerHTML=`<img src="${p.img}" alt="${esc(p.name)}" style="max-width:62px">`;
+      }
+    }
     el.classList.add('just');setTimeout(()=>el.classList.remove('just'),400);
     if(f>=cap){el.classList.remove('open');el.classList.add('full')}
     return;
@@ -813,14 +980,21 @@ function place(id,tid){
 function attachDrag(btn,id){
   let sx=0,sy=0,drag=false,ghost=null,over=null,pid=null;
   btn.addEventListener('pointerdown',e=>{
-    if(e.button>0)return;pid=e.pointerId;sx=e.clientX;sy=e.clientY;drag=false;
+    if(e.button>0||!G||G.holding)return;pid=e.pointerId;sx=e.clientX;sy=e.clientY;drag=false;
     btn.setPointerCapture(pid);
   });
   btn.addEventListener('pointermove',e=>{
     if(pid!==e.pointerId)return;
     if(!drag&&Math.hypot(e.clientX-sx,e.clientY-sy)>10){
       drag=true;if(G.selected!==id)select(id);
-      ghost=document.createElement('img');ghost.className='ghost';ghost.src=PBY[G.itemBy[id].pid].img;ghost.alt='';document.body.appendChild(ghost);
+      const gp=PBY[G.itemBy[id].pid];
+      if(G.cfg.nameMatch){
+        ghost=document.createElement('div');ghost.className='ghost gtag';
+        ghost.innerHTML=`<span class="tnm">${esc(gp.name)}</span><span class="tpr">${esc(gp.price)}</span>`;
+      }else{
+        ghost=document.createElement('img');ghost.className='ghost';ghost.src=gp.img;ghost.alt='';
+      }
+      document.body.appendChild(ghost);
     }
     if(drag){
       ghost.style.left=e.clientX+'px';ghost.style.top=e.clientY+'px';
@@ -835,7 +1009,9 @@ function attachDrag(btn,id){
       const t=document.elementFromPoint(e.clientX,e.clientY);const tg=t&&t.closest('[data-target]');
       over=null;
       if(tg&&e.type==='pointerup'){attempt(id,tg.dataset.target)}
-    }else if(e.type==='pointerup'){select(id)}
+    }else if(e.type==='pointerup'){
+      if(G.cfg.move==='drag')setStatus(DRAGONLY,'');else select(id);
+    }
   };
   btn.addEventListener('pointerup',end);btn.addEventListener('pointercancel',end);
   btn.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(id)}});
@@ -863,16 +1039,16 @@ function resultMark(i){
 }
 function resultCode(i){if(!i.done)return 'not placed';if(i.errors===0&&!i.prompted)return '+';return (i.errors?'-'+i.errors:'')+(i.prompted?(i.errors?' ':'')+'P':'')}
 function finish(complete){
-  if(G.over)return;G.over=true;clearInterval(timerId);
+  if(G.over)return;G.over=true;clearInterval(timerId);endHold();
   const sum=summarize();
-  const rec={id:G.id,student:G.student,mode:G.mode,level:G.cfg.level,startedAt:new Date(G.start).toISOString(),endedAt:new Date().toISOString(),complete,
-    settings:{items:G.cfg.items,shelves:G.cfg.shelves,distractors:G.cfg.distractors,sortCats:G.cfg.sortCats,restockTags:G.cfg.restockTags,restockCap:G.cfg.restockCap,matchCap:G.cfg.matchCap,pieces:G.items.length,tag:G.cfg.tag,upc:G.cfg.upc,handout:G.cfg.handout,autoHelp:G.cfg.autoHelp,assist:G.cfg.assist,prodName:G.cfg.prodName},
+  const rec={id:G.id,student:G.student,mode:G.mode,nameMatch:!!G.cfg.nameMatch,shelfPic:G.cfg.shelfPic,level:G.cfg.level,startedAt:new Date(G.start).toISOString(),endedAt:new Date().toISOString(),complete,
+    settings:{items:G.cfg.items,shelves:G.cfg.shelves,distractors:G.cfg.distractors,sortCats:G.cfg.sortCats,restockTags:G.cfg.restockTags,restockCap:G.cfg.restockCap,matchCap:G.cfg.matchCap,pieces:G.items.length,tag:G.cfg.tag,upc:G.cfg.upc,handout:G.cfg.handout,autoHelp:G.cfg.autoHelp,assist:G.cfg.assist,prodName:G.cfg.prodName,nameMatch:!!G.cfg.nameMatch,shelfPic:G.cfg.shelfPic,land:G.cfg.land,move:G.cfg.move},
     ...sum,
     itemsDetail:G.items.map(i=>({name:i.name,cat:i.cat,done:i.done,errors:i.errors,prompted:i.prompted,secs:i.secs,result:resultCode(i)}))};
   if(complete)sDone();
   $('#scr-done .stamp').textContent=complete?'Shelf stocked':'Round ended';
   $('#d-title').textContent=complete?`Great work, ${G.student}!`:`${G.student} stocked ${sum.placed} of ${sum.items}`;
-  $('#d-sub').textContent=`${JOB[G.mode]} · ${rec.level[0].toUpperCase()+rec.level.slice(1)} · ${new Date(G.start).toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'})}`;
+  $('#d-sub').textContent=`${jobOf(rec)} · ${rec.level[0].toUpperCase()+rec.level.slice(1)} · ${new Date(G.start).toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'})}`;
   const pct=sum.items?Math.round(100*sum.own/sum.items):0;
   $('#d-stats').innerHTML=[
     [sum.accuracy+'%',`accuracy (${sum.placed} right of ${sum.tries} tries)`],[`${sum.own}/${sum.items}`,'on their own ('+pct+'%)'],[sum.errors,'wrong tries'],[sum.prompts,'items prompted'],[fmtTime(sum.secs),'total time']]
@@ -943,7 +1119,7 @@ function renderData(){
   if(!rows.length){tb.innerHTML=`<tr><td colspan="11" class="empty-state">No rounds saved yet. Finish a round and it shows up here.</td></tr>`;$('#chart').innerHTML='<p class="note" style="margin:0">The chart fills in after the first round.</p>';return}
   tb.innerHTML=rows.map(s=>{
     const pct=s.items?Math.round(100*s.own/s.items):0;
-    let h=`<tr class="sess" data-id="${esc(s.id)}"><td>${dt(s.startedAt)}${s.complete?'':' <span class="note">(ended early)</span>'}</td><td>${esc(s.student)}</td><td>${JOB[s.mode]||s.mode}</td><td>${lvlName(s.level)}</td>
+    let h=`<tr class="sess" data-id="${esc(s.id)}"><td>${dt(s.startedAt)}${s.complete?'':' <span class="note">(ended early)</span>'}</td><td>${esc(s.student)}</td><td>${jobOf(s)}</td><td>${lvlName(s.level)}</td>
       <td class="num">${s.placed}/${s.items}</td><td class="num"><b>${accOf(s)}%</b></td><td class="num">${s.own} (${pct}%)</td><td class="num">${s.errors}</td><td class="num">${s.prompts}</td><td class="num">${fmtTime(s.secs||0)}</td>
       <td><button class="btn del" data-del="${esc(s.id)}" style="padding:4px 10px;font-size:13px">${delArm===s.id?'Tap to delete':'Delete'}</button></td></tr>`;
     if(openRow===s.id){
@@ -967,7 +1143,7 @@ function renderChart(rows){
   rows.forEach((s,i)=>{
     const pct=accOf(s);const w=Math.min(bw*.64,48),x=pl+i*bw+(bw-w)/2;
     const col=s.mode==='match'?'var(--accent)':s.mode==='sort'?'var(--steel)':s.mode==='restock'?'var(--plum)':'var(--hint)';
-    g+=`<rect x="${x}" y="${y(pct)}" width="${w}" height="${Math.max(1,y(0)-y(pct))}" rx="3" fill="${col}"><title>${esc(s.student)} · ${JOB[s.mode]} · ${Math.round(pct)}% accuracy</title></rect>`;
+    g+=`<rect x="${x}" y="${y(pct)}" width="${w}" height="${Math.max(1,y(0)-y(pct))}" rx="3" fill="${col}"><title>${esc(s.student)} · ${jobOf(s)} · ${Math.round(pct)}% accuracy</title></rect>`;
     if(n<=12)g+=`<text x="${x+w/2}" y="${H-pb+16}" text-anchor="middle">${new Date(s.startedAt).toLocaleDateString(undefined,{month:'numeric',day:'numeric'})}</text>`;
   });
   const key=`<div class="legend" style="margin-top:8px"><span><i style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--accent);vertical-align:-1px"></i> Match the tag</span><span><i style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--steel);vertical-align:-1px"></i> Sort by aisle</span><span><i style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--hint);vertical-align:-1px"></i> Check the UPC</span><span><i style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--plum);vertical-align:-1px"></i> Restock</span><span>Oldest on the left, last 20 rounds.</span></div>`;
@@ -984,13 +1160,13 @@ function copyText(txt,label){
 $('#copy-sum').addEventListener('click',()=>{
   const rows=filtered();
   const out=[['Date','Time','Student','Job','Level','Items','Placed','Tries','Accuracy %','On own','On own %','Wrong tries','Prompts','Seconds','Finished'].join(',')];
-  rows.forEach(s=>{const d=new Date(s.startedAt);out.push([d.toLocaleDateString(),d.toLocaleTimeString(),s.student,JOB[s.mode],lvlName(s.level),s.items,s.placed,s.placed+s.errors,accOf(s),s.own,s.items?Math.round(100*s.own/s.items):0,s.errors,s.prompts,s.secs,s.complete?'yes':'no'].map(csvq).join(','))});
+  rows.forEach(s=>{const d=new Date(s.startedAt);out.push([d.toLocaleDateString(),d.toLocaleTimeString(),s.student,jobOf(s),lvlName(s.level),s.items,s.placed,s.placed+s.errors,accOf(s),s.own,s.items?Math.round(100*s.own/s.items):0,s.errors,s.prompts,s.secs,s.complete?'yes':'no'].map(csvq).join(','))});
   copyText(out.join('\n'),'Summary');
 });
 $('#copy-items').addEventListener('click',()=>{
   const rows=filtered();
   const out=[['Date','Student','Job','Level','Item','Aisle','Result','Wrong tries','Prompted','Seconds'].join(',')];
-  rows.forEach(s=>(s.itemsDetail||[]).forEach(i=>out.push([new Date(s.startedAt).toLocaleDateString(),s.student,JOB[s.mode],lvlName(s.level),i.name,(CAT[i.cat]||{}).label,i.result,i.errors,i.prompted?'yes':'no',i.secs==null?'':i.secs].map(csvq).join(','))));
+  rows.forEach(s=>(s.itemsDetail||[]).forEach(i=>out.push([new Date(s.startedAt).toLocaleDateString(),s.student,jobOf(s),lvlName(s.level),i.name,(CAT[i.cat]||{}).label,i.result,i.errors,i.prompted?'yes':'no',i.secs==null?'':i.secs].map(csvq).join(','))));
   copyText(out.join('\n'),'Item detail');
 });
 
@@ -1052,8 +1228,8 @@ function showReport(blocked){
   $('#r-sub').textContent=d0.toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric',year:'numeric'})+' · '+tm(rs[0].startedAt)+' to '+tm(rs[rs.length-1].endedAt||rs[rs.length-1].startedAt)+' · '+rs.length+' round'+(rs.length>1?'s':'');
   $('#r-why').hidden=!blocked;
   $('#r-stats').innerHTML=[[t.accuracy+'%',`accuracy (${t.placed} right of ${t.tries} tries)`],[`${t.own}/${t.items}`,'on their own'],[t.errors,'wrong tries'],[t.prompts,'prompts'],[fmtTime(t.secs),'total time']].map(([b,s])=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`).join('');
-  $('#r-rounds').innerHTML=rs.map((r,i)=>`<tr><td>${i+1}</td><td>${tm(r.startedAt)}</td><td>${JOB[r.mode]||r.mode}</td><td>${lvlName(r.level)}</td><td>${(r.settings&&r.settings.assist===false)?'Off':'On'}</td><td class="num">${r.placed}/${r.items}</td><td class="num"><b>${accOf(r)}%</b></td><td class="num">${r.own}</td><td class="num">${r.errors}</td><td class="num">${r.prompts}</td><td class="num">${fmtTime(r.secs||0)}</td></tr>`).join('');
-  $('#r-detail').innerHTML=rs.map((r,i)=>`<section class="block"><h2 style="margin-bottom:4px;color:var(--ink)">Round ${i+1} · ${JOB[r.mode]||r.mode} · ${lvlName(r.level)} <span style="color:var(--accent)">· ${accOf(r)}%</span></h2>
+  $('#r-rounds').innerHTML=rs.map((r,i)=>`<tr><td>${i+1}</td><td>${tm(r.startedAt)}</td><td>${jobOf(r)}</td><td>${lvlName(r.level)}</td><td>${(r.settings&&r.settings.assist===false)?'Off':'On'}</td><td class="num">${r.placed}/${r.items}</td><td class="num"><b>${accOf(r)}%</b></td><td class="num">${r.own}</td><td class="num">${r.errors}</td><td class="num">${r.prompts}</td><td class="num">${fmtTime(r.secs||0)}</td></tr>`).join('');
+  $('#r-detail').innerHTML=rs.map((r,i)=>`<section class="block"><h2 style="margin-bottom:4px;color:var(--ink)">Round ${i+1} · ${jobOf(r)} · ${lvlName(r.level)} <span style="color:var(--accent)">· ${accOf(r)}%</span></h2>
     <p class="note" style="margin:0 0 10px">${esc(describe(r))}</p>
     <div style="display:flex;flex-wrap:wrap;gap:8px 18px">${(r.itemsDetail||[]).map(it=>`<span>${esc(it.name)} ${it.done===false?'<span class="mk">—</span>':it.result==='+'?'<span class="mk plus">+</span>':(it.errors?`<span class="mk minus">−${it.errors}</span>`:'')+(it.prompted?' <span class="mk p">P</span>':'')}</span>`).join('')}</div></section>`).join('');
   const cur=['setup','done','data'].find(s=>!$('#scr-'+s).hidden);if(cur)reportBack=cur;
@@ -1064,7 +1240,7 @@ function reportText(){
   const rs=SIT.rounds,t=sitTotals(rs);const L=[];
   L.push('STOCK THE SHELF - SITTING REPORT');L.push('Student: '+sitNames());L.push('Date: '+new Date(rs[0].startedAt).toLocaleString());
   L.push(`Overall: ${t.accuracy}% accuracy (${t.placed} right of ${t.tries} tries) | on own ${t.own}/${t.items} | wrong ${t.errors} | prompts ${t.prompts} | time ${fmtTime(t.secs)}`);
-  rs.forEach((r,i)=>{L.push('');L.push(`Round ${i+1}: ${JOB[r.mode]} - ${lvlName(r.level)} - ${accOf(r)}% accuracy - ${r.placed}/${r.items} placed - wrong ${r.errors} - prompts ${r.prompts} - ${fmtTime(r.secs||0)}`);
+  rs.forEach((r,i)=>{L.push('');L.push(`Round ${i+1}: ${jobOf(r)} - ${lvlName(r.level)} - ${accOf(r)}% accuracy - ${r.placed}/${r.items} placed - wrong ${r.errors} - prompts ${r.prompts} - ${fmtTime(r.secs||0)}`);
     L.push('  '+describe(r));(r.itemsDetail||[]).forEach(it=>L.push(`  ${it.name}: ${it.done===false?'not placed':it.result}`))});
   L.push('');L.push('Key: + right on first try, no help | -N wrong tries | P prompted');
   return L.join('\n');
@@ -1116,10 +1292,14 @@ function describe(r){
   if(r.mode==='sort')out.push(`${r.items} items into ${s.sortCats} aisles`);
   else if(r.mode==='restock')out.push(`${r.items} pieces (${s.restockTags} tags × ${s.restockCap} each)`);
   else out.push(`${r.items} pieces (${s.items} products, up to ${s.matchCap||1} per tag)`+(s.distractors?`, ${s.distractors} extra tags`:''));
-  if(r.mode==='match'||r.mode==='restock')out.push({full:'tags: picture + name + price',text:'tags: name + details + price',name:'tags: name only'}[s.tag]||'');
+  if(s.nameMatch)out.push(s.shelfPic==='label'?'name tags dragged onto matching shelf tags':'name tags dragged onto the pictures');
+  else if(r.mode==='match'||r.mode==='restock')out.push({full:'tags: picture + name + price',text:'tags: name + details + price',name:'tags: name only'}[s.tag]||'');
   if(r.mode==='upc')out.push(+s.upc>=12?'UPC: all 12 digits':`UPC: last ${s.upc} digits`);
   out.push(r.mode==='restock'||s.handout==='one'?'one item at a time':'all items at once');
-  out.push(s.prodName===false?'no names on items':'names on items');
+  if(!s.nameMatch)out.push(s.prodName===false?'no names on items':'names on items');
+  out.push(s.move==='drag'?'drag only':'tap or drag');
+  if(s.nameMatch)out.push(s.shelfPic==='label'?'no pictures on either side':s.shelfPic==='full'?'shelf pictures show the name and price':'shelf pictures only');
+  out.push(s.land==='stay'?'pieces stay on the shelf':(!s.land||s.land==='0')?'no pause after a right answer':'placed piece stays '+(Math.round(+s.land/100)/10)+'s');
   out.push(s.assist===false?'assist off':(+s.autoHelp?`assist on (yellow spot after ${s.autoHelp} wrong)`:'assist on (Help button only)'));
   if(!r.complete)out.push('ended early');
   return out.filter(Boolean).join(' · ');
@@ -1154,13 +1334,13 @@ function buildReport(rounds){
     y+=16;pdf.line(M,y,M+W,y,LINE,.4);
   };
   row(cols.map(c=>c[0].toUpperCase()),true);
-  rounds.forEach((r,i)=>row([String(i+1),tm(new Date(r.startedAt)),JOB[r.mode]||r.mode,lvlName(r.level),(r.settings&&r.settings.assist===false)?'Off':'On',`${r.placed}/${r.items}`,accOf(r)+'%',`${r.own} (${r.items?Math.round(100*r.own/r.items):0}%)`,String(r.errors),String(r.prompts),fmtTime(r.secs||0)],false,i%2===1));
+  rounds.forEach((r,i)=>row([String(i+1),tm(new Date(r.startedAt)),jobOf(r),lvlName(r.level),(r.settings&&r.settings.assist===false)?'Off':'On',`${r.placed}/${r.items}`,accOf(r)+'%',`${r.own} (${r.items?Math.round(100*r.own/r.items):0}%)`,String(r.errors),String(r.prompts),fmtTime(r.secs||0)],false,i%2===1));
   y+=24;
   // per-round detail
   rounds.forEach((r,i)=>{
     const lines=wrap(describe(r),false,8.5,W);
     need(40+lines.length*11+30);
-    pdf.text(M,y,`Round ${i+1} · ${JOB[r.mode]||r.mode} · ${lvlName(r.level)}`,{bold:true,size:12});
+    pdf.text(M,y,`Round ${i+1} · ${jobOf(r)} · ${lvlName(r.level)}`,{bold:true,size:12});
     pdf.text(612-M,y,`${accOf(r)}% accuracy · ${tm(new Date(r.startedAt))}`,{bold:true,size:10,color:TEAL,align:'right'});y+=13;
     lines.forEach(l=>{pdf.text(M,y,l,{size:8.5,color:MUTED});y+=11});y+=4;
     const items=r.itemsDetail||[];const half=Math.ceil(items.length/2);

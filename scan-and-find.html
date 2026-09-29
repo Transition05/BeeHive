@@ -161,6 +161,39 @@ input,select,textarea{font:inherit;color:inherit}
 .pcard h3{font-size:14px;line-height:1.2}
 .pcard .meta{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:12px;color:var(--muted);margin-top:auto}
 .rowlist{display:flex;flex-direction:column;gap:8px}
+.pgstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;margin:14px 0}
+.pgstat{background:var(--surface-2);border-radius:12px;padding:11px 13px;display:grid;gap:2px}
+.pgstat b{font-size:25px;line-height:1.05;font-variant-numeric:tabular-nums}
+.pgstat span{font-size:12px;color:var(--muted);line-height:1.25}
+.pgchart{background:var(--surface-2);border-radius:12px;padding:12px 10px 6px;margin-bottom:6px}
+.pgchart svg{display:block;width:100%;height:auto}
+.pgchart text{fill:var(--muted);font-size:10px;font-family:inherit}
+.pgtrend{font-size:13.5px;font-weight:600;margin:2px 2px 14px}
+.pgtrend.up{color:var(--accent-ink)}
+.pgtrend.down{color:var(--bad)}
+.missrow{display:flex;align-items:center;gap:12px;padding:9px 12px}
+.missrow .mname{font-weight:600;flex:1;min-width:0}
+.missrow .mupc{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+.missrow .mn{font-size:12.5px;color:var(--muted);white-space:nowrap}
+.pgempty{padding:18px;text-align:center;color:var(--muted);font-size:14px}
+.fixwrap{margin-top:18px;border-top:1px solid var(--line);padding-top:16px;text-align:left}
+.fixhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.fixhead h3{font-size:15px;margin:0}
+.fixrow{display:flex;align-items:center;gap:10px;padding:8px 12px;flex-wrap:wrap}
+.fixrow .fnum{font-size:12px;color:var(--muted);min-width:18px;font-variant-numeric:tabular-nums}
+.fixrow .fname{font-weight:600;flex:1;min-width:130px}
+.fixrow .fupc{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;color:var(--muted);font-weight:400}
+.fixrow select{padding:7px 9px;border-radius:9px;border:1px solid var(--line);background:var(--surface);font-size:13.5px;font-weight:600;max-width:170px}
+.fixrow.changed{border-color:var(--tag)}
+.fixrow.changed select{border-color:var(--tag)}
+.fixrow.dropped .fname{opacity:.55;text-decoration:line-through}
+.adjmark{font-size:11.5px;font-weight:600;color:color-mix(in srgb,var(--tag) 78%,var(--ink));white-space:nowrap}
+.fixnote{font-size:12.5px;color:var(--muted);margin:10px 2px 0}
+.modalbg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;padding:16px;z-index:60}
+.modalbox{background:var(--surface);border-radius:var(--r);max-width:620px;width:100%;max-height:86vh;overflow:auto;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modalbox h2{font-size:17px;margin:0 0 2px}
+@media print{ .fixwrap,.modalbg{display:none !important} }
+
 .row{display:flex;gap:12px;align-items:center;padding:10px 12px}
 .row .thumb{width:54px;height:42px;border-radius:7px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;overflow:hidden;flex:none}
 .row .thumb img{max-width:100%;max-height:100%;object-fit:contain}
@@ -355,7 +388,17 @@ body.printing>#sheet{display:block!important}
       <div><span id="sum-time">0:00</span><b>Time</b></div>
     </div>
     <div class="note" id="sum-miss"></div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+
+    <div class="fixwrap" id="fixwrap">
+      <div class="fixhead">
+        <h3>Check the results</h3>
+        <span class="note" id="fix-msg" aria-live="polite"></span>
+      </div>
+      <p class="fixnote" style="margin:0 0 10px">Change anything the activity got wrong &mdash; a bad barcode on file, an item the student really did find, a package that was not on the shelf. The score above updates as you go. Choose <b>Don't count this one</b> and the item drops out of the score completely.</p>
+      <div class="rowlist" id="fixlist"></div>
+    </div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px">
       <button class="btn primary" id="sum-print">Print / save as PDF</button>
       <button class="btn" id="sum-again">Another round, same student</button>
       <button class="btn ghost" id="sum-next">Finish — next student</button>
@@ -367,9 +410,23 @@ body.printing>#sheet{display:block!important}
     <div class="rowlist" id="daylist"></div>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <button class="btn" id="day-print">Print all results</button>
-      <button class="btn ghost danger" id="day-clear">Clear all results</button>
+      <button class="btn ghost" id="day-clear">Clear this list for the next student</button>
       <span class="note" id="day-msg"></span>
     </div>
+    <p class="note" style="margin:10px 0 0">Clearing this list only tidies the screen. Every round stays in the running record below, and in Setup you can print, back up or delete that record.</p>
+  </div>
+
+  <div class="card section" id="progress" style="margin-top:18px" hidden>
+    <header><h2>Student progress</h2><span class="pill" id="pg-count"></span></header>
+    <p class="note">Everything a student has done at this station, added up across every session - not just today.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:4px">
+      <select class="input" id="pg-pick" style="max-width:260px" aria-label="Student"></select>
+      <button class="btn" id="pg-print">Print progress report</button>
+      <button class="btn ghost" id="pg-csv">Copy as spreadsheet</button>
+      <span class="note" id="pg-msg" aria-live="polite"></span>
+    </div>
+    <div id="pg-body"></div>
+    <textarea id="pg-clip" tabindex="-1" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none"></textarea>
   </div>
 </section>
 
@@ -438,6 +495,18 @@ body.printing>#sheet{display:block!important}
     </div>
     <div class="rowlist" id="vf-log"></div>
     <details id="vf-risk"><summary class="note" style="cursor:pointer">Tags most likely to need checking</summary><div class="rowlist" id="vf-risklist" style="margin-top:10px"></div></details>
+  </div>
+
+  <div class="card section">
+    <header><h2>The running record</h2><span class="pill" id="hist-count"></span></header>
+    <p class="note">Every finished round is kept here with the student's name, so progress adds up across sessions. "Clear this list for the next student" on the activity screen only tidies the screen - it never touches this. Results live in this browser on this device, so back them up now and then.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <button class="btn" id="hist-save">Save a backup file</button>
+      <button class="btn ghost" id="hist-load">Restore from a backup</button>
+      <button class="btn ghost danger" id="hist-wipe">Delete the whole record</button>
+      <input type="file" id="hist-file" accept=".json,application/json" hidden>
+      <span class="note" id="hist-msg" aria-live="polite"></span>
+    </div>
   </div>
 
   <div class="card section">
@@ -891,8 +960,13 @@ const Lists={
 };
 const Results={
   all(){ return lsGet('scanfind.results.v1',[]); },
-  save(r){ const a=this.all(); a.push(r); return lsSet('scanfind.results.v1',a.slice(-200)); },
-  clear(){ return lsSet('scanfind.results.v1',[]); }
+  save(r){ const a=this.all(); a.push(r); return lsSet('scanfind.results.v1',a.slice(-2000)); },
+  clear(){ return lsSet('scanfind.results.v1',[]); },
+  /* the day list is only a view - hiding it must never delete the record */
+  from(){ return lsGet('scanfind.dayfrom.v1',0)||0; },
+  setFrom(t){ return lsSet('scanfind.dayfrom.v1',t); },
+  visible(){ const f=this.from(); return this.all().filter(r=>(r.when||0)>f); },
+  names(){ return [...new Set(this.all().map(r=>(r.student||'').trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b)); }
 };
 
 const App={
@@ -1074,13 +1148,7 @@ const App={
     this.idx++; $('verdict').innerHTML=''; this.render();
   },
 
-  tally(){
-    const c=r=>this.results.filter(x=>x&&x.result===r).length;
-    const right=c('right'), wrong=c('wrong'), stock=c('stock'), skip=c('skip');
-    const avail=right+wrong+skip;
-    return {right,wrong,stock,skip,avail,pct:avail?Math.round(right/avail*100):0,
-            secs:Math.round((Date.now()-this.started)/1000)};
-  },
+  tally(){ return tallyOf(this.results, Math.round((Date.now()-this.started)/1000)); },
 
   finish(){
     $('stage').hidden=true; $('summary').hidden=false;
@@ -1094,11 +1162,14 @@ const App={
     $('sum-miss').textContent = missed.length
       ? ('Practise again: '+missed.join(', ')+(t.stock?'  ·  '+t.stock+' item(s) were out of stock.':''))
       : (t.avail?'Every item found correctly.':'No items were scanned.');
-    Results.save({
+    const rec={
+      id:'r'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),
       student:this.student, when:Date.now(), list:this.listName,
       items:this.results.filter(Boolean), tally:t
-    });
-    renderDay();
+    };
+    Results.save(rec);
+    fixOpen(rec,'fixlist',true);
+    renderDay(); renderProgress(); renderHist();
     Sound.good();
   }
 };
@@ -1133,7 +1204,17 @@ $('nameform').onsubmit=e=>{ e.preventDefault(); App.student=$('s-name').value.tr
 $('name-skip').onclick=()=>{ App.student=''; App.start(); };
 
 /* ---- printable results sheet ------------------------------------------- */
-const WORD={right:'Correct',wrong:'Incorrect',stock:'Out of stock',skip:'Skipped'};
+const WORD={right:'Correct',wrong:'Incorrect',stock:'Out of stock',skip:'Skipped',none:'Not counted'};
+/* accuracy is right out of (right + wrong + skipped). Out of stock and "not counted" sit outside it. */
+function tallyOf(items,secs){
+  const a=(items||[]).filter(Boolean);
+  const c=r=>a.filter(x=>x.result===r).length;
+  const right=c('right'), wrong=c('wrong'), stock=c('stock'), skip=c('skip'), none=c('none');
+  const avail=right+wrong+skip;
+  return {right,wrong,stock,skip,none,avail,
+          pct:avail?Math.round(right/avail*100):0,
+          secs:Math.max(0,Math.round(secs||0))};
+}
 function fmtDate(ms){
   const d=new Date(ms);
   return d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'})+
@@ -1142,9 +1223,13 @@ function fmtDate(ms){
 function runHTML(r){
   const esc=s=>String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
   const t=r.tally||{};
-  const rows=(r.items||[]).map((it,i)=>
-    `<tr><td>${i+1}</td><td>${esc(it.name)}</td><td style="font-family:monospace">${esc(it.upc||'—')}</td>`+
-    `<td class="res">${WORD[it.result]||it.result}</td><td>${it.result==='wrong'&&it.scanned?'scanned '+esc(it.scanned):''}</td></tr>`).join('');
+  const rows=(r.items||[]).map((it,i)=>{
+    const note=[];
+    if(it.scanned&&it.scanned!==it.upc) note.push('scanned '+esc(it.scanned));
+    if(it.adj) note.push('changed by staff from '+(WORD[it.was]||it.was));
+    return `<tr><td>${i+1}</td><td>${esc(it.name)}</td><td style="font-family:monospace">${esc(it.upc||'—')}</td>`+
+      `<td class="res">${WORD[it.result]||it.result}</td><td>${note.join(' · ')}</td></tr>`;
+  }).join('');
   const mins=Math.floor((t.secs||0)/60)+':'+String((t.secs||0)%60).padStart(2,'0');
   return `<div class="run">
     <h1>Scan &amp; Find — results</h1>
@@ -1158,9 +1243,11 @@ function runHTML(r){
       <b>Incorrect</b> ${t.wrong||0}<br>
       <b>Out of stock</b> ${t.stock||0}<br>
       <b>Skipped</b> ${t.skip||0}<br>
+      ${t.none?('<b>Not counted</b> '+t.none+'<br>'):''}
       <b>Score</b> ${t.right||0} of ${t.avail||0} available items (${t.pct||0}%)<br>
       <b>Time taken</b> ${mins}
     </div>
+    ${(r.items||[]).some(i=>i.adj)?'<div class="meta" style="margin-top:8px">Some results on this sheet were changed by staff after the round. Changes are noted against the item.</div>':''}
     <div class="sig">Staff notes: ______________________________________________________________________<br><br>
     Signed: ____________________________</div>
   </div>`;
@@ -1186,17 +1273,17 @@ $('sum-print').onclick=()=>{
   printRuns(all.length?[all[all.length-1]]:[]);
 };
 $('day-print').onclick=()=>{
-  if(!printRuns(Results.all())) $('day-msg').textContent='No results recorded yet.';
+  if(!printRuns(Results.visible())) $('day-msg').textContent='No results on screen. The running record is below.';
 };
-$('day-clear').onclick=e=>{
-  const b=e.currentTarget;
-  if(b.dataset.armed!=='1'){ b.dataset.armed='1'; b.textContent='Tap again to clear'; b.classList.add('armed');
-    setTimeout(()=>{ b.dataset.armed='0'; b.textContent='Clear all results'; b.classList.remove('armed'); },5000); return; }
-  b.dataset.armed='0'; b.textContent='Clear all results'; b.classList.remove('armed');
-  Results.clear(); renderDay(); $('day-msg').textContent='Cleared.';
+$('day-clear').onclick=()=>{
+  const seen=Results.visible().length;
+  Results.setFrom(Date.now()); renderDay(); renderProgress();
+  $('day-msg').textContent = seen
+    ? 'Screen cleared. '+seen+' round'+(seen===1?'':'s')+' kept in the running record.'
+    : 'Nothing on screen to clear.';
 };
 function renderDay(){
-  const runs=Results.all();
+  const runs=Results.visible();
   $('dayresults').hidden=runs.length===0;
   $('day-count').textContent=runs.length+' round'+(runs.length===1?'':'s')+' recorded';
   const box=$('daylist'); box.innerHTML='';
@@ -1207,13 +1294,312 @@ function renderDay(){
     who.appendChild(el('b',null,r.student||'(no name)'));
     who.appendChild(el('small',null,`${fmtDate(r.when)} · ${r.list||'All products'} · ${r.tally.right}/${r.tally.avail} correct`+(r.tally.stock?`, ${r.tally.stock} out of stock`:'')));
     row.appendChild(who);
+    const fx=el('button','btn small ghost','Fix');
+    fx.onclick=()=>fixModal(r);
+    row.appendChild(fx);
     const pr=el('button','btn small','Print');
     pr.onclick=()=>printRuns([r]);
     row.appendChild(pr);
     box.appendChild(row);
   });
 }
+/* ---- correcting a round afterwards -------------------------------------- */
+const FIX={rec:null,items:null,live:false,host:null};
+const FIXOPTS=[['right','Correct'],['wrong','Incorrect'],['stock','Out of stock'],['skip','Skipped'],['none',"Don't count this one"]];
+function fixOpen(rec,hostId,live){
+  FIX.rec=rec; FIX.live=!!live; FIX.host=hostId;
+  FIX.items=JSON.parse(JSON.stringify(rec.items||[]));
+  const m=$(live?'fix-msg':'fixm-msg'); if(m) m.textContent='';
+  fixRender();
+}
+function fixRender(){
+  const host=$(FIX.host); if(!host) return;
+  const esc=x=>String(x==null?'':x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  if(!FIX.items.length){ host.innerHTML='<p class="pgempty">No items in this round.</p>'; return; }
+  host.innerHTML=FIX.items.map((it,i)=>{
+    const changed=!!it.adj;
+    const was=changed?('<span class="adjmark">changed from '+(WORD[it.was]||it.was)+'</span>'):'';
+    const opts=FIXOPTS.map(([v,l])=>'<option value="'+v+'"'+(it.result===v?' selected':'')+'>'+l+'</option>').join('');
+    return '<div class="card row fixrow'+(changed?' changed':'')+(it.result==='none'?' dropped':'')+'" data-row="'+i+'">'+
+      '<span class="fnum">'+(i+1)+'</span>'+
+      '<span class="fname">'+esc(it.name)+' <span class="fupc">'+esc(it.upc||'')+'</span></span>'+
+      was+
+      '<select class="fixsel" data-i="'+i+'" aria-label="Result for '+esc(it.name)+'">'+opts+'</select>'+
+    '</div>';
+  }).join('');
+}
+document.addEventListener('change',e=>{
+  const sel=e.target.closest&&e.target.closest('select.fixsel');
+  if(!sel||!FIX.items) return;
+  const i=+sel.dataset.i, it=FIX.items[i]; if(!it) return;
+  const v=sel.value;
+  if(it.was===undefined) it.was=it.result;
+  it.result=v;
+  it.adj = (v!==it.was);
+  if(!it.adj) delete it.was;
+  fixCommit();
+});
+function fixCommit(){
+  const all=Results.all();
+  const k=r=>FIX.rec.id? r.id===FIX.rec.id : (r.when===FIX.rec.when && (r.student||'')===(FIX.rec.student||''));
+  const i=all.findIndex(k);
+  const t=tallyOf(FIX.items,(FIX.rec.tally&&FIX.rec.tally.secs)||0);
+  if(i>=0){
+    all[i].items=FIX.items; all[i].tally=t; all[i].edited=Date.now();
+    lsSet('scanfind.results.v1',all);
+    FIX.rec=all[i];
+  }
+  const nAdj=FIX.items.filter(x=>x.adj).length;
+  const msg=$( FIX.live ? 'fix-msg' : 'fixm-msg');
+  if(msg) msg.textContent = nAdj? (nAdj+' item'+(nAdj===1?'':'s')+' changed \u00b7 score now '+t.pct+'%') : 'Nothing changed.';
+  if(FIX.live) fixLiveScore(t);
+  fixRender();
+  renderDay(); renderProgress(); renderHist();
+}
+function fixLiveScore(t){
+  $('sum-pct').textContent=t.pct+'%';
+  $('sum-right').textContent=t.right; $('sum-wrong').textContent=t.wrong;
+  $('sum-stock').textContent=t.stock; $('sum-skip').textContent=t.skip;
+  const missed=FIX.items.filter(r=>r&&r.result==='wrong').map(r=>r.name);
+  $('sum-miss').textContent = missed.length
+    ? ('Practise again: '+missed.join(', ')+(t.stock?'  \u00b7  '+t.stock+' item(s) were out of stock.':''))
+    : (t.avail?'Every item found correctly.':'No items were counted.');
+}
+/* the same editor, for a round finished earlier */
+function fixModal(rec){
+  const bg=document.createElement('div'); bg.className='modalbg';
+  const when=rec.when?new Date(rec.when):null;
+  bg.innerHTML='<div class="modalbox" role="dialog" aria-modal="true" aria-label="Correct this round">'+
+    '<h2>Correct this round</h2>'+
+    '<p class="note" id="fixm-sub"></p>'+
+    '<p class="fixnote" id="fixm-msg" aria-live="polite" style="margin:0 0 10px"></p>'+
+    '<div class="rowlist" id="fixmlist"></div>'+
+    '<div style="display:flex;gap:10px;margin-top:16px;justify-content:flex-end">'+
+    '<button class="btn primary" id="fixm-done">Done</button></div></div>';
+  document.body.appendChild(bg);
+  bg.querySelector('#fixm-sub').textContent=(rec.student||'(no name)')+
+    (when?(' \u00b7 '+when.toLocaleDateString()+' '+when.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'})):'')+
+    ' \u00b7 '+(rec.list||'All products');
+  fixOpen(rec,'fixmlist',false);
+  const shut=()=>{ bg.remove(); FIX.rec=null; FIX.items=null; FIX.host=null; };
+  bg.querySelector('#fixm-done').onclick=shut;
+  bg.onclick=e=>{ if(e.target===bg) shut(); };
+  document.addEventListener('keydown',function esc(e){ if(e.key==='Escape'){ shut(); document.removeEventListener('keydown',esc); } });
+}
+
+/* ---- running record for one student ------------------------------------ */
+function pgTally(name){
+  const runs=Results.all().filter(r=>(r.student||'').trim()===name).sort((a,b)=>(a.when||0)-(b.when||0));
+  const T={name,runs,right:0,wrong:0,stock:0,skip:0,avail:0,secs:0,days:0,miss:[]};
+  const days=new Set(), seen={};
+  runs.forEach(r=>{
+    const t=r.tally||{};
+    T.right+=t.right||0; T.wrong+=t.wrong||0; T.stock+=t.stock||0; T.skip+=t.skip||0;
+    T.avail+=t.avail||0; T.secs+=t.secs||0;
+    if(r.when) days.add(new Date(r.when).toDateString());
+    (r.items||[]).forEach(it=>{
+      if(!it||!it.name) return;
+      const k=it.name;
+      const m=seen[k]||(seen[k]={name:k,upc:it.upc||'',tries:0,right:0,wrong:0,last:0});
+      if(it.result==='right'||it.result==='wrong'){ m.tries++; m[it.result]++; if(it.result==='wrong')m.last=r.when||0; }
+    });
+  });
+  T.days=days.size;
+  T.pct=T.avail?Math.round(T.right/T.avail*100):0;
+  T.miss=Object.values(seen).filter(m=>m.wrong>0)
+    .sort((a,b)=>b.wrong-a.wrong||(b.wrong/b.tries)-(a.wrong/a.tries)||a.name.localeCompare(b.name));
+  return T;
+}
+function pgAvg(runs){ if(!runs.length)return 0; return Math.round(runs.reduce((a,r)=>a+((r.tally&&r.tally.pct)||0),0)/runs.length); }
+function pgTrend(T){
+  if(T.runs.length<4) return '';
+  const k=Math.min(3,Math.floor(T.runs.length/2));
+  const first=pgAvg(T.runs.slice(0,k)), last=pgAvg(T.runs.slice(-k));
+  const d=last-first;
+  if(Math.abs(d)<5) return '<p class="pgtrend">Holding steady around '+last+'% over the last '+k+' round'+(k===1?'':'s')+'.</p>';
+  return '<p class="pgtrend '+(d>0?'up':'down')+'">'+(d>0?'Up ':'Down ')+Math.abs(d)+
+    ' points: first '+k+' round'+(k===1?'':'s')+' averaged '+first+'%, the last '+k+' averaged '+last+'%.</p>';
+}
+function pgChart(runs){
+  if(!runs.length) return '';
+  const W=680,H=132,L=26,R=8,TP=10,BT=20, n=runs.length;
+  const iw=(W-L-R)/n, bw=Math.max(3,Math.min(30,iw-5));
+  const y=p=>TP+(H-TP-BT)*(1-p/100);
+  let g='';
+  [0,50,100].forEach(v=>{ g+='<line x1="'+L+'" y1="'+y(v)+'" x2="'+(W-R)+'" y2="'+y(v)+'" stroke="currentColor" stroke-opacity=".16"/>'+
+    '<text x="'+(L-5)+'" y="'+(y(v)+3.5)+'" text-anchor="end">'+v+'</text>'; });
+  runs.forEach((r,i)=>{
+    const p=(r.tally&&r.tally.pct)||0;
+    const x=L+i*iw+(iw-bw)/2, yy=y(p), h=Math.max(1.5,y(0)-yy);
+    const col=p>=80?'var(--accent)':p>=50?'var(--tag)':'var(--bad)';
+    const d=r.when?new Date(r.when).toLocaleDateString(undefined,{month:'short',day:'numeric'}):'';
+    g+='<rect x="'+x+'" y="'+yy+'" width="'+bw+'" height="'+h+'" rx="2.5" fill="'+col+'"><title>'+d+': '+p+'%</title></rect>';
+  });
+  if(n>1){
+    const f=runs[0].when?new Date(runs[0].when).toLocaleDateString(undefined,{month:'short',day:'numeric'}):'';
+    const l=runs[n-1].when?new Date(runs[n-1].when).toLocaleDateString(undefined,{month:'short',day:'numeric'}):'';
+    g+='<text x="'+L+'" y="'+(H-5)+'">'+f+'</text><text x="'+(W-R)+'" y="'+(H-5)+'" text-anchor="end">'+l+'</text>';
+  }
+  return '<div class="pgchart"><svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Accuracy for each round, oldest first">'+g+'</svg></div>';
+}
+const pgTime=s=>{ s=Math.max(0,Math.round(s||0)); const h=Math.floor(s/3600), m=Math.round((s%3600)/60);
+  return h?(h+'h '+m+'m'):(m+' min'); };
+function renderProgress(){
+  const names=Results.names();
+  $('progress').hidden = names.length===0;
+  $('pg-count').textContent = names.length+' student'+(names.length===1?'':'s')+' on record';
+  const sel=$('pg-pick'), keep=sel.value;
+  sel.innerHTML=names.map(x=>'<option value="'+x.replace(/"/g,'&quot;')+'">'+x.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))+'</option>').join('');
+  if(names.includes(keep)) sel.value=keep;
+  if(!names.length){ $('pg-body').innerHTML=''; return; }
+  pgShow(sel.value);
+}
+function pgShow(name){
+  const esc=x=>String(x==null?'':x).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const T=pgTally(name);
+  if(!T.runs.length){ $('pg-body').innerHTML='<p class="pgempty">No rounds recorded for this student yet.</p>'; return; }
+  const stats=[
+    [T.pct+'%','overall accuracy'],
+    [T.right+'/'+T.avail,'items found right'],
+    [T.runs.length,'rounds finished'],
+    [T.days,'day'+(T.days===1?'':'s')+' practised'],
+    [T.wrong,'wrong scans'],
+    [T.skip,'skipped'],
+    [T.stock,'out of stock'],
+    [pgTime(T.secs),'time on task']
+  ].map(([b,l])=>'<div class="pgstat"><b>'+b+'</b><span>'+l+'</span></div>').join('');
+  const miss=T.miss.length
+    ? T.miss.slice(0,25).map(m=>'<div class="card row missrow"><span class="pill warn">'+m.wrong+'\u00d7</span>'+
+        '<span class="mname">'+esc(m.name)+' <span class="mupc">'+esc(m.upc||'')+'</span></span>'+
+        '<span class="mn">right '+m.right+' of '+m.tries+'</span></div>').join('')
+    : '<p class="pgempty">Nothing to reteach - every item this student has scanned came out right.</p>';
+  const rounds=T.runs.slice().reverse().map(r=>{
+    const d=r.when?new Date(r.when):null; const t=r.tally||{};
+    return '<div class="card row missrow"><span class="pill '+((t.pct||0)>=80?'ok':'warn')+'">'+(t.pct||0)+'%</span>'+
+      '<span class="mname" style="font-weight:500">'+(d?d.toLocaleDateString():'')+
+      ' <span class="mupc">'+esc(r.list||'All products')+(r.edited?' · corrected':'')+'</span></span>'+
+      '<span class="mn">'+(t.right||0)+' of '+(t.avail||0)+'</span>'+
+      '<button class="btn small ghost pgfix" data-id="'+esc(r.id||'')+'" data-when="'+(r.when||0)+'">Fix</button></div>';
+  }).join('');
+  $('pg-body').innerHTML =
+    '<div class="pgstats">'+stats+'</div>'+
+    pgChart(T.runs)+pgTrend(T)+
+    '<h3 style="font-size:15px;margin:16px 0 8px">Items to practise again</h3>'+
+    '<div class="rowlist">'+miss+'</div>'+
+    '<h3 style="font-size:15px;margin:18px 0 8px">Every round</h3>'+
+    '<div class="rowlist">'+rounds+'</div>';
+  $('pg-body').querySelectorAll('.pgfix').forEach(b=>{
+    b.onclick=()=>{
+      const id=b.dataset.id, w=+b.dataset.when;
+      const rec=Results.all().find(r=> id? r.id===id : r.when===w );
+      if(rec) fixModal(rec);
+    };
+  });
+}
+$('pg-pick').onchange=()=>{ pgShow($('pg-pick').value); $('pg-msg').textContent=''; };
+$('pg-print').onclick=()=>{ printHTML(progressHTML($('pg-pick').value)); };
+$('pg-csv').onclick=()=>{
+  const T=pgTally($('pg-pick').value);
+  const q=v=>{ v=String(v==null?'':v); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; };
+  const L=[['Student','Date','Time','Items','Round accuracy %','Right','Wrong','Out of stock','Skipped','Seconds'].join(',')];
+  T.runs.forEach(r=>{ const d=new Date(r.when||0), t=r.tally||{};
+    L.push([T.name,d.toLocaleDateString(),d.toLocaleTimeString(),r.list||'All products',t.pct||0,t.right||0,t.wrong||0,t.stock||0,t.skip||0,t.secs||0].map(q).join(','));
+  });
+  L.push(''); L.push(['Item','Barcode','Times wrong','Times right','Times tried'].join(','));
+  T.miss.forEach(m=>L.push([m.name,m.upc,m.wrong,m.right,m.tries].map(q).join(',')));
+  const txt=L.join('\n');
+  const box=$('pg-clip'); box.value=txt; box.select();
+  let done=false;
+  try{ done=document.execCommand('copy'); }catch(e){}
+  if(navigator.clipboard&&!done){ navigator.clipboard.writeText(txt).then(()=>{$('pg-msg').textContent='Copied. Paste into a spreadsheet.';},()=>{}); }
+  $('pg-msg').textContent = done?'Copied. Paste into a spreadsheet.':'Select the text and copy it.';
+  window.getSelection&&box.setSelectionRange(0,txt.length);
+};
+function progressHTML(name){
+  const esc=x=>String(x==null?'':x).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const T=pgTally(name);
+  const rows=T.runs.slice().reverse().map(r=>{ const t=r.tally||{}; const d=new Date(r.when||0);
+    return '<tr><td>'+d.toLocaleDateString()+'</td><td>'+d.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'})+'</td>'+
+      '<td>'+esc(r.list||'All products')+'</td><td class="res">'+(t.pct||0)+'%</td>'+
+      '<td>'+(t.right||0)+' of '+(t.avail||0)+'</td><td>'+(t.wrong||0)+'</td><td>'+(t.stock||0)+'</td></tr>'; }).join('');
+  const missRows=T.miss.map(m=>'<tr><td>'+esc(m.name)+'</td><td style="font-family:monospace">'+esc(m.upc||'—')+'</td>'+
+    '<td class="res">'+m.wrong+'</td><td>'+m.right+' of '+m.tries+'</td></tr>').join('');
+  const span=T.runs.length? (new Date(T.runs[0].when).toLocaleDateString()+' to '+new Date(T.runs[T.runs.length-1].when).toLocaleDateString()) : '';
+  return '<div class="run">'+
+    '<h1>Scan &amp; Find — progress report</h1>'+
+    '<div class="meta">Student: <b>'+esc(name||'____________________')+'</b>'+
+      '&nbsp;&nbsp;·&nbsp;&nbsp; '+esc(span)+'&nbsp;&nbsp;·&nbsp;&nbsp; '+T.runs.length+' rounds over '+T.days+' day'+(T.days===1?'':'s')+'</div>'+
+    '<div class="tot"><b>Overall accuracy</b> '+T.pct+'% &nbsp; ('+T.right+' right of '+T.avail+' items attempted)<br>'+
+      '<b>Wrong scans</b> '+T.wrong+' &nbsp;&nbsp; <b>Skipped</b> '+T.skip+' &nbsp;&nbsp; <b>Out of stock</b> '+T.stock+'<br>'+
+      '<b>Time on task</b> '+pgTime(T.secs)+'</div>'+
+    '<h2 style="font-size:14px;margin:16px 0 6px">Items to practise again</h2>'+
+    '<table><thead><tr><th>Item</th><th>Barcode</th><th>Times wrong</th><th>Right / tried</th></tr></thead>'+
+    '<tbody>'+(missRows||'<tr><td colspan="4">Nothing missed.</td></tr>')+'</tbody></table>'+
+    '<h2 style="font-size:14px;margin:16px 0 6px">Every round, newest first</h2>'+
+    '<table><thead><tr><th>Date</th><th>Time</th><th>Items</th><th>Score</th><th>Right</th><th>Wrong</th><th>Out of stock</th></tr></thead>'+
+    '<tbody>'+(rows||'<tr><td colspan="7">No rounds.</td></tr>')+'</tbody></table>'+
+    '<div class="sig">Staff notes: ______________________________________________________________________<br><br>'+
+    'Signed: ____________________________</div></div>';
+}
+function printHTML(html){
+  const el=$('sheet');
+  if(el.parentNode!==document.body) document.body.appendChild(el);
+  el.innerHTML=html; el.hidden=false;
+  document.body.classList.add('printing');
+  const done=()=>{ document.body.classList.remove('printing'); el.hidden=true; };
+  setTimeout(()=>{ try{ window.print(); }catch(e){} setTimeout(done,500); },80);
+  window.addEventListener('afterprint',done,{once:true});
+  return true;
+}
+
 $('btn-settings').onclick=()=>{ $('settings').hidden=!$('settings').hidden; };
+
+/* ---- backup, restore and a real delete ---------------------------------- */
+function renderHist(){
+  const a=Results.all();
+  const names=Results.names().length;
+  $('hist-count').textContent = a.length+' round'+(a.length===1?'':'s')+' · '+names+' student'+(names===1?'':'s');
+}
+$('hist-save').onclick=()=>{
+  const data=JSON.stringify({kind:'scanfind-results',version:1,saved:new Date().toISOString(),results:Results.all()},null,1);
+  const name='scan-and-find-record-'+new Date().toISOString().slice(0,10)+'.json';
+  try{
+    const url=URL.createObjectURL(new Blob([data],{type:'application/json'}));
+    const a=document.createElement('a'); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),4000);
+    $('hist-msg').textContent='Backup saved as '+name+'.';
+  }catch(e){ $('hist-msg').textContent='This device would not save the file.'; }
+};
+$('hist-load').onclick=()=>$('hist-file').click();
+$('hist-file').onchange=e=>{
+  const f=e.target.files&&e.target.files[0]; if(!f) return;
+  const fr=new FileReader();
+  fr.onload=()=>{
+    let d=null;
+    try{ d=JSON.parse(fr.result); }catch(err){ $('hist-msg').textContent='That file could not be read.'; return; }
+    const incoming=(d&&d.results)||(Array.isArray(d)?d:null);
+    if(!Array.isArray(incoming)){ $('hist-msg').textContent='That does not look like a Scan & Find backup.'; return; }
+    const have=Results.all(), key=r=>[r.student||'',r.when||0,(r.tally&&r.tally.right)||0].join('|');
+    const seen=new Set(have.map(key));
+    let added=0;
+    incoming.forEach(r=>{ if(r&&!seen.has(key(r))){ have.push(r); seen.add(key(r)); added++; } });
+    have.sort((a,b)=>(a.when||0)-(b.when||0));
+    lsSet('scanfind.results.v1',have.slice(-2000));
+    renderDay(); renderProgress(); renderHist();
+    $('hist-msg').textContent = added? ('Restored. '+added+' round'+(added===1?'':'s')+' added.') : 'Nothing new in that file.';
+  };
+  fr.readAsText(f);
+  e.target.value='';
+};
+$('hist-wipe').onclick=ev=>{
+  const b=ev.currentTarget;
+  if(b.dataset.armed!=='1'){ b.dataset.armed='1'; b.textContent='Tap again to delete everything';
+    b.classList.add('armed'); $('hist-msg').textContent='This erases every student\u2019s record on this device. Save a backup first if you may want it.';
+    setTimeout(()=>{ b.dataset.armed='0'; b.textContent='Delete the whole record'; b.classList.remove('armed'); },6000); return; }
+  b.dataset.armed='0'; b.textContent='Delete the whole record'; b.classList.remove('armed');
+  Results.clear(); Results.setFrom(0); renderDay(); renderProgress(); renderHist();
+  $('hist-msg').textContent='The record has been deleted.';
+};
 $('btn-say').onclick=()=>{ const p=App.cur; if(p){ const prev=Voice.on; Voice.on=true; Voice.say(p.name+'. '+(p.desc||'')); Voice.on=prev; } };
 $('btn-where').onclick=()=>{
   const p=App.cur; if(!p) return;
@@ -2064,7 +2450,7 @@ function fillCatSelects(){
   renderLists();
   setFormImg('');
   App.begin();
-  renderDay();
+  renderDay(); renderProgress(); renderHist();
   renderCatalog();
   renderSetup();
   renderRisk();
